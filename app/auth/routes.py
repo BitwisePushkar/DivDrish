@@ -39,7 +39,7 @@ from app.extensions import limiter
 
 # Security and tag definitions for Swagger UI
 _auth_tag = Tag(name="Authentication", description="User registration, login, and password management")
-_security = [{"BearerAuth": []}]
+_security = [{"jwt": []}]
 
 auth_bp = APIBlueprint("auth", __name__, url_prefix="/auth")
 
@@ -126,6 +126,7 @@ async def verify_otp(body: VerifyOTPBody):
     responses={
         200: MessageResponse,
         400: ErrorResponse,
+        404: ErrorResponse,
         429: ErrorResponse,
     }
 )
@@ -156,6 +157,7 @@ async def resend_otp(body: ResendOTPBody):
         200: TokenResponse,
         400: ErrorResponse,
         401: ErrorResponse,
+        429: ErrorResponse,
     }
 )
 @limiter.limit("10 per minute")
@@ -216,6 +218,7 @@ async def reset_request(body: PasswordResetRequestBody):
         200: ResetTokenResponse,
         400: ErrorResponse,
         401: ErrorResponse,
+        429: ErrorResponse,
     }
 )
 @limiter.limit("5 per minute")
@@ -244,6 +247,8 @@ async def reset_verify(body: PasswordResetVerifyBody):
     responses={
         200: MessageResponse,
         400: ErrorResponse,
+        401: ErrorResponse,
+        429: ErrorResponse,
     }
 )
 async def reset_confirm(body: PasswordResetConfirmBody):
@@ -274,6 +279,7 @@ async def reset_confirm(body: PasswordResetConfirmBody):
         200: TokenResponse,
         400: ErrorResponse,
         401: ErrorResponse,
+        429: ErrorResponse,
     }
 )
 async def refresh(body: RefreshBody):

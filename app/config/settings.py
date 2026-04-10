@@ -51,9 +51,9 @@ class BaseConfig:
     CELERY_RESULT_EXPIRES = 86400  # 24 hours
 
     # ─── Detection thresholds ────────────────────────────
-    VIDEO_THRESHOLD = float(os.getenv("VIDEO_THRESHOLD", "0.70"))
-    AUDIO_THRESHOLD = float(os.getenv("AUDIO_THRESHOLD", "0.65"))
-    IMAGE_THRESHOLD = float(os.getenv("IMAGE_THRESHOLD", "0.72"))
+    VIDEO_THRESHOLD = float(os.getenv("VIDEO_THRESHOLD") or "0.70")
+    AUDIO_THRESHOLD = float(os.getenv("AUDIO_THRESHOLD") or "0.65")
+    IMAGE_THRESHOLD = float(os.getenv("IMAGE_THRESHOLD") or "0.72")
 
     # ─── Model weights ───────────────────────────────────
     WEIGHTS_DIR = Path(os.getenv("WEIGHTS_DIR", str(BASE_DIR / "weights")))
@@ -61,22 +61,22 @@ class BaseConfig:
     # ─── Email Settings (flask-mailman) ──────────────────
     EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "flask_mailman.backends.smtp.EmailBackend")
     MAIL_SERVER = os.getenv("MAIL_SERVER", "localhost")
-    MAIL_PORT = int(os.getenv("MAIL_PORT", "1025"))
-    MAIL_USE_TLS = os.getenv("MAIL_USE_TLS", "False").lower() == "true"
-    MAIL_USE_SSL = os.getenv("MAIL_USE_SSL", "False").lower() == "true"
+    MAIL_PORT = int(os.getenv("MAIL_PORT") or "1025")
+    MAIL_USE_TLS = (os.getenv("MAIL_USE_TLS") or "False").lower() == "true"
+    MAIL_USE_SSL = (os.getenv("MAIL_USE_SSL") or "False").lower() == "true"
     MAIL_USERNAME = os.getenv("MAIL_USERNAME", "")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD", "")
     MAIL_DEFAULT_SENDER = os.getenv("MAIL_DEFAULT_SENDER", f"noreply@{APP_NAME.lower().replace(' ', '-')}.com")
     SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", "")
     # ─── Upload limits ───────────────────────────────────
-    MAX_VIDEO_MB = int(os.getenv("MAX_VIDEO_MB", "200"))
-    MAX_AUDIO_MB = int(os.getenv("MAX_AUDIO_MB", "50"))
-    MAX_IMAGE_MB = int(os.getenv("MAX_IMAGE_MB", "20"))
+    MAX_VIDEO_MB = int(os.getenv("MAX_VIDEO_MB") or "200")
+    MAX_AUDIO_MB = int(os.getenv("MAX_AUDIO_MB") or "50")
+    MAX_IMAGE_MB = int(os.getenv("MAX_IMAGE_MB") or "20")
     MAX_CONTENT_LENGTH = MAX_VIDEO_MB * 1024 * 1024  # Flask global limit
 
     # ─── Video sampling ──────────────────────────────────
-    FRAMES_PER_SECOND = int(os.getenv("FRAMES_PER_SECOND", "2"))
-    MAX_FRAMES = int(os.getenv("MAX_FRAMES", "60"))
+    FRAMES_PER_SECOND = int(os.getenv("FRAMES_PER_SECOND") or "2")
+    MAX_FRAMES = int(os.getenv("MAX_FRAMES") or "60")
 
     # ─── Rate limiting ───────────────────────────────────
     RATE_LIMIT = os.getenv("RATE_LIMIT", "30/minute")

@@ -21,8 +21,15 @@ from app.tasks.detection_tasks import (
 from app.extensions import celery
 
 from flask_openapi3 import APIBlueprint, Tag
+from app.detection.swagger_models import (
+    FileBody, BatchFileBody, DetectionResult, 
+    BatchResult, TaskStatus, AsyncStartedResponse
+)
+from app.auth.swagger_models import ErrorResponse
 
 _tag = Tag(name="Detection", description="AI-powered media analysis for deepfake detection")
+_security = [{"jwt": []}]
+
 detection_bp = APIBlueprint("detection", __name__)
 
 _detection_schema = DetectionResultSchema()
@@ -64,9 +71,16 @@ def _get_max_mb(media_type: str) -> int:
 
 # ─── Auto-detect endpoint ────────────────────────────────
 
-@detection_bp.post("/detect", tags=[_tag], summary="Auto-detect media type and analyze")
+@detection_bp.post(
+    "/detect",
+    tags=[_tag],
+    summary="Auto-detect media type and analyze",
+    description="Detects whether an uploaded file is a deepfake. Automatically routes to image, video, or audio detector.",
+    security=_security,
+    responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
+)
 @require_auth
-def detect_auto():
+def detect_auto(form: FileBody):
     """Auto-detect media type and route to appropriate detector."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -89,9 +103,15 @@ def detect_auto():
 
 # ─── Image endpoint ──────────────────────────────────────
 
-@detection_bp.post("/detect/image", tags=[_tag], summary="Analyze image for deepfakes")
+@detection_bp.post(
+    "/detect/image",
+    tags=[_tag],
+    summary="Analyze image for deepfakes",
+    security=_security,
+    responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
+)
 @require_auth
-def detect_image():
+def detect_image(form: FileBody):
     """Detect deepfake in uploaded image."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -118,9 +138,15 @@ def _handle_image(file):
 
 # ─── Video endpoint ──────────────────────────────────────
 
-@detection_bp.post("/detect/video", tags=[_tag], summary="Analyze video for deepfakes")
+@detection_bp.post(
+    "/detect/video",
+    tags=[_tag],
+    summary="Analyze video for deepfakes",
+    security=_security,
+    responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
+)
 @require_auth
-def detect_video():
+def detect_video(form: FileBody):
     """Detect deepfake in uploaded video."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -147,9 +173,15 @@ def _handle_video(file):
 
 # ─── Audio endpoint ──────────────────────────────────────
 
-@detection_bp.post("/detect/audio", tags=[_tag], summary="Analyze audio for deepfakes")
+@detection_bp.post(
+    "/detect/audio",
+    tags=[_tag],
+    summary="Analyze audio for deepfakes",
+    security=_security,
+    responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
+)
 @require_auth
-def detect_audio():
+def detect_audio(form: FileBody):
     """Detect deepfake in uploaded audio."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -176,9 +208,15 @@ def _handle_audio(file):
 
 # ─── Batch endpoint ──────────────────────────────────────
 
-@detection_bp.post("/detect/batch", tags=[_tag], summary="Batch analysis of multiple files")
+@detection_bp.post(
+    "/detect/batch",
+    tags=[_tag],
+    summary="Batch analysis of multiple files",
+    security=_security,
+    responses={200: BatchResult, 400: ErrorResponse, 401: ErrorResponse}
+)
 @require_auth
-def detect_batch():
+def detect_batch(form: BatchFileBody):
     """Analyze up to 10 files in a single request."""
     files = request.files.getlist("files")
 
@@ -256,10 +294,18 @@ def _process_batch_item(file) -> dict:
 
 # ─── Async Endpoints ──────────────────────────────────────
 
-@detection_bp.route("/detect/async/<media_type>", methods=["POST"])
+@detection_bp.post(
+    "/detect/async/<media_type>",
+    tags=[_tag],
+    summary="Submit an async detection task",
+    description="Submits a task for image, video, or audio detection. Returns a task_id to poll status.",
+    security=_security,
+    responses={202: AsyncStartedResponse, 400: ErrorResponse, 401: ErrorResponse}
+)
 @require_auth
-def detect_async(media_type):
+def detect_async(path_body: dict, form: FileBody):
     """Submit an async detection task for image, video, or audio."""
+    media_type = path_body["media_type"]
     if media_type not in ["image", "video", "audio"]:
         return error_response(f"Invalid media type: {media_type}", 400)
         
@@ -291,9 +337,15 @@ def detect_async(media_type):
     }, status_code=202)
 
 
-@detection_bp.route("/detect/async/batch", methods=["POST"])
+@detection_bp.post(
+    "/detect/async/batch",
+    tags=[_tag],
+    summary="Submit an async batch detection task",
+    security=_security,
+    responses={202: AsyncStartedResponse, 400: ErrorResponse, 401: ErrorResponse}
+)
 @require_auth
-def detect_async_batch():
+def detect_async_batch(form: BatchFileBody):
     """Submit an async batch detection task."""
     files = request.files.getlist("files")
 
@@ -336,10 +388,17 @@ def detect_async_batch():
     }, status_code=202)
 
 
-@detection_bp.get("/task/<task_id>", tags=[_tag], summary="Check status of an async detection task")
+@detection_bp.get(
+    "/task/<task_id>", 
+    tags=[_tag], 
+    summary="Check status of an async detection task",
+    security=_security,
+    responses={200: TaskStatus, 401: ErrorResponse, 404: ErrorResponse}
+)
 @require_auth
-def get_task_status(task_id):
+def get_task_status(path_body: dict):
     """Poll for the status of an async task."""
+    task_id = path_body["task_id"]
     task = celery.AsyncResult(task_id)
     
     if task.state == 'PENDING':

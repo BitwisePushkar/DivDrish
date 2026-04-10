@@ -2,12 +2,15 @@ from flask import request
 from app.auth.decorators import require_auth
 from app.history.controllers import get_history, get_single, delete_single, get_statistics
 from app.history.schemas import PaginatedHistorySchema, AnalysisRecordSchema, AnalysisStatsSchema
+from app.history.swagger_models import HistoryQuery, PaginatedHistory, HistoryRecord, AnalysisStats
+from app.auth.swagger_models import MessageResponse, ErrorResponse
 from app.utils.responses import success_response, error_response
 from app.utils.logger import logger
 
 from flask_openapi3 import APIBlueprint, Tag
 
 _tag = Tag(name="History", description="Access to past detection records and usage statistics")
+_security = [{"jwt": []}]
 history_bp = APIBlueprint("history", __name__, url_prefix="/history")
 
 _paginated_schema = PaginatedHistorySchema()
@@ -15,14 +18,22 @@ _record_schema = AnalysisRecordSchema()
 _stats_schema = AnalysisStatsSchema()
 
 
-@history_bp.get("", tags=[_tag], summary="List analysis history")
+@history_bp.get(
+    "",
+    tags=[_tag],
+    summary="List analysis history",
+    description="Retrieve paginated analysis history with optional filters for media type and result.",
+    security=_security,
+    query=HistoryQuery,
+    responses={200: PaginatedHistory, 401: ErrorResponse}
+)
 @require_auth
-def list_history():
-    """Retrieve paginated analysis history with optional filters."""
-    page = request.args.get("page", 1, type=int)
-    page_size = request.args.get("page_size", 20, type=int)
-    media_type = request.args.get("media_type", None, type=str)
-    is_fake_str = request.args.get("is_fake", None, type=str)
+def list_history(query: HistoryQuery):
+    """Retrieve paginated analysis history."""
+    page = query.page
+    page_size = query.page_size
+    media_type = query.media_type
+    is_fake_str = query.is_fake
 
     # Parse boolean
     is_fake = None
@@ -41,10 +52,17 @@ def list_history():
         return error_response(f"Failed to retrieve history: {str(e)}", 500)
 
 
-@history_bp.get("/stats", tags=[_tag], summary="Get overall analysis statistics")
+@history_bp.get(
+    "/stats",
+    tags=[_tag],
+    summary="Get overall analysis statistics",
+    description="Aggregate statistics across all analysis records including detection counts and confidence trends.",
+    security=_security,
+    responses={200: AnalysisStats, 401: ErrorResponse}
+)
 @require_auth
 def stats():
-    """Aggregate statistics across all analysis records."""
+    """Aggregate statistics."""
     try:
         result = get_statistics()
         return success_response(_stats_schema.dump(result))
@@ -53,21 +71,35 @@ def stats():
         return error_response(f"Failed to retrieve stats: {str(e)}", 500)
 
 
-@history_bp.get("/<record_id>", tags=[_tag], summary="Get single analysis record details")
+@history_bp.get(
+    "/<record_id>",
+    tags=[_tag],
+    summary="Get single analysis record details",
+    security=_security,
+    responses={200: HistoryRecord, 401: ErrorResponse, 404: ErrorResponse}
+)
 @require_auth
-def get_record(record_id):
+def get_record(path_body: dict):
     """Get full details of a single analysis record."""
+    record_id = path_body["record_id"]
     record = get_single(record_id)
     if not record:
-        return error_response(f"Analysis record not found: {record_id}", 404)
+        return error_response("Record not found", 404)
     return success_response(_record_schema.dump(record))
 
 
-@history_bp.delete("/<record_id>", tags=[_tag], summary="Delete an analysis record")
+@history_bp.delete(
+    "/<record_id>",
+    tags=[_tag],
+    summary="Delete an analysis record",
+    security=_security,
+    responses={200: MessageResponse, 401: ErrorResponse, 404: ErrorResponse}
+)
 @require_auth
-def delete_record(record_id):
-    """Delete a single analysis record."""
-    deleted = delete_single(record_id)
-    if not deleted:
-        return error_response(f"Analysis record not found: {record_id}", 404)
-    return success_response({"message": "Record deleted", "id": record_id})
+def delete_record(path_body: dict):
+    """Permanently delete an analysis record."""
+    record_id = path_body["record_id"]
+    success = delete_single(record_id)
+    if not success:
+        return error_response("Record not found", 404)
+    return success_response({"message": "Record deleted successfully", "id": record_id})

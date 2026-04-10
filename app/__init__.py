@@ -8,12 +8,6 @@ import os
 from flask import jsonify
 from flask_openapi3 import OpenAPI, Info, SecurityScheme
 
-# Import Swagger UI plugin for flask-openapi3 4.x
-try:
-    from flask_openapi3 import Swagger
-    _doc_ui = [Swagger()]
-except ImportError:
-    _doc_ui = None
 
 from app.config.settings import get_config
 from app.extensions import db, ma, limiter, cors, init_celery, mail, redis_client
@@ -55,7 +49,8 @@ def create_app(config_override=None):
         __name__, 
         info=_info, 
         security_schemes=_security_schemes,
-        doc_ui=_doc_ui
+        doc_prefix="/openapi",
+        doc_ui=True
     )
     
     # ─── Load configuration ──────────────────────────────
@@ -65,8 +60,6 @@ def create_app(config_override=None):
         config = get_config()
         app.config.from_object(config)
 
-    # Configure documentation prefix
-    app.config["OPENAPI_URL_PREFIX"] = "/openapi"
 
     # ─── Ensure directories exist ────────────────────────
     os.makedirs("logs", exist_ok=True)
@@ -110,11 +103,11 @@ def create_app(config_override=None):
     from app.provenance.routes import provenance_bp
     from app.history.routes import history_bp
 
-    app.register_blueprint(health_bp)
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(detection_bp)
-    app.register_blueprint(provenance_bp)
-    app.register_blueprint(history_bp)
+    app.register_api(health_bp)
+    app.register_api(auth_bp)
+    app.register_api(detection_bp)
+    app.register_api(provenance_bp)
+    app.register_api(history_bp)
 
     # ─── Root endpoint ───────────────────────────────────
     @app.route("/", methods=["GET"])
@@ -147,6 +140,13 @@ def create_app(config_override=None):
                 else:
                     logger.warning(f"Database not ready (attempt {attempt+1}/{max_retries}). Retrying in 5s...")
                     time.sleep(5)
+
+    # ─── Log registered routes for debugging ─────────────
+    with app.app_context():
+        routes = []
+        for rule in app.url_map.iter_rules():
+            routes.append(f"{rule.endpoint}: {rule.rule}")
+        logger.info(f"Registered routes: \n" + "\n".join(sorted(routes)))
 
     logger.info(f"DeepTrace ML Engine v{app.config.get('VERSION', '2.0.0')} started")
 
