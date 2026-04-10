@@ -1145,3 +1145,44 @@ swagger.static: /openapi/swagger/<path:filename>
 swagger.swagger: /openapi/swagger
 2026-04-10 21:32:42 | INFO | DeepTrace ML Engine v2.0.0 started
 2026-04-10 21:32:44 | INFO | [5a623279-ae74-4c02-9cc0-962d3e8a3047] GET /health → 200 (1.58ms)
+2026-04-10 21:33:44 | SUCCESS | Database tables initialized
+2026-04-10 21:33:44 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 21:33:44 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 21:33:48 | INFO | [dd9f1999-1e57-4bf1-914e-5473dcd0efb5] GET /health → 200 (0.69ms)
