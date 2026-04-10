@@ -1,0 +1,96 @@
+services:
+  # ─── PostgreSQL Database ──────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: deeptrace-flask-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deeptrace
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_flask_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Redis (Celery Broker + Result Backend) ────────────
+  redis:
+    image: redis:7-alpine
+    container_name: deeptrace-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── DeepTrace Flask App ──────────────────────────────
+  flask-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: deeptrace-flask-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:postgres@postgres:5432/deeptrace
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - FLASK_ENV=production
+    volumes:
+      - ../weights:/app/weights
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 90s
+      retries: 3
+
+  # ─── Celery Worker ─────────────────────────────────────
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: deeptrace-celery-worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:postgres@postgres:5432/deeptrace
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+      - FLASK_ENV=production
+    volumes:
+      - ../weights:/app/weights
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  postgres_flask_data:
+    driver: local
+  redis_data:
+    driver: local
