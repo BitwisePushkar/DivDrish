@@ -3,7 +3,7 @@ Authentication routes blueprint.
 Uses flask-openapi3 APIBlueprint for Swagger UI documentation.
 """
 from flask import request, g
-from flask_openapi3 import APIBlueprint
+from flask_openapi3 import APIBlueprint, Tag
 
 from app.auth.schemas import (
     RegisterSchema,
@@ -34,9 +34,9 @@ from app.utils.responses import success_response, error_response
 from app.utils.logger import logger
 from app.extensions import limiter
 
-# Security scheme tag for Swagger UI
+# Security and tag definitions for Swagger UI
+_auth_tag = Tag(name="Authentication", description="User registration, login, and password management")
 _security = [{"BearerAuth": []}]
-_tag = [{"name": "Authentication", "description": "User registration, login, and password management"}]
 
 auth_bp = APIBlueprint("auth", __name__, url_prefix="/auth")
 
@@ -54,7 +54,7 @@ _reset_confirm_schema = PasswordResetConfirmSchema()
     "/register",
     summary="Register (Step 1 — send OTP)",
     description="Initiates registration. Sends a 6-digit OTP to the email provided. OTP expires in 10 minutes. Limited to 5 requests per hour.",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         201: MessageResponse,
         400: ErrorResponse,
@@ -89,7 +89,7 @@ def register(body: RegisterBody):
     "/verify-otp",
     summary="Register (Step 2 — verify OTP)",
     description="Verifies the 6-digit OTP. On success, creates the user account and returns access + refresh tokens. 5 failed attempts trigger a 1-hour lockout.",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         201: TokenResponse,
         400: ErrorResponse,
@@ -123,7 +123,7 @@ def verify_otp(body: VerifyOTPBody):
     "/login",
     summary="Login",
     description="Authenticates a user using either their email or username plus password. Returns access and refresh tokens.",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         200: TokenResponse,
         400: ErrorResponse,
@@ -157,7 +157,7 @@ def login(body: LoginBody):
     "/password-reset/request",
     summary="Password Reset (Step 1 — request OTP)",
     description="Sends a password reset OTP to the provided email. Silently succeeds even if email is not registered (prevents enumeration).",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         200: MessageResponse,
         400: ErrorResponse,
@@ -188,7 +188,7 @@ def reset_request(body: PasswordResetRequestBody):
     "/password-reset/verify",
     summary="Password Reset (Step 2 — verify OTP)",
     description="Verifies the reset OTP. On success, returns a short-lived `reset_token` valid for 15 minutes.",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         200: ResetTokenResponse,
         400: ErrorResponse,
@@ -219,7 +219,7 @@ def reset_verify(body: PasswordResetVerifyBody):
     "/password-reset/confirm",
     summary="Password Reset (Step 3 — set new password)",
     description="Finalizes the password reset using the `reset_token` received in Step 2. The token is single-use and expires in 15 minutes.",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         200: MessageResponse,
         400: ErrorResponse,
@@ -250,7 +250,7 @@ def reset_confirm(body: PasswordResetConfirmBody):
     "/refresh",
     summary="Refresh Access Token",
     description="Issues a new short-lived access token using a valid refresh token.",
-    tags=_tag,
+    tags=[_auth_tag],
     responses={
         200: TokenResponse,
         400: ErrorResponse,
@@ -283,7 +283,7 @@ def refresh(body: RefreshBody):
     "/me",
     summary="Get Current User",
     description="Returns the authenticated user's profile. Requires a valid Bearer token.",
-    tags=_tag,
+    tags=[_auth_tag],
     security=_security,
     responses={
         200: UserOut,
