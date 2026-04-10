@@ -318,3 +318,64 @@ ConnectionRefusedError: [Errno 111] Connection refused
 2026-04-10 18:45:09 | INFO | [c2a15bcc-0381-442a-8220-996a65af8254] GET /health → 200 (1.54ms)
 2026-04-10 18:45:42 | INFO | [37a643ef-91b5-4fa0-818d-2f7430bb4ab0] GET /health → 200 (4.35ms)
 2026-04-10 18:46:15 | INFO | [d30d1ac2-ad13-45ff-ba70-ec7ddb87c8c4] GET /health → 200 (5.0ms)
+2026-04-10 18:46:51 | SUCCESS | Database tables initialized
+2026-04-10 18:46:51 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.verify_otp: /auth/verify-otp
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 18:46:51 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 18:46:52 | INFO | [ec5e784a-9617-43b5-b84d-bc8503094d66] GET /health → 200 (0.75ms)
+2026-04-10 18:47:22 | INFO | [25070ef7-c8bb-4864-ad44-57c1be7a4217] GET /openapi/swagger → 200 (49.14ms)
+2026-04-10 18:47:22 | INFO | [0eacb39c-eb67-41c0-af45-d06df5311a9a] GET /openapi/swagger/js/swagger-ui-standalone-preset.js → 200 (53.85ms)
+2026-04-10 18:47:22 | INFO | [7f3131f6-d40b-457b-a7a4-4ccd2bbd7897] GET /openapi/swagger/css/swagger-ui.css → 200 (44.66ms)
+2026-04-10 18:47:22 | INFO | [56627eca-5ec9-4cbc-a3b9-e9a9d5346bc0] GET /openapi/swagger/js/swagger-ui-bundle.js → 200 (2.97ms)
+2026-04-10 18:47:22 | INFO | [ed84f59d-529f-43cc-80c8-7a12d22ab65d] GET /openapi/openapi.json → 200 (40.62ms)
+2026-04-10 18:47:22 | INFO | [0b688dc3-6e79-4654-86ff-c33e63f8334a] GET /openapi/swagger/images/swagger.svg → 200 (2.82ms)
+2026-04-10 18:47:25 | INFO | [f159d14a-cf34-470b-99ac-1c961e4c2e07] GET /health → 200 (3.53ms)
+2026-04-10 18:47:47 | INFO | [f41bbd46-87de-436c-bdd7-621a5608a5fe] GET / → 200 (0.66ms)
+2026-04-10 18:47:52 | INFO | [069e994c-f8e9-4494-8380-4d135cbaf117] GET /openapi → 308 (3.63ms)
+2026-04-10 18:47:52 | INFO | [98f0f90c-1962-4f8f-ac69-520c5c7bdbca] GET /openapi/ → 200 (13.51ms)
+2026-04-10 18:47:56 | INFO | [1f40a045-b85a-40f5-a2ab-8839d3ead7d5] GET /openapi/openapi.json → 200 (5.81ms)
+2026-04-10 18:47:58 | INFO | [396b5d24-5b37-497d-8b15-05aa7f2afc30] GET /health → 200 (0.31ms)
+2026-04-10 18:48:30 | INFO | [55911816-5c90-4367-9213-3bba7ed4d8bb] GET /health → 200 (3.21ms)
+2026-04-10 18:49:03 | INFO | [d2e08a0a-66e9-4591-aec1-336eac1ae81e] GET /health → 200 (1.85ms)
+2026-04-10 18:49:36 | INFO | [8f35374a-008f-497b-8ad3-629c70c4a460] GET /health → 200 (0.22ms)
+2026-04-10 18:50:09 | INFO | [4376828e-1002-456d-86e8-885d5ff301ff] GET /health → 200 (3.58ms)
+2026-04-10 18:50:42 | INFO | [a5010aa6-cffc-4f7b-a0fc-e989832c6226] GET /health → 200 (0.31ms)
+2026-04-10 18:51:15 | INFO | [0b80ec32-e6a3-4f7e-9123-e5206ad098a7] GET /health → 200 (0.14ms)
+2026-04-10 18:51:48 | INFO | [83a87a17-259c-460b-a72e-b65ba3dd4c91] GET /health → 200 (7.37ms)
+2026-04-10 18:52:21 | INFO | [68005fa8-d422-44d2-84e0-3ba91c63852d] GET /health → 200 (0.25ms)
+2026-04-10 18:52:55 | INFO | [4dbba7b0-94ee-4200-989d-6fc136c07d35] GET /health → 200 (3.06ms)
+2026-04-10 18:53:29 | INFO | [340609e8-e7b5-4b36-baca-ea069cb24cac] GET /health → 200 (5.82ms)
+2026-04-10 18:54:02 | INFO | [f11c8640-4721-4d3f-b30f-925600c39c78] GET /health → 200 (0.5ms)
+2026-04-10 18:54:36 | INFO | [9a7e9916-1aec-424c-8756-c06367cdfccc] GET /health → 200 (0.65ms)
+2026-04-10 18:55:09 | INFO | [fdffcd67-b57a-41de-a70e-21834ab7fcec] GET /health → 200 (0.32ms)
+2026-04-10 18:55:43 | INFO | [420a2811-4388-4e2f-a386-2e86e6de0a65] GET /health → 200 (0.34ms)

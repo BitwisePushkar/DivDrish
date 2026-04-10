@@ -24,7 +24,6 @@ _stats_schema = AnalysisStatsSchema()
     summary="List analysis history",
     description="Retrieve paginated analysis history with optional filters for media type and result.",
     security=_security,
-    query=HistoryQuery,
     responses={200: PaginatedHistory, 401: ErrorResponse}
 )
 @require_auth
