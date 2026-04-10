@@ -5,11 +5,23 @@ LABEL maintainer="DeepTrace Team"
 LABEL description="DeepTrace Celery Worker"
 
 USER root
+
+# Fix pip SSL issues (corporate proxy / self-signed certs)
+RUN pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org download.pytorch.org"
+
+WORKDIR /app
+
+# Install requirements (ensures 'celery' is in PATH)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
 COPY app/ ./app/
 COPY wsgi.py .
 RUN chown -R deeptrace:deeptrace /app
 
 USER deeptrace
 
+# Celery worker command
 CMD ["celery", "-A", "app.extensions.celery", "worker", \
      "--loglevel=info", "--concurrency=2", "--max-tasks-per-child=50"]

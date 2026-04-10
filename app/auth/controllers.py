@@ -11,6 +11,7 @@ from werkzeug.security import generate_password_hash
 
 from app.config.settings import get_config
 from app.database.models import User
+from sqlalchemy import func
 from app.extensions import db, redis_client
 from app.utils.logger import logger
 from app.utils.email_service import send_otp_email
@@ -28,8 +29,12 @@ def register_user(username: str, email: str, password: str) -> dict:
     Initiate user registration.
     Validates input and sends an OTP. Data is cached in Redis.
     """
-    # 1. Check if user already exists in DB
-    if User.query.filter((User.email == email) | (User.username == username)).first():
+    # 1. Check if user already exists in DB (Case-Insensitive)
+    existing_user = User.query.filter(
+        (func.lower(User.email) == func.lower(email)) | 
+        (func.lower(User.username) == func.lower(username))
+    ).first()
+    if existing_user:
         raise ValueError("Username or email already registered")
 
     # 2. Check throttling for OTP requests
@@ -56,7 +61,11 @@ def register_user(username: str, email: str, password: str) -> dict:
 
     # 4. Send Email
     if not send_otp_email(email, otp, "registration"):
-        raise RuntimeError("Failed to send verification email")
+        # Cleanup on failure so user isn't penalized for system error
+        redis_client.delete(f"otp:reg:{email}")
+        throttle_key = f"throttle:reg_otp:{email}"
+        redis_client.decr(throttle_key)
+        raise RuntimeError("Failed to send verification email. Please try again.")
     
     return {"message": "Verification code sent to email", "email": email}
 
@@ -103,7 +112,8 @@ def login_user(identifier: str, password: str) -> dict:
     Authenticate user via email or username.
     """
     user = User.query.filter(
-        ((User.email == identifier) | (User.username == identifier)) & 
+        ((func.lower(User.email) == func.lower(identifier)) | 
+         (func.lower(User.username) == func.lower(identifier))) & 
         (User.is_active == True)
     ).first()
     
@@ -118,7 +128,7 @@ def request_password_reset(email: str) -> dict:
     """
     Send a password reset OTP.
     """
-    user = User.query.filter_by(email=email, is_active=True).first()
+    user = User.query.filter(func.lower(User.email) == func.lower(email), User.is_active == True).first()
     if not user:
         # Silent return to prevent email enumeration
         return {"message": "If the account exists, a reset code has been sent."}
@@ -133,7 +143,11 @@ def request_password_reset(email: str) -> dict:
     _increment_throttle(email, "reset_otp")
 
     if not send_otp_email(email, otp, "password_reset"):
-        raise RuntimeError("Failed to send reset email")
+        # Cleanup
+        redis_client.delete(f"otp:reset:{email}")
+        throttle_key = f"throttle:reset_otp:{email}"
+        redis_client.decr(throttle_key)
+        raise RuntimeError("Failed to send reset email. Please try again.")
 
     return {"message": "Reset code sent to email"}
 
@@ -235,8 +249,8 @@ def _create_token(user: User, expires_delta: timedelta, token_type: str) -> str:
         "sub": user.id,
         "email": user.email,
         "type": token_type,
-        "iat": now,
-        "exp": now + expires_delta,
+        "iat": int(now.timestamp()),
+        "exp": int((now + expires_delta).timestamp()),
     }
     return jwt.encode(payload, config.SECRET_KEY, algorithm="HS256")
 

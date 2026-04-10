@@ -83,10 +83,12 @@ def require_auth(f):
         # Check if it's a user-specific API key
         from app.database.models import User
         user = User.query.filter_by(api_key=api_key, is_active=True).first()
+        
         g.current_user = {
-            "user_id": user.id if user else None,
-            "email": user.email if user else None,
+            "user_id": user.id if user else "system_admin",
+            "email": user.email if user else "admin@deeptrace.internal",
             "type": "api_key",
+            "is_global": user is None
         }
         return f(*args, **kwargs)
 

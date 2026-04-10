@@ -40,3 +40,11 @@
 2026-04-10 12:07:03 | INFO | [b26dea38-94ab-4743-9035-0eca595023a9] POST /auth/register → 500 (383.21ms)
 2026-04-10 12:07:21 | INFO | [bcc9386f-952e-40bd-a34c-384f5240d5e2] GET /health → 200 (2.26ms)
 2026-04-10 12:07:54 | INFO | [7d374123-9cae-44a4-a307-1b21973361fe] GET /health → 200 (1.35ms)
+2026-04-10 12:47:22 | SUCCESS | Database tables initialized
+2026-04-10 12:47:22 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 12:47:26 | INFO | [43c5a09f-6b19-44de-ae8a-2a763280bbf0] GET /health → 200 (3.35ms)
+2026-04-10 12:47:58 | INFO | [159e9cb1-6658-470c-bf89-8da940bc0bff] GET /health → 200 (0.15ms)
+2026-04-10 12:48:32 | INFO | [c4b65b91-165b-4fd3-9240-59bf7425b94c] GET /health → 200 (8.52ms)
+2026-04-10 12:49:05 | INFO | [5ba9eef7-ac8e-46de-a64d-1c43ce111c90] GET /health → 200 (2.05ms)
+2026-04-10 12:49:38 | INFO | [4e5e25e7-deb1-4652-b6f7-b88e82e85484] GET /health → 200 (0.16ms)
+2026-04-10 12:50:12 | INFO | [38f30be0-d951-454f-a2d6-6fbdbd9a185a] GET /health → 200 (0.12ms)

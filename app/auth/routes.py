@@ -66,9 +66,6 @@ _reset_confirm_schema = PasswordResetConfirmSchema()
 def register(body: RegisterBody):
     """Initial registration — sends OTP."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
-
     errors = _register_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -101,8 +98,6 @@ def register(body: RegisterBody):
 def verify_otp(body: VerifyOTPBody):
     """Verify registration OTP and create account."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
     errors = _verify_otp_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -134,9 +129,6 @@ def verify_otp(body: VerifyOTPBody):
 def login(body: LoginBody):
     """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
-
     errors = _login_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -168,8 +160,6 @@ def login(body: LoginBody):
 def reset_request(body: PasswordResetRequestBody):
     """Request a password reset OTP."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
     errors = _reset_req_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -199,8 +189,6 @@ def reset_request(body: PasswordResetRequestBody):
 def reset_verify(body: PasswordResetVerifyBody):
     """Verify reset OTP and get reset token."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
     errors = _verify_otp_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -228,8 +216,6 @@ def reset_verify(body: PasswordResetVerifyBody):
 def reset_confirm(body: PasswordResetConfirmBody):
     """Finalize password reset."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
     errors = _reset_confirm_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -260,9 +246,6 @@ def reset_confirm(body: PasswordResetConfirmBody):
 def refresh(body: RefreshBody):
     """Refresh an expired access token."""
     json_data = request.get_json()
-    if not json_data:
-        return error_response("Request body required", 400)
-
     errors = _refresh_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
