@@ -1,11 +1,9 @@
-# ✅ Reuse already-built Flask image as base — no redundant build!
 ARG BASE_IMAGE=ayushsingh23/deeptrace-ml:latest
 FROM ${BASE_IMAGE}
 
 LABEL maintainer="DeepTrace Team"
 LABEL description="DeepTrace Celery Worker"
 
-# Switch back to root to copy files, then back to deeptrace
 USER root
 COPY app/ ./app/
 COPY wsgi.py .

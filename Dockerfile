@@ -7,18 +7,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential libsndfile1-dev libgl1 libglib2.0-0 libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# ✅ LAYER 1: PyTorch alone — only re-runs if this RUN line changes
 RUN pip install --no-cache-dir --prefix=/install \
     torch==2.5.1+cpu torchaudio==2.5.1+cpu torchvision==0.20.1+cpu \
     --index-url https://download.pytorch.org/whl/cpu
 
 ENV PYTHONPATH=/install/lib/python3.13/site-packages
 
-# ✅ LAYER 2: facenet (no deps) — rarely changes
 RUN pip install --no-cache-dir --prefix=/install --no-deps \
     "facenet-pytorch>=2.6.0"
 
-# ✅ LAYER 3: requirements — only re-runs when requirements.txt changes
 COPY requirements.txt .
 RUN pip install --no-cache-dir --prefix=/install \
     --extra-index-url https://download.pytorch.org/whl/cpu \
@@ -37,7 +34,8 @@ COPY --from=builder /install /usr/local
 
 WORKDIR /app
 COPY app/ ./app/
-COPY wsgi.py gunicorn.conf.py .
+COPY wsgi.py .
+COPY gunicorn.conf.py .
 RUN mkdir -p logs weights uploads && chown -R deeptrace:deeptrace /app
 
 USER deeptrace
