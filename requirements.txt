@@ -1,0 +1,45 @@
+# ─── Core Framework ─────────────────────────────────────
+flask>=3.1.0
+flask-sqlalchemy>=3.1.0
+flask-marshmallow>=1.2.0
+marshmallow>=3.22.0
+marshmallow-sqlalchemy>=1.1.0
+flask-limiter>=3.8.0
+flask-cors>=5.0.0
+python-dotenv>=1.2.2
+gunicorn>=23.0.0
+werkzeug>=3.1.0
+psycopg2-binary>=2.9.10
+flask-mailman>=1.0.0
+
+# ─── Celery / Redis ────────────────────────────────────
+celery>=5.4.0
+redis>=5.2.0
+
+# ─── ML / Deep Learning ────────────────────────────────
+# NOTE: torch, torchaudio, torchvision are installed separately
+#       in the Dockerfile from the PyTorch CPU index.
+#       Do NOT add them here.
+# facenet-pytorch is installed separately in Dockerfile with --no-deps
+timm>=1.0.3
+scikit-learn>=1.8.0
+scipy>=1.14.0
+opencv-python-headless>=4.10.0.84
+
+# ─── Audio Processing ──────────────────────────────────
+librosa>=0.10.2
+soundfile>=0.12.1
+audioop-lts>=0.2.2; python_version >= "3.13"
+
+# ─── Auth / Security ─────────────────────────────────
+python-jose[cryptography]>=3.3.0
+
+# ─── Logging & Observability ──────────────────────────
+loguru>=0.7.2
+
+# ─── Image Processing ────────────────────────────────
+Pillow>=10.4.0
+numpy>=1.26.0
+
+# ─── Testing ─────────────────────────────────────────
+pytest>=9.0.2

@@ -1,0 +1,6 @@
+2026-04-10 10:33:12 | SUCCESS | Database tables initialized
+2026-04-10 10:33:12 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 10:33:14 | INFO | [60417e89-f9ab-4c07-84b4-f5e7b6af5297] GET /health → 200 (0.33ms)
+2026-04-10 10:33:28 | INFO | [0cd263a3-2792-462c-9464-fb572b775207] GET / → 200 (0.22ms)
+2026-04-10 10:33:28 | INFO | [43b8279d-2cac-4ca5-bec2-6196ed0b1183] GET /favicon.ico → 404 (1.0ms)
+2026-04-10 10:33:47 | INFO | [50182241-1cc5-4f73-bfa5-da9772ea3139] GET /health → 200 (0.12ms)
