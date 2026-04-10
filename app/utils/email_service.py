@@ -36,12 +36,12 @@ def send_otp_email(email: str, otp: str, purpose: str = "registration"):
         msg = EmailMessage(
             subject=subject,
             body=body,
-            from_email=current_app.config.get("DEFAULT_FROM_EMAIL"),
+            from_email=current_app.config.get("MAIL_DEFAULT_SENDER"),
             to=[email]
         )
         msg.send()
         logger.info(f"OTP email sent to {email} ({purpose})")
         return True
     except Exception as e:
-        logger.error(f"Failed to send email to {email}: {e}")
+        logger.exception(f"Failed to send email to {email}: {e}")
         return False
