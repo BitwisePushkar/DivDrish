@@ -7,13 +7,10 @@ blueprints, middleware, and error handlers.
 import os
 from flask import Flask, jsonify
 from app.config.settings import get_config
-<<<<<<< HEAD
 from app.extensions import db, ma, limiter, cors, init_celery, mail, redis_client
-=======
-from app.extensions import db, ma, limiter, cors, init_celery
->>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
 from app.middleware.request_middleware import register_middleware
 from app.utils.logger import logger
+import redis
 
 
 def create_app(config_override=None):
@@ -50,14 +47,11 @@ def create_app(config_override=None):
         expose_headers=["X-Request-ID", "X-Process-Time"],
     )
 
-<<<<<<< HEAD
     mail.init_app(app)
 
     # ─── Initialize Redis client ─────────────────────────
-    redis_client.from_url(app.config.get("REDIS_URL", "redis://localhost:6379/3"))
-
-=======
->>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
+    redis_url = app.config.get("REDIS_URL", "redis://redis:6379/3")
+    redis_client.connection_pool = redis.ConnectionPool.from_url(redis_url)
     # ─── Initialize Celery ───────────────────────────────
     init_celery(app)
 
