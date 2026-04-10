@@ -30,3 +30,13 @@
 2026-04-10 11:40:11 | INFO | [602dbeb0-c114-4a95-86be-b5d56916d777] GET /health → 200 (0.33ms)
 2026-04-10 11:40:44 | INFO | [9d49566a-27c9-4292-ba36-d6d8c8c89b4c] GET /health → 200 (0.28ms)
 2026-04-10 11:41:17 | INFO | [220b9bb0-466a-4609-8055-cf7b89084adf] GET /health → 200 (0.34ms)
+2026-04-10 12:06:43 | SUCCESS | Database tables initialized
+2026-04-10 12:06:43 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 12:06:47 | INFO | [34f2c638-ff93-49b7-8c7b-5659893fd94a] GET /health → 200 (1.22ms)
+2026-04-10 12:06:52 | INFO | [76b8db55-d7bd-4e7d-8dd9-aa97025098a8] POST /health → 405 (4.77ms)
+2026-04-10 12:06:57 | INFO | [961a5982-e55b-4f78-b611-3870c92c5c38] GET /health → 200 (0.28ms)
+2026-04-10 12:07:03 | ERROR | Failed to send email to lmucugekkbkaqlffjn@nesopf.com: [Errno 111] Connection refused
+2026-04-10 12:07:03 | ERROR | Registration initiation failed: Failed to send verification email
+2026-04-10 12:07:03 | INFO | [b26dea38-94ab-4743-9035-0eca595023a9] POST /auth/register → 500 (383.21ms)
+2026-04-10 12:07:21 | INFO | [bcc9386f-952e-40bd-a34c-384f5240d5e2] GET /health → 200 (2.26ms)
+2026-04-10 12:07:54 | INFO | [7d374123-9cae-44a4-a307-1b21973361fe] GET /health → 200 (1.35ms)
