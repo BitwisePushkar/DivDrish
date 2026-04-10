@@ -5,6 +5,7 @@ from marshmallow import Schema, fields, validate, validates, ValidationError
 
 
 class RegisterSchema(Schema):
+<<<<<<< HEAD
     """Schema for initial user registration."""
     username = fields.String(required=True, validate=validate.Length(min=3, max=64))
     email = fields.Email(required=True)
@@ -41,6 +42,23 @@ class PasswordResetConfirmSchema(Schema):
     new_password = fields.String(required=True, validate=validate.Length(min=8))
 
 
+=======
+    """Schema for user registration."""
+    email = fields.Email(required=True, metadata={"description": "User email"})
+    password = fields.String(
+        required=True,
+        validate=validate.Length(min=8, max=128),
+        metadata={"description": "Password (min 8 chars)"},
+    )
+
+
+class LoginSchema(Schema):
+    """Schema for user login."""
+    email = fields.Email(required=True)
+    password = fields.String(required=True)
+
+
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
 class TokenResponseSchema(Schema):
     """Schema for JWT token response."""
     access_token = fields.String()
@@ -57,7 +75,10 @@ class RefreshSchema(Schema):
 class UserSchema(Schema):
     """Schema for user info response."""
     id = fields.String()
+<<<<<<< HEAD
     username = fields.String()
+=======
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
     email = fields.Email()
     api_key = fields.String(allow_none=True)
     is_active = fields.Boolean()

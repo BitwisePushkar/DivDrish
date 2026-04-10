@@ -56,7 +56,10 @@ class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+<<<<<<< HEAD
     username = db.Column(db.String(64), unique=True, nullable=False, index=True)
+=======
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
     email = db.Column(db.String(255), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(256), nullable=False)
     api_key = db.Column(db.String(64), unique=True, nullable=True, index=True)
@@ -73,7 +76,10 @@ class User(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+<<<<<<< HEAD
             "username": self.username,
+=======
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
             "email": self.email,
             "api_key": self.api_key,
             "is_active": self.is_active,

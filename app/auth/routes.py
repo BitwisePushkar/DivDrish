@@ -2,6 +2,7 @@
 Authentication routes blueprint.
 """
 from flask import Blueprint, request, g
+<<<<<<< HEAD
 from app.auth.schemas import (
     RegisterSchema, 
     VerifyOTPSchema, 
@@ -42,18 +43,42 @@ _reset_confirm_schema = PasswordResetConfirmSchema()
 @limiter.limit("5 per hour")
 def register():
     """Initial registration — sends OTP."""
+=======
+from app.auth.schemas import RegisterSchema, LoginSchema, RefreshSchema, UserSchema
+from app.auth.controllers import register_user, login_user, refresh_access_token, get_user_by_id
+from app.auth.decorators import require_auth
+from app.utils.responses import success_response, error_response
+from app.utils.logger import logger
+
+auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
+
+_register_schema = RegisterSchema()
+_login_schema = LoginSchema()
+_refresh_schema = RefreshSchema()
+_user_schema = UserSchema()
+
+
+@auth_bp.route("/register", methods=["POST"])
+def register():
+    """Register a new user account."""
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
     json_data = request.get_json()
     if not json_data:
         return error_response("Request body required", 400)
 
+<<<<<<< HEAD
     # Validate passwords match and other fields
     errors = _register_schema.validate(json_data, context=json_data)
+=======
+    errors = _register_schema.validate(json_data)
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
     if errors:
         return error_response("Validation error", 422, errors)
 
     data = _register_schema.load(json_data)
 
     try:
+<<<<<<< HEAD
         result = register_user(data["username"], data["email"], data["password"])
         return success_response(result, 201)
     except ValueError as e:
@@ -89,6 +114,24 @@ def verify_otp():
 def login():
     """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
+=======
+        user = register_user(data["email"], data["password"])
+        return success_response(user, 201, "User registered successfully")
+    except ValueError as e:
+        return error_response(str(e), 409)
+    except Exception as e:
+        logger.error(f"Registration failed: {e}")
+        return error_response("Registration failed", 500)
+
+
+@auth_bp.route("/login", methods=["POST"])
+def login():
+    """Authenticate and receive JWT tokens."""
+    json_data = request.get_json()
+    if not json_data:
+        return error_response("Request body required", 400)
+
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
     errors = _login_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
@@ -96,7 +139,11 @@ def login():
     data = _login_schema.load(json_data)
 
     try:
+<<<<<<< HEAD
         tokens = login_user(data["identifier"], data["password"])
+=======
+        tokens = login_user(data["email"], data["password"])
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
         return success_response(tokens, 200, "Login successful")
     except ValueError as e:
         return error_response(str(e), 401)
@@ -105,6 +152,7 @@ def login():
         return error_response("Login failed", 500)
 
 
+<<<<<<< HEAD
 @auth_bp.route("/password-reset/request", methods=["POST"])
 @limiter.limit("3 per hour")
 def reset_request():
@@ -162,6 +210,8 @@ def reset_confirm():
         return error_response("Failed to update password", 500)
 
 
+=======
+>>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
 @auth_bp.route("/refresh", methods=["POST"])
 def refresh():
     """Refresh an expired access token."""
