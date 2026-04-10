@@ -271,3 +271,32 @@ ConnectionRefusedError: [Errno 111] Connection refused
 2026-04-10 14:24:14 | INFO | [14b4a9e3-43b8-4c62-a69c-287da2834ce4] GET /health → 200 (0.16ms)
 2026-04-10 14:24:47 | INFO | [48ff6bab-4ab6-41ca-9c94-60e767dd6d2f] GET /health → 200 (0.31ms)
 2026-04-10 14:25:21 | INFO | [523640d8-9cc8-4366-b2e8-93b3f7f8aae0] GET /health → 200 (0.12ms)
+2026-04-10 14:57:02 | SUCCESS | Database tables initialized
+2026-04-10 14:57:02 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 14:57:06 | INFO | [36421698-0878-4be0-ac47-72a54e64357b] GET /health → 200 (4.39ms)
+2026-04-10 14:57:11 | INFO | [733dad4d-2c69-4862-845d-a5ade72b12ff] GET /openapi/swagger → 404 (5.72ms)
+2026-04-10 14:57:14 | INFO | [a6380082-c60d-4c38-8583-e27bd22fb769] GET /openapi/swagger → 404 (0.21ms)
+2026-04-10 14:57:40 | INFO | [b277fcaa-c1a1-49c6-8852-2317bea94832] GET /health → 200 (0.55ms)
+2026-04-10 14:58:13 | INFO | [163a55f1-f85f-41c7-acf1-d0b0f56a4041] GET /health → 200 (0.57ms)
+2026-04-10 14:58:38 | INFO | [7f59c224-c4b7-4bb1-a0d7-73b0306e5361] GET /health/ → 404 (1.76ms)
+2026-04-10 14:58:42 | SUCCESS | Database tables initialized
+2026-04-10 14:58:42 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 14:58:44 | INFO | [e8c411c2-616b-4b3a-bec2-ae0d22ae307c] GET / → 200 (1.32ms)
+2026-04-10 14:58:47 | INFO | [2e76bf65-4ad3-4212-9b9f-69eddde5ed75] GET /health → 200 (0.92ms)
+2026-04-10 14:59:00 | INFO | [bd23050e-505c-462f-8e95-627ef28fa2bd] GET / → 200 (1.2ms)
+2026-04-10 14:59:00 | INFO | [03a0c7cf-5c35-4f42-a924-b9d683fe76f9] GET /favicon.ico → 404 (2.63ms)
+2026-04-10 14:59:07 | INFO | [b2c7ae07-2b40-4778-855b-870da3a474fc] GET /openapi/swagger → 404 (0.62ms)
+2026-04-10 14:59:11 | INFO | [e791bb72-eff6-4af9-a6ff-e2ca6c1a7ca4] GET /health → 200 (0.13ms)
+2026-04-10 14:59:12 | INFO | [1f335563-6d80-4365-bb47-2d3033a93c06] GET /health → 200 (0.11ms)
+2026-04-10 14:59:54 | INFO | [9d854807-6e91-4f10-adcd-684330a0856f] GET /health → 200 (0.14ms)
+2026-04-10 15:00:27 | INFO | [0d1bd51a-afe2-46ee-905d-873e6375c3d4] GET /health → 200 (5.57ms)
+2026-04-10 15:00:50 | SUCCESS | Database tables initialized
+2026-04-10 15:00:50 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 15:01:01 | INFO | [0b8ac86f-bd45-4b35-878c-339acb4c1f2e] GET /health → 200 (0.2ms)
+2026-04-10 15:01:34 | INFO | [16c4c2ed-cec3-4296-8166-9fb4bdc45cc2] GET /health → 200 (0.85ms)
+2026-04-10 15:01:59 | INFO | [0742fdcb-35ac-472f-99e9-d1009e258ecb] GET /health → 200 (0.22ms)
+2026-04-10 15:02:41 | INFO | [0403b176-b82a-4cd7-ba7c-243ab14503d6] GET /health → 200 (0.12ms)
+2026-04-10 18:07:32 | SUCCESS | Database tables initialized
+2026-04-10 18:07:32 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 18:07:35 | INFO | [af25234f-b0c0-4dc1-8a35-4d3eb5cde702] GET /health → 200 (0.63ms)
+2026-04-10 18:07:48 | INFO | [18930321-74d0-42fc-bb10-89c0f4b89dbc] GET /openapi/swagger → 404 (1.4ms)

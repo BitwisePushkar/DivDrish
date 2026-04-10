@@ -29,6 +29,8 @@ def register_user(username: str, email: str, password: str) -> dict:
     Initiate user registration.
     Validates input and sends an OTP. Data is cached in Redis.
     """
+    email = email.lower().strip()
+    
     # 1. Check if user already exists in DB (Case-Insensitive)
     existing_user = User.query.filter(
         (func.lower(User.email) == func.lower(email)) | 
@@ -71,6 +73,8 @@ def resend_registration_otp(email: str) -> dict:
     Resend registration OTP for an in-progress registration.
     Regenerates a new code and resets the expiry timer.
     """
+    email = email.lower().strip()
+    
     # 1. Check if reg data exists in Redis
     cached = redis_client.get(f"otp:reg:{email}")
     if not cached:
@@ -104,6 +108,8 @@ def verify_registration_otp(email: str, otp: str) -> dict:
     """
     Verify registration OTP and create user in DB.
     """
+    email = email.lower().strip()
+    
     if _is_locked_out(email):
         raise ValueError("Too many failed attempts. Try again in 1 hour.")
 
@@ -150,7 +156,7 @@ def login_user(identifier: str, password: str) -> dict:
     if not user or not user.check_password(password):
         raise ValueError("Invalid credentials")
 
-    logger.info(f"User logged in: {identifier}")
+    logger.info(f"User logged in: {user.id}")
     return _generate_auth_packet(user)
 
 
@@ -158,6 +164,7 @@ def request_password_reset(email: str) -> dict:
     """
     Send a password reset OTP.
     """
+    email = email.lower().strip()
     user = User.query.filter(func.lower(User.email) == func.lower(email), User.is_active == True).first()
     if not user:
         # Silent return to prevent email enumeration
@@ -169,12 +176,12 @@ def request_password_reset(email: str) -> dict:
     otp = f"{random.randint(100000, 999999)}"
     redis_client.setex(f"otp:reset:{email}", OTP_EXPIRY, otp)
 
-    # Increment throttle counter BEFORE sending email
+    # Increment throttle counter
     _increment_throttle(email, "reset_otp")
 
-    # 4. Send Email (Asynchronous)
+    # Send Email (Asynchronous) - FIXED purpose to password_reset
     from app.tasks.email_tasks import send_otp_email_task
-    send_otp_email_task.delay(email, otp, "registration")
+    send_otp_email_task.delay(email, otp, "password_reset")
     
     return {"message": "Verification code sent to email", "email": email}
 
@@ -183,11 +190,18 @@ def verify_password_reset_otp(email: str, otp: str) -> dict:
     """
     Verify reset OTP and return a temporary reset token.
     """
+    email = email.lower().strip()
+    
     if _is_locked_out(email):
         raise ValueError("Account locked due to multiple failures. Try again in 1 hour.")
 
     cached_otp = redis_client.get(f"otp:reset:{email}")
-    if not cached_otp or (cached_otp.decode() if isinstance(cached_otp, bytes) else cached_otp) != otp:
+    if not cached_otp:
+        raise ValueError("Invalid or expired reset code")
+    
+    # Handle possible bytes/string from Redis
+    val = cached_otp.decode() if isinstance(cached_otp, bytes) else cached_otp
+    if val != otp:
         _increment_failure(email)
         raise ValueError("Invalid or expired reset code")
 
@@ -204,8 +218,11 @@ def confirm_password_reset(email: str, reset_token: str, new_password: str) -> d
     """
     Finalize password reset using the temporary token.
     """
+    email = email.lower().strip()
     cached_token = redis_client.get(f"tok:reset:{email}")
-    if not cached_token or (cached_token.decode() if isinstance(cached_token, bytes) else cached_token) != reset_token:
+    
+    val = cached_token.decode() if isinstance(cached_token, bytes) else cached_token
+    if not val or val != reset_token:
         raise ValueError("Invalid or expired reset token")
 
     user = User.query.filter_by(email=email).first()
@@ -225,6 +242,7 @@ def refresh_access_token(refresh_token: str) -> dict:
     """Generate new access token from refresh token."""
     config = get_config()
     try:
+        from jose import jwt
         payload = jwt.decode(refresh_token, config.SECRET_KEY, algorithms=["HS256"])
     except Exception:
         raise ValueError("Invalid refresh token")
@@ -260,6 +278,7 @@ def _generate_auth_packet(user: User) -> dict:
     config = get_config()
     access = _create_token(user, timedelta(hours=config.JWT_EXPIRY_HOURS), "access")
     refresh = _create_token(user, timedelta(days=config.JWT_REFRESH_EXPIRY_DAYS), "refresh")
+    # include_secrets=False by default (hides API Key)
     return {
         "access_token": access,
         "refresh_token": refresh,
@@ -271,6 +290,7 @@ def _generate_auth_packet(user: User) -> dict:
 
 def _create_token(user: User, expires_delta: timedelta, token_type: str) -> str:
     config = get_config()
+    from jose import jwt
     now = datetime.now(timezone.utc)
     payload = {
         "sub": user.id,
@@ -289,28 +309,29 @@ def _generate_api_key() -> str:
 # ─── Security Helpers ─────────────────────────────────────
 
 def _is_throttled(identifier: str, key_type: str) -> bool:
-    key = f"throttle:{key_type}:{identifier}"
+    key = f"throttle:{key_type}:{identifier.lower()}"
     count = redis_client.get(key)
-    return count and int(count) >= MAX_OTP_REQUESTS
+    return count is not None and int(count) >= MAX_OTP_REQUESTS
 
 
 def _increment_throttle(identifier: str, key_type: str):
-    key = f"throttle:{key_type}:{identifier}"
+    key = f"throttle:{key_type}:{identifier.lower()}"
     current = redis_client.incr(key)
     if current == 1:
         redis_client.expire(key, THROTTLE_WINDOW)
 
 
 def _is_locked_out(identifier: str) -> bool:
-    return redis_client.exists(f"block:{identifier}")
+    return redis_client.exists(f"block:{identifier.lower()}")
 
 
 def _increment_failure(identifier: str):
-    key = f"attempts:{identifier}"
+    ident = identifier.lower()
+    key = f"attempts:{ident}"
     count = redis_client.incr(key)
     if count == 1:
         redis_client.expire(key, 1800) # 30 min window for attempts
     if count >= MAX_ATTEMPTS:
-        redis_client.setex(f"block:{identifier}", LOCKOUT_DURATION, "1")
+        redis_client.setex(f"block:{ident}", LOCKOUT_DURATION, "1")
         redis_client.delete(key)
-        logger.warning(f"User {identifier} locked out for 1 hour due to too many failures.")
+        logger.warning(f"User {ident} locked out for 1 hour due to too many failures.")

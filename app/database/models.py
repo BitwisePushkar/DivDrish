@@ -70,12 +70,14 @@ class User(db.Model):
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password_hash, password)
 
-    def to_dict(self):
-        return {
+    def to_dict(self, include_secrets=False):
+        data = {
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "api_key": self.api_key,
             "is_active": self.is_active,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }
+        if include_secrets:
+            data["api_key"] = self.api_key
+        return data

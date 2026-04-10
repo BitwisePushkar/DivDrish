@@ -51,12 +51,13 @@ _refresh_schema = RefreshSchema()
 _user_schema = UserSchema()
 _reset_req_schema = PasswordResetRequestSchema()
 _reset_confirm_schema = PasswordResetConfirmSchema()
+_resend_otp_schema = ResendOTPSchema()
 
 
 @auth_bp.post(
     "/register",
     summary="Register (Step 1 — send OTP)",
-    description="Initiates registration. Sends a 6-digit OTP to the email provided. OTP expires in 10 minutes. Limited to 5 requests per hour.",
+    description="Initiates registration. Sends a 6-digit OTP to the email provided.",
     tags=[_auth_tag],
     responses={
         201: MessageResponse,
@@ -65,8 +66,8 @@ _reset_confirm_schema = PasswordResetConfirmSchema()
         429: ErrorResponse,
     }
 )
-@limiter.limit("500000 per hour")
-def register(body: RegisterBody):
+@limiter.limit("5 per minute")
+async def register(body: RegisterBody):
     """Initial registration — sends OTP."""
     json_data = request.get_json()
     errors = _register_schema.validate(json_data)
@@ -88,7 +89,7 @@ def register(body: RegisterBody):
 @auth_bp.post(
     "/verify-otp",
     summary="Register (Step 2 — verify OTP)",
-    description="Verifies the 6-digit OTP. On success, creates the user account and returns access + refresh tokens. 5 failed attempts trigger a 1-hour lockout.",
+    description="Verifies the 6-digit OTP and creates the user account.",
     tags=[_auth_tag],
     responses={
         201: TokenResponse,
@@ -97,8 +98,8 @@ def register(body: RegisterBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("10000000 per minute")
-def verify_otp(body: VerifyOTPBody):
+@limiter.limit("10 per minute")
+async def verify_otp(body: VerifyOTPBody):
     """Verify registration OTP and create account."""
     json_data = request.get_json()
     errors = _verify_otp_schema.validate(json_data)
@@ -118,9 +119,38 @@ def verify_otp(body: VerifyOTPBody):
 
 
 @auth_bp.post(
+    "/resend-otp",
+    summary="Resend registration OTP",
+    description="Sends a fresh verification code to the email address if registration is still in progress.",
+    tags=[_auth_tag],
+    responses={
+        200: MessageResponse,
+        400: ErrorResponse,
+        429: ErrorResponse,
+    }
+)
+@limiter.limit("3 per minute")
+async def resend_otp(body: ResendOTPBody):
+    """Resend registration OTP."""
+    json_data = request.get_json()
+    errors = _resend_otp_schema.validate(json_data)
+    if errors:
+        return error_response("Validation error", 422, errors)
+
+    try:
+        result = resend_registration_otp(json_data["email"])
+        return success_response(result)
+    except ValueError as e:
+        return error_response(str(e), 400)
+    except Exception as e:
+        logger.error(f"OTP resend failed: {e}")
+        return error_response("Failed to resend code", 500)
+
+
+@auth_bp.post(
     "/login",
     summary="Login",
-    description="Authenticates a user using either their email or username plus password. Returns access and refresh tokens.",
+    description="Authenticates a user and returns tokens.",
     tags=[_auth_tag],
     responses={
         200: TokenResponse,
@@ -128,8 +158,8 @@ def verify_otp(body: VerifyOTPBody):
         401: ErrorResponse,
     }
 )
-@limiter.limit("10000000 per minute")
-def login(body: LoginBody):
+@limiter.limit("10 per minute")
+async def login(body: LoginBody):
     """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
     errors = _login_schema.validate(json_data)
@@ -151,7 +181,7 @@ def login(body: LoginBody):
 @auth_bp.post(
     "/password-reset/request",
     summary="Password Reset (Step 1 — request OTP)",
-    description="Sends a password reset OTP to the provided email. Silently succeeds even if email is not registered (prevents enumeration).",
+    description="Sends a password reset OTP to the provided email.",
     tags=[_auth_tag],
     responses={
         200: MessageResponse,
@@ -159,8 +189,8 @@ def login(body: LoginBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("30000000 per hour")
-def reset_request(body: PasswordResetRequestBody):
+@limiter.limit("3 per hour")
+async def reset_request(body: PasswordResetRequestBody):
     """Request a password reset OTP."""
     json_data = request.get_json()
     errors = _reset_req_schema.validate(json_data)
@@ -180,7 +210,7 @@ def reset_request(body: PasswordResetRequestBody):
 @auth_bp.post(
     "/password-reset/verify",
     summary="Password Reset (Step 2 — verify OTP)",
-    description="Verifies the reset OTP. On success, returns a short-lived `reset_token` valid for 15 minutes.",
+    description="Verifies the reset OTP.",
     tags=[_auth_tag],
     responses={
         200: ResetTokenResponse,
@@ -188,8 +218,8 @@ def reset_request(body: PasswordResetRequestBody):
         401: ErrorResponse,
     }
 )
-@limiter.limit("10000000 per minute")
-def reset_verify(body: PasswordResetVerifyBody):
+@limiter.limit("5 per minute")
+async def reset_verify(body: PasswordResetVerifyBody):
     """Verify reset OTP and get reset token."""
     json_data = request.get_json()
     errors = _verify_otp_schema.validate(json_data)
@@ -209,14 +239,14 @@ def reset_verify(body: PasswordResetVerifyBody):
 @auth_bp.post(
     "/password-reset/confirm",
     summary="Password Reset (Step 3 — set new password)",
-    description="Finalizes the password reset using the `reset_token` received in Step 2. The token is single-use and expires in 15 minutes.",
+    description="Finalizes the password reset.",
     tags=[_auth_tag],
     responses={
         200: MessageResponse,
         400: ErrorResponse,
     }
 )
-def reset_confirm(body: PasswordResetConfirmBody):
+async def reset_confirm(body: PasswordResetConfirmBody):
     """Finalize password reset."""
     json_data = request.get_json()
     errors = _reset_confirm_schema.validate(json_data)
@@ -238,7 +268,7 @@ def reset_confirm(body: PasswordResetConfirmBody):
 @auth_bp.post(
     "/refresh",
     summary="Refresh Access Token",
-    description="Issues a new short-lived access token using a valid refresh token.",
+    description="Issues a new short-lived access token.",
     tags=[_auth_tag],
     responses={
         200: TokenResponse,
@@ -246,7 +276,7 @@ def reset_confirm(body: PasswordResetConfirmBody):
         401: ErrorResponse,
     }
 )
-def refresh(body: RefreshBody):
+async def refresh(body: RefreshBody):
     """Refresh an expired access token."""
     json_data = request.get_json()
     errors = _refresh_schema.validate(json_data)
@@ -268,7 +298,7 @@ def refresh(body: RefreshBody):
 @auth_bp.get(
     "/me",
     summary="Get Current User",
-    description="Returns the authenticated user's profile. Requires a valid Bearer token.",
+    description="Returns the authenticated user's profile.",
     tags=[_auth_tag],
     security=_security,
     responses={
@@ -278,7 +308,7 @@ def refresh(body: RefreshBody):
     }
 )
 @require_auth
-def me():
+async def me():
     """Get current authenticated user info."""
     current_user = getattr(g, "current_user", None)
     if not current_user or not current_user.get("user_id"):

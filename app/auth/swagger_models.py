@@ -5,7 +5,7 @@ Used by flask-openapi3 to auto-generate the OpenAPI spec and Swagger UI.
 Marshmallow schemas in schemas.py remain the single source of validation truth;
 these models exist purely so flask-openapi3 can describe the request/response shapes.
 """
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 
 
@@ -13,8 +13,8 @@ from typing import Optional
 
 class RegisterBody(BaseModel):
     """Body for POST /auth/register"""
-    username: str
-    email: str
+    username: str = Field(..., min_length=5, max_length=50, pattern=r"^[a-zA-Z0-9_@#]+$")
+    email: EmailStr
     password: str
     password_confirm: str
 

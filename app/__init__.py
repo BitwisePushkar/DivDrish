@@ -8,6 +8,13 @@ import os
 from flask import jsonify
 from flask_openapi3 import OpenAPI, Info, SecurityScheme
 
+# Import Swagger UI plugin for flask-openapi3 4.x
+try:
+    from flask_openapi3 import Swagger
+    _doc_ui = [Swagger()]
+except ImportError:
+    _doc_ui = None
+
 from app.config.settings import get_config
 from app.extensions import db, ma, limiter, cors, init_celery, mail, redis_client
 from app.middleware.request_middleware import register_middleware
@@ -18,22 +25,23 @@ _info = Info(
     title="DivDrish — DeepTrace ML Engine",
     version="2.0.0",
     description=(
-        "## DeepTrace Authentication API\n\n"
-        "Multi-step registration with OTP verification, dual-identifier login, "
-        "and secure password reset.\n\n"
-        "### Authentication\n"
-        "Use the `Authorization: Bearer <access_token>` header for protected endpoints."
-    ),
+        "Advanced Multi-Modal ML Engine for Deepfake Detection & Media Forensics. "
+        "Supports Image, Video, and Audio analysis with asynchronous processing."
+    )
 )
 
 _security_schemes = {
-    "BearerAuth": SecurityScheme(
+    "jwt": SecurityScheme(
         type="http",
         scheme="bearer",
-        bearerFormat="JWT",
+        bearerFormat="JWT"
+    ),
+    "api_key": SecurityScheme(
+        type="apiKey",
+        name="X-API-Key",
+        in_="header"
     )
 }
-
 
 
 def create_app(config_override=None):
@@ -43,7 +51,12 @@ def create_app(config_override=None):
     Args:
         config_override: Optional config object to use instead of env-based config.
     """
-    app = OpenAPI(__name__, info=_info, security_schemes=_security_schemes)
+    app = OpenAPI(
+        __name__, 
+        info=_info, 
+        security_schemes=_security_schemes,
+        doc_ui=_doc_ui
+    )
     
     # ─── Load configuration ──────────────────────────────
     if config_override:
@@ -52,11 +65,8 @@ def create_app(config_override=None):
         config = get_config()
         app.config.from_object(config)
 
-    # Configure Swagger UI path
-    app.config["OPENAPI_VERSION"] = "3.0.3"
+    # Configure documentation prefix
     app.config["OPENAPI_URL_PREFIX"] = "/openapi"
-    app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger"
-    app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
     # ─── Ensure directories exist ────────────────────────
     os.makedirs("logs", exist_ok=True)

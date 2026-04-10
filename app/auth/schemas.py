@@ -6,7 +6,16 @@ from marshmallow import Schema, fields, validate, validates, ValidationError, va
 
 class RegisterSchema(Schema):
     """Schema for initial user registration."""
-    username = fields.String(required=True, validate=validate.Length(min=3, max=64))
+    username = fields.String(
+        required=True, 
+        validate=[
+            validate.Length(min=5, max=50),
+            validate.Regexp(
+                r"^[a-zA-Z0-9_@#]+$", 
+                error="Username can only contain letters, numbers, underscores, @ and #"
+            )
+        ]
+    )
     email = fields.Email(required=True)
     password = fields.String(required=True, validate=validate.Length(min=8))
     password_confirm = fields.String(required=True)
