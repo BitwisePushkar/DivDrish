@@ -10,11 +10,8 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_cors import CORS
 from celery import Celery
-<<<<<<< HEAD
 from flask_mailman import Mail
 import redis
-=======
->>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
 
 # ─── SQLAlchemy ORM ──────────────────────────────────────
 db = SQLAlchemy()
@@ -25,20 +22,15 @@ ma = Marshmallow()
 # ─── Rate limiter ────────────────────────────────────────
 limiter = Limiter(
     key_func=get_remote_address,
-<<<<<<< HEAD
 )
 
 # ─── Mail ────────────────────────────────────────────────
 mail = Mail()
 
-# ─── Redis (for OTPs/lockout) ────────────────────────────
-redis_client = redis.Redis()
+# ─── Redis (for OTPs/lockout) — URL set in app factory ───
+# Default points to the Docker service name; overridden by REDIS_URL env var
+redis_client = redis.from_url("redis://redis:6379/3", decode_responses=False)
 
-=======
-    storage_uri="memory://",
-)
-
->>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
 # ─── CORS ────────────────────────────────────────────────
 cors = CORS()
 

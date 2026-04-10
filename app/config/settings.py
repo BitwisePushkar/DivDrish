@@ -58,7 +58,6 @@ class BaseConfig:
     # ─── Model weights ───────────────────────────────────
     WEIGHTS_DIR = Path(os.getenv("WEIGHTS_DIR", str(BASE_DIR / "weights")))
 
-<<<<<<< HEAD
     # ─── Email Settings (flask-mailman) ──────────────────
     EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "flask_mailman.backends.console.EmailBackend")
     EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
@@ -68,9 +67,6 @@ class BaseConfig:
     EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
     DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", f"noreply@{APP_NAME.lower().replace(' ', '-')}.com")
-
-=======
->>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
     # ─── Upload limits ───────────────────────────────────
     MAX_VIDEO_MB = int(os.getenv("MAX_VIDEO_MB", "200"))
     MAX_AUDIO_MB = int(os.getenv("MAX_AUDIO_MB", "50"))
@@ -83,12 +79,8 @@ class BaseConfig:
 
     # ─── Rate limiting ───────────────────────────────────
     RATE_LIMIT = os.getenv("RATE_LIMIT", "30/minute")
-<<<<<<< HEAD
     RATELIMIT_STORAGE_URI = os.getenv("RATELIMIT_STORAGE_URI", "redis://localhost:6379/2")
     REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/3")
-=======
-    RATELIMIT_STORAGE_URI = os.getenv("RATELIMIT_STORAGE_URI", "memory://")
->>>>>>> dae06d5090fc8bfd141ef88547b668ff5eaecf28
 
     # ─── Upload storage ──────────────────────────────────
     UPLOAD_FOLDER = str(BASE_DIR / "uploads")

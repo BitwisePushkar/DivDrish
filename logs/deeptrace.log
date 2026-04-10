@@ -4,3 +4,39 @@
 2026-04-10 10:33:28 | INFO | [0cd263a3-2792-462c-9464-fb572b775207] GET / → 200 (0.22ms)
 2026-04-10 10:33:28 | INFO | [43b8279d-2cac-4ca5-bec2-6196ed0b1183] GET /favicon.ico → 404 (1.0ms)
 2026-04-10 10:33:47 | INFO | [50182241-1cc5-4f73-bfa5-da9772ea3139] GET /health → 200 (0.12ms)
+2026-04-10 11:20:49 | SUCCESS | Database tables initialized
+2026-04-10 11:20:49 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 11:20:52 | INFO | [916205fe-c035-472c-9281-afffcbd9ae29] GET /health → 200 (2.79ms)
+2026-04-10 11:21:26 | INFO | [fb03c2e3-7d03-4083-b807-882050146c6b] GET /health → 200 (0.18ms)
+2026-04-10 11:21:27 | INFO | [48439cfd-c98b-479d-9fd8-3a672f7d4399] GET / → 200 (0.31ms)
+2026-04-10 11:21:59 | INFO | [f93891cb-673f-4004-ba4f-6fc587fcc482] GET /health → 200 (0.9ms)
+2026-04-10 11:22:30 | INFO | [16e64481-6b08-4cd0-8cf9-f686d7774216] GET /health → 200 (1.49ms)
+2026-04-10 11:22:33 | INFO | [97cd4669-d7f9-42f0-b969-b5f85332ca7d] GET /health → 200 (0.09ms)
+2026-04-10 11:23:06 | INFO | [4cb39d0c-bf17-48fe-888c-73ac0c588491] GET /health → 200 (0.14ms)
+2026-04-10 11:23:39 | INFO | [e057efd7-8f15-4035-882f-429fc0d6f088] POST /register → 404 (15.43ms)
+2026-04-10 11:23:41 | INFO | [f93422bc-1ed1-4b58-9943-1b1365686be9] GET /health → 200 (2.3ms)
+2026-04-10 11:23:55 | ERROR | Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-04-10 11:23:55 | INFO | [dd98f7c1-4ca2-49ae-9b30-acd862137df0] POST /auth/register → 500 (110.82ms)
+2026-04-10 11:24:13 | INFO | [de2f18b3-d6f2-4541-83aa-eb09491f1cb4] GET /health → 200 (0.16ms)
+2026-04-10 11:24:20 | ERROR | Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-04-10 11:24:20 | INFO | [21e6e8e2-8746-4b0e-8403-e15c5c804ae7] POST /auth/register → 500 (34.87ms)
+2026-04-10 11:24:47 | INFO | [37216b88-3867-4b71-b97e-cfb3c3c6487a] GET /health → 200 (0.2ms)
+2026-04-10 11:25:20 | INFO | [6bf3446d-754b-4166-b62b-04912e84c7bf] GET /health → 200 (0.13ms)
+2026-04-10 11:39:32 | SUCCESS | Database tables initialized
+2026-04-10 11:39:32 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 11:39:37 | INFO | [e97106ca-23f9-447a-b8da-4e1ec50df1b2] GET /health → 200 (0.98ms)
+2026-04-10 11:39:54 | ERROR | Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-04-10 11:39:54 | INFO | [c3e8a545-b67d-44f8-aeff-e65878c0759e] POST /auth/register → 500 (56.12ms)
+2026-04-10 11:40:11 | INFO | [602dbeb0-c114-4a95-86be-b5d56916d777] GET /health → 200 (0.33ms)
+2026-04-10 11:40:44 | INFO | [9d49566a-27c9-4292-ba36-d6d8c8c89b4c] GET /health → 200 (0.28ms)
+2026-04-10 11:41:17 | INFO | [220b9bb0-466a-4609-8055-cf7b89084adf] GET /health → 200 (0.34ms)
+2026-04-10 12:06:43 | SUCCESS | Database tables initialized
+2026-04-10 12:06:43 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 12:06:47 | INFO | [34f2c638-ff93-49b7-8c7b-5659893fd94a] GET /health → 200 (1.22ms)
+2026-04-10 12:06:52 | INFO | [76b8db55-d7bd-4e7d-8dd9-aa97025098a8] POST /health → 405 (4.77ms)
+2026-04-10 12:06:57 | INFO | [961a5982-e55b-4f78-b611-3870c92c5c38] GET /health → 200 (0.28ms)
+2026-04-10 12:07:03 | ERROR | Failed to send email to lmucugekkbkaqlffjn@nesopf.com: [Errno 111] Connection refused
+2026-04-10 12:07:03 | ERROR | Registration initiation failed: Failed to send verification email
+2026-04-10 12:07:03 | INFO | [b26dea38-94ab-4743-9035-0eca595023a9] POST /auth/register → 500 (383.21ms)
+2026-04-10 12:07:21 | INFO | [bcc9386f-952e-40bd-a34c-384f5240d5e2] GET /health → 200 (2.26ms)
+2026-04-10 12:07:54 | INFO | [7d374123-9cae-44a4-a307-1b21973361fe] GET /health → 200 (1.35ms)
