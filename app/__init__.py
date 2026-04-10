@@ -102,12 +102,14 @@ def create_app(config_override=None):
     from app.detection.routes import detection_bp
     from app.provenance.routes import provenance_bp
     from app.history.routes import history_bp
+    from app.community.routes import community_bp
 
     app.register_api(health_bp)
     app.register_api(auth_bp)
     app.register_api(detection_bp)
     app.register_api(provenance_bp)
     app.register_api(history_bp)
+    app.register_api(community_bp)
 
     # ─── Root endpoint ───────────────────────────────────
     @app.route("/", methods=["GET"])

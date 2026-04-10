@@ -15,6 +15,7 @@ class AnalysisResult(db.Model):
     __tablename__ = "analysis_results"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id = db.Column(db.String(36), db.ForeignKey("users.id"), nullable=True, index=True)
     timestamp = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
     media_type = db.Column(db.String(10), nullable=False)
     filename = db.Column(db.String(512), nullable=False)
@@ -81,3 +82,39 @@ class User(db.Model):
         if include_secrets:
             data["api_key"] = self.api_key
         return data
+
+
+class CommunityPost(db.Model):
+    """Posts created by users to share their detection results."""
+
+    __tablename__ = "community_posts"
+
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id = db.Column(db.String(36), db.ForeignKey("users.id"), nullable=False, index=True)
+    analysis_id = db.Column(db.String(36), db.ForeignKey("analysis_results.id"), nullable=False, unique=True)
+    title = db.Column(db.String(255), nullable=True)
+    description = db.Column(db.Text, nullable=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
+
+    # Relationships mapped back
+    user = db.relationship("User", backref="community_posts")
+    analysis = db.relationship("AnalysisResult", backref="community_post")
+
+    def to_dict(self):
+        """Serialize securely. Do not expose PII (like email)."""
+        return {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+            "author": {
+                "username": self.user.username if self.user else "Unknown"
+            },
+            "analysis": {
+                "media_type": self.analysis.media_type,
+                "is_fake": self.analysis.is_fake,
+                "confidence": self.analysis.confidence,
+                "recommendation": self.analysis.recommendation,
+                "file_hash": self.analysis.file_hash,
+            } if self.analysis else None
+        }

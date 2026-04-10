@@ -27,7 +27,7 @@ _provenance_schema = ProvenanceReportSchema()
     responses={200: ProvenanceReport, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
 )
 @require_auth
-def analyze(form: FileBody):
+def analyze():
     """
     Analyze file metadata for signs of manipulation or synthetic origin.
     """

@@ -1,5 +1,5 @@
 """
-History controllers.
+History controllers — user-scoped queries.
 """
 from app.database.repository import (
     get_analysis,
@@ -9,13 +9,14 @@ from app.database.repository import (
 )
 
 
-def get_history(page, page_size, media_type=None, is_fake=None):
-    """Get paginated analysis history."""
+def get_history(page, page_size, media_type=None, is_fake=None, user_id=None):
+    """Get paginated analysis history scoped to user."""
     rows, total = list_analyses(
         page=page,
         page_size=page_size,
         media_type=media_type,
         is_fake=is_fake,
+        user_id=user_id,
     )
     return {
         "total": total,
@@ -25,16 +26,16 @@ def get_history(page, page_size, media_type=None, is_fake=None):
     }
 
 
-def get_single(record_id):
-    """Get single analysis record."""
-    return get_analysis(record_id)
+def get_single(record_id, user_id=None):
+    """Get single analysis record (scoped to user)."""
+    return get_analysis(record_id, user_id=user_id)
 
 
-def delete_single(record_id):
-    """Delete single analysis record."""
-    return delete_analysis(record_id)
+def delete_single(record_id, user_id=None):
+    """Delete single analysis record (scoped to user)."""
+    return delete_analysis(record_id, user_id=user_id)
 
 
-def get_statistics():
-    """Get aggregate statistics."""
-    return get_stats()
+def get_statistics(user_id=None):
+    """Get aggregate statistics (scoped to user)."""
+    return get_stats(user_id=user_id)

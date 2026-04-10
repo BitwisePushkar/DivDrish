@@ -379,3 +379,110 @@ swagger.swagger: /openapi/swagger
 2026-04-10 18:54:36 | INFO | [9a7e9916-1aec-424c-8756-c06367cdfccc] GET /health → 200 (0.65ms)
 2026-04-10 18:55:09 | INFO | [fdffcd67-b57a-41de-a70e-21834ab7fcec] GET /health → 200 (0.32ms)
 2026-04-10 18:55:43 | INFO | [420a2811-4388-4e2f-a386-2e86e6de0a65] GET /health → 200 (0.34ms)
+2026-04-10 19:01:43 | SUCCESS | Database tables initialized
+2026-04-10 19:01:43 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.verify_otp: /auth/verify-otp
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 19:01:43 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 19:01:44 | INFO | [5f64b99f-97f6-4ce7-8be6-dae853340d1e] GET /openapi/swagger → 200 (11.54ms)
+2026-04-10 19:01:44 | INFO | [0c337598-ee2f-4d3f-a157-02a1387d4814] GET /health → 200 (0.28ms)
+2026-04-10 19:01:44 | INFO | [5c1d529b-18e1-4bea-ae11-351bf1b4267e] GET /openapi/swagger/js/swagger-ui-bundle.js → 304 (4.08ms)
+2026-04-10 19:01:44 | INFO | [02ce054b-2e42-4af5-a270-a5571943573d] GET /openapi/swagger/js/swagger-ui-standalone-preset.js → 304 (0.76ms)
+2026-04-10 19:01:44 | INFO | [4896bc63-a44b-453e-a87c-06d1dcb2cc6d] GET /openapi/swagger/css/swagger-ui.css → 304 (3.4ms)
+2026-04-10 19:01:44 | INFO | [d8f3dbfe-7c28-495b-ac9d-bb667857945d] GET /openapi/openapi.json → 200 (23.99ms)
+2026-04-10 19:01:44 | INFO | [d6d64290-517b-4124-a5fe-d7453cebd819] GET /openapi/swagger/images/swagger.svg → 304 (0.97ms)
+2026-04-10 19:02:17 | INFO | [52b72233-0729-4b6a-ab62-9061f8304a2f] GET /health → 200 (0.36ms)
+2026-04-10 19:02:51 | INFO | [d168dab6-6aab-4030-b95a-8416c5a07f52] GET /health → 200 (5.38ms)
+2026-04-10 19:03:24 | INFO | [ed47c160-7d75-4d27-9b13-070209586997] GET /health → 200 (0.43ms)
+2026-04-10 19:03:58 | INFO | [42f93ef9-350c-4733-aff5-2fdec2117136] GET /health → 200 (0.28ms)
+2026-04-10 19:04:31 | INFO | [db469b97-6b5c-485e-9029-4b01a957efc0] GET /health → 200 (0.23ms)
+2026-04-10 19:05:04 | INFO | [13b0bafd-130f-4f8a-b023-717829f7327f] GET /health → 200 (0.35ms)
+2026-04-10 19:05:38 | INFO | [39ab56c2-f016-43ef-b759-4646734d6925] GET /health → 200 (0.62ms)
+2026-04-10 19:06:12 | INFO | [718dabbc-5ae1-4fe7-971a-aaba225b247f] GET /health → 200 (3.95ms)
+2026-04-10 19:06:45 | INFO | [fa604795-556a-4495-947b-1f0a758dc06f] GET /health → 200 (0.42ms)
+2026-04-10 19:07:06 | INFO | [1d4fa7d7-fde7-4a58-ba6d-8b09cf6a553a] GET /openapi/swagger → 200 (308.57ms)
+2026-04-10 19:07:06 | INFO | [a368cb5b-22a3-418a-9886-9eb6d8d57cf1] GET /openapi/swagger/js/swagger-ui-bundle.js → 304 (34.14ms)
+2026-04-10 19:07:06 | INFO | [e6981ea4-cab2-4f15-8968-f30984e89bce] GET /openapi/swagger/css/swagger-ui.css → 304 (26.7ms)
+2026-04-10 19:07:06 | INFO | [81da480a-4cd7-4479-adb6-b566addce7b4] GET /openapi/swagger/js/swagger-ui-standalone-preset.js → 304 (2.3ms)
+2026-04-10 19:07:07 | INFO | [a41e767c-c2cc-4abb-867c-adfc18b8c281] GET /openapi/swagger/images/swagger.svg → 304 (2.83ms)
+2026-04-10 19:07:07 | INFO | [37939a30-8b1e-4372-8c35-f1bb06266b70] GET /openapi/openapi.json → 200 (487.65ms)
+2026-04-10 19:07:18 | INFO | [8dc39935-eaa4-4ac9-a272-1e7ee44d413c] GET /health → 200 (0.34ms)
+2026-04-10 19:07:52 | INFO | [6c5a2aa3-85f9-45c3-960e-3ed5d785c1f1] GET /health → 200 (8.55ms)
+2026-04-10 19:08:26 | INFO | [7accebff-b313-4e65-9d5f-39bcf031f469] GET /health → 200 (0.72ms)
+2026-04-10 19:09:00 | INFO | [345d3aa3-0c5b-4797-832a-d8469596f564] GET /health → 200 (10.41ms)
+2026-04-10 19:09:33 | INFO | [9858dcf8-3f3d-466b-9b5b-89aa36bc60d6] GET /health → 200 (0.83ms)
+2026-04-10 19:10:07 | INFO | [2941dbf9-c691-412f-a281-25791324b731] GET /health → 200 (4.07ms)
+2026-04-10 19:10:40 | INFO | [662f051f-fa8f-4fd5-9d3a-b1506f446f63] GET /health → 200 (2.79ms)
+2026-04-10 19:11:14 | INFO | [28b4bcc6-bd26-419d-8c77-67c16b6e7adb] GET /health → 200 (0.32ms)
+2026-04-10 19:11:47 | INFO | [bc9631b8-b592-450a-9dda-2c3bd030237e] GET /health → 200 (0.19ms)
+2026-04-10 19:12:21 | INFO | [3d418f94-9422-4fd2-b6cf-97c265f902fe] GET /health → 200 (4.33ms)
+2026-04-10 19:12:54 | INFO | [f779914d-7ab1-410a-993a-753bdb56355c] GET /health → 200 (5.18ms)
+2026-04-10 19:13:28 | INFO | [14b5d382-d6b5-4d03-9036-587c12e887d0] GET /health → 200 (0.18ms)
+2026-04-10 19:14:01 | INFO | [5298b2ef-92c8-459e-a201-6f5736d0e724] GET /health → 200 (0.81ms)
+2026-04-10 19:14:46 | SUCCESS | Database tables initialized
+2026-04-10 19:14:46 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.verify_otp: /auth/verify-otp
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 19:14:46 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 19:14:49 | INFO | [19bbf6cc-e9e2-4c34-8524-84de32d76dd9] GET /health → 200 (1.39ms)
+2026-04-10 19:15:23 | INFO | [01ffa722-bc1c-4c00-b931-a5491cc2c4b6] GET /health → 200 (1.77ms)
+2026-04-10 19:15:56 | INFO | [2009ba5a-2ead-402f-b309-3c3c49a532d1] GET /health → 200 (0.83ms)
+2026-04-10 19:16:30 | INFO | [8a9d11e7-0021-47f4-9129-4c9746e5716c] GET /health → 200 (0.18ms)

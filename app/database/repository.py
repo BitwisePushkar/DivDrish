@@ -30,6 +30,7 @@ def save_analysis(
     resolution: str | None,
     recommendation: str,
     metadata_anomalies: list,
+    user_id: str | None = None,
 ) -> str:
     """Insert an analysis record and return its ID."""
     record_id = str(uuid.uuid4())
@@ -42,6 +43,7 @@ def save_analysis(
 
     record = AnalysisResult(
         id=record_id,
+        user_id=user_id,
         timestamp=datetime.now(timezone.utc),
         media_type=media_type,
         filename=filename,
@@ -70,10 +72,15 @@ def save_analysis(
     return record_id
 
 
-def get_analysis(record_id: str) -> dict | None:
-    """Fetch a single analysis record by ID."""
+def get_analysis(record_id: str, user_id: str | None = None) -> dict | None:
+    """Fetch a single analysis record by ID, optionally scoped to user."""
     record = db.session.get(AnalysisResult, record_id)
-    return record.to_dict() if record else None
+    if not record:
+        return None
+    # If user_id is provided, enforce ownership
+    if user_id and record.user_id != user_id:
+        return None
+    return record.to_dict()
 
 
 def list_analyses(
@@ -81,10 +88,16 @@ def list_analyses(
     page_size: int = 20,
     media_type: str | None = None,
     is_fake: bool | None = None,
+    user_id: str | None = None,
 ) -> tuple[list[dict], int]:
-    """List analysis records with pagination and filtering."""
+    """List analysis records with pagination, filtering, and user scoping."""
     query = AnalysisResult.query
     count_query = db.session.query(func.count(AnalysisResult.id))
+
+    # Scope to user
+    if user_id:
+        query = query.filter(AnalysisResult.user_id == user_id)
+        count_query = count_query.filter(AnalysisResult.user_id == user_id)
 
     if media_type:
         query = query.filter(AnalysisResult.media_type == media_type)
@@ -107,28 +120,35 @@ def list_analyses(
     return [r.to_dict() for r in records], total
 
 
-def delete_analysis(record_id: str) -> bool:
-    """Delete a record by ID. Returns True if deleted."""
+def delete_analysis(record_id: str, user_id: str | None = None) -> bool:
+    """Delete a record by ID. Enforces ownership if user_id provided."""
     record = db.session.get(AnalysisResult, record_id)
     if not record:
+        return False
+    if user_id and record.user_id != user_id:
         return False
     db.session.delete(record)
     db.session.commit()
     return True
 
 
-def get_stats() -> dict:
-    """Aggregate statistics across all analysis records."""
-    total = db.session.query(func.count(AnalysisResult.id)).scalar() or 0
+def get_stats(user_id: str | None = None) -> dict:
+    """Aggregate statistics, optionally scoped to a user."""
+    base_filter = []
+    if user_id:
+        base_filter.append(AnalysisResult.user_id == user_id)
+
+    total = db.session.query(func.count(AnalysisResult.id)).filter(*base_filter).scalar() or 0
 
     fake_count = (
         db.session.query(func.count(AnalysisResult.id))
-        .filter(AnalysisResult.is_fake == True)  # noqa: E712
+        .filter(AnalysisResult.is_fake == True, *base_filter)  # noqa: E712
         .scalar() or 0
     )
 
     avg_conf = (
         db.session.query(func.avg(AnalysisResult.confidence))
+        .filter(*base_filter)
         .scalar() or 0.0
     )
 
@@ -138,6 +158,7 @@ def get_stats() -> dict:
             AnalysisResult.media_type,
             func.count(AnalysisResult.id).label("count"),
         )
+        .filter(*base_filter)
         .group_by(AnalysisResult.media_type)
         .all()
     )
@@ -149,6 +170,7 @@ def get_stats() -> dict:
             AnalysisResult.recommendation,
             func.count(AnalysisResult.id).label("count"),
         )
+        .filter(*base_filter)
         .group_by(AnalysisResult.recommendation)
         .all()
     )

@@ -41,7 +41,13 @@ MAX_BATCH_SIZE = 10
 
 def _save_to_db(result: dict):
     """Persist detection result to database (fire and forget)."""
+    from flask import g
     db_meta = result.pop("_db_meta", {})
+
+    # Get current user id for ownership
+    current_user = getattr(g, "current_user", None)
+    user_id = current_user.get("user_id") if current_user else None
+
     try:
         repository.save_analysis(
             media_type=result["media_type"],
@@ -57,6 +63,7 @@ def _save_to_db(result: dict):
             resolution=result.get("resolution"),
             recommendation=result["recommendation"],
             metadata_anomalies=result.get("metadata_anomalies", []),
+            user_id=user_id,
         )
     except Exception as e:
         logger.error(f"Failed to save analysis to DB: {e}")
@@ -80,7 +87,7 @@ def _get_max_mb(media_type: str) -> int:
     responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
 )
 @require_auth
-def detect_auto(form: FileBody):
+def detect_auto():
     """Auto-detect media type and route to appropriate detector."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -111,7 +118,7 @@ def detect_auto(form: FileBody):
     responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
 )
 @require_auth
-def detect_image(form: FileBody):
+def detect_image():
     """Detect deepfake in uploaded image."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -146,7 +153,7 @@ def _handle_image(file):
     responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
 )
 @require_auth
-def detect_video(form: FileBody):
+def detect_video():
     """Detect deepfake in uploaded video."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -181,7 +188,7 @@ def _handle_video(file):
     responses={200: DetectionResult, 400: ErrorResponse, 401: ErrorResponse, 422: ErrorResponse}
 )
 @require_auth
-def detect_audio(form: FileBody):
+def detect_audio():
     """Detect deepfake in uploaded audio."""
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
@@ -216,7 +223,7 @@ def _handle_audio(file):
     responses={200: BatchResult, 400: ErrorResponse, 401: ErrorResponse}
 )
 @require_auth
-def detect_batch(form: BatchFileBody):
+def detect_batch():
     """Analyze up to 10 files in a single request."""
     files = request.files.getlist("files")
 
@@ -303,9 +310,8 @@ def _process_batch_item(file) -> dict:
     responses={202: AsyncStartedResponse, 400: ErrorResponse, 401: ErrorResponse}
 )
 @require_auth
-def detect_async(path_body: dict, form: FileBody):
+def detect_async(media_type):
     """Submit an async detection task for image, video, or audio."""
-    media_type = path_body["media_type"]
     if media_type not in ["image", "video", "audio"]:
         return error_response(f"Invalid media type: {media_type}", 400)
         
@@ -345,7 +351,7 @@ def detect_async(path_body: dict, form: FileBody):
     responses={202: AsyncStartedResponse, 400: ErrorResponse, 401: ErrorResponse}
 )
 @require_auth
-def detect_async_batch(form: BatchFileBody):
+def detect_async_batch():
     """Submit an async batch detection task."""
     files = request.files.getlist("files")
 
@@ -396,9 +402,8 @@ def detect_async_batch(form: BatchFileBody):
     responses={200: TaskStatus, 401: ErrorResponse, 404: ErrorResponse}
 )
 @require_auth
-def get_task_status(path_body: dict):
+def get_task_status(task_id):
     """Poll for the status of an async task."""
-    task_id = path_body["task_id"]
     task = celery.AsyncResult(task_id)
     
     if task.state == 'PENDING':
