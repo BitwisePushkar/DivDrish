@@ -5,7 +5,7 @@ from flask import request, g
 from app.auth.decorators import require_auth
 from app.community.controllers import add_post, fetch_posts, fetch_single_post, remove_post
 from app.community.schemas import PostCreateSchema
-from app.community.swagger_models import CommunityPostCreate, PaginatedCommunityPosts, CommunityPostResponse, PaginationQuery
+from app.community.swagger_models import CommunityPostCreate, PaginatedCommunityPosts, CommunityPostResponse, PaginationQuery, PostIdPath
 from app.auth.swagger_models import MessageResponse, ErrorResponse
 from app.utils.responses import success_response, error_response
 from app.utils.logger import logger
@@ -82,11 +82,10 @@ def list_community_posts(query: PaginationQuery):
     summary="Get a community post",
     responses={200: CommunityPostResponse, 404: ErrorResponse}
 )
-def get_community_post(path_body: dict):
+def get_community_post(path: PostIdPath):
     """Fetch a single post by ID."""
-    post_id = path_body["post_id"]
     try:
-        post = fetch_single_post(post_id)
+        post = fetch_single_post(path.post_id)
         if not post:
             return error_response("Post not found", 404)
         return success_response(post)
@@ -103,17 +102,16 @@ def get_community_post(path_body: dict):
     responses={200: MessageResponse, 403: ErrorResponse, 404: ErrorResponse}
 )
 @require_auth
-def delete_community_post(path_body: dict):
+def delete_community_post(path: PostIdPath):
     """Delete a community post. Must be the author."""
     current_user = getattr(g, "current_user", None)
     if not current_user:
         return error_response("Authentication required", 401)
         
-    post_id = path_body["post_id"]
     user_id = current_user.get("user_id")
     
     try:
-        success = remove_post(post_id, user_id)
+        success = remove_post(path.post_id, user_id)
         if not success:
             # We return 404 conceptually if the post either doesn't exist OR user doesn't own it
             # To hide existence from unauthorized users

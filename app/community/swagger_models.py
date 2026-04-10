@@ -1,6 +1,12 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional
 
+
+class PostIdPath(BaseModel):
+    """Path parameter model for community post endpoints."""
+    post_id: str = Field(..., description="The UUID of the community post.")
+
+
 class CommunityPostCreate(BaseModel):
     analysis_id: str = Field(description="The ID of the analysis result linking to this post.")
     title: Optional[str] = Field(None, description="Optional title for the post.")

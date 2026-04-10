@@ -118,5 +118,6 @@ class CommunityPost(db.Model):
                 "confidence": self.analysis.confidence,
                 "recommendation": self.analysis.recommendation,
                 "file_hash": self.analysis.file_hash,
+                "media_url": self.analysis.media_url,
             } if self.analysis else None
         }

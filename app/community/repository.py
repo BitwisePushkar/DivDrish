@@ -61,6 +61,13 @@ def delete_post(post_id: str, user_id: str) -> bool:
     if not post or post.user_id != user_id:
         return False
     
-    db.session.delete(post)
-    db.session.commit()
-    return True
+    try:
+        db.session.delete(post)
+        db.session.commit()
+        logger.info(f"Community post deleted: {post_id}")
+        return True
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Failed to delete community post {post_id}: {e}")
+        return False
+

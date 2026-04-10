@@ -536,3 +536,73 @@ swagger.swagger: /openapi/swagger
 2026-04-10 19:23:14 | INFO | [c7259cd0-9b32-41a3-9893-c9c896133827] GET /health → 200 (4.75ms)
 2026-04-10 19:23:48 | INFO | [f224f712-d1d4-4dfe-9327-50adccbb9696] GET /health → 200 (1.04ms)
 2026-04-10 19:24:21 | INFO | [70073353-0803-4cb5-a1dc-6395114e9b96] GET /health → 200 (0.18ms)
+2026-04-10 19:24:55 | INFO | [6df83528-79dd-43b8-b9ee-44328cc91588] GET /health → 200 (4.33ms)
+2026-04-10 19:25:28 | INFO | [2cde316c-f573-435d-b704-19f5aca4a4b1] GET /health → 200 (5.69ms)
+2026-04-10 19:26:02 | INFO | [a6b003d2-4522-4bfb-b8ac-b17f1f1ab63d] GET /health → 200 (0.16ms)
+2026-04-10 19:26:35 | INFO | [446b823d-3b49-45f8-bf0f-9cbb9231cbe1] GET /health → 200 (0.3ms)
+2026-04-10 19:27:09 | INFO | [9799c0e8-b75c-4dbc-9e1f-5aa611e41f44] GET /health → 200 (0.14ms)
+2026-04-10 19:27:42 | INFO | [b4ef9bbc-9b70-4806-9f29-ef9f04f5b37e] GET /health → 200 (0.22ms)
+2026-04-10 19:28:15 | INFO | [6e750e21-e51d-4a02-a4b3-22a502c59a9b] GET /health → 200 (2.62ms)
+2026-04-10 19:28:49 | INFO | [a7691aae-7cff-468b-99a7-035f9409d456] GET /health → 200 (1.83ms)
+2026-04-10 19:29:22 | INFO | [ef90a4c5-bf52-4ba4-bdd2-98b55369d9cb] GET /health → 200 (4.58ms)
+2026-04-10 19:29:56 | INFO | [a5286eac-09b0-43c6-9a89-513d87ee66b6] GET /health → 200 (0.26ms)
+2026-04-10 19:30:30 | INFO | [f1590fb5-3652-4ed8-a843-c0b452aab961] GET /health → 200 (3.72ms)
+2026-04-10 19:31:03 | INFO | [380ac6f8-9836-4d6e-b23b-d8b1eb2c271b] GET /health → 200 (2.84ms)
+2026-04-10 19:31:37 | INFO | [b8d2f5fd-8a26-4a6d-9b76-fac5b0cf1103] GET /health → 200 (6.95ms)
+2026-04-10 19:32:10 | INFO | [cc658226-b0e6-4aca-9619-6b7f61fa3e96] GET /health → 200 (1.7ms)
+2026-04-10 19:32:44 | INFO | [9f0d72c8-261a-4d34-93fb-354f2dfb3772] GET /health → 200 (5.34ms)
+2026-04-10 19:33:19 | INFO | [de63eb3b-a392-41ba-b9f1-15b9b9e60a78] GET /health → 200 (14.34ms)
+2026-04-10 19:33:53 | INFO | [9ef051c1-014b-41e8-b1ad-1aad15301166] GET /health → 200 (20.75ms)
+2026-04-10 19:34:28 | INFO | [4ceefd2c-8917-4d31-8647-5343e1878f97] GET /health → 200 (24.46ms)
+2026-04-10 19:42:53 | WARNING | AWS S3 credentials not configured. S3 uploads will fail.
+2026-04-10 19:42:55 | SUCCESS | Database tables initialized
+2026-04-10 19:42:55 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 19:42:55 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 19:42:58 | INFO | [cae4ba0a-27bd-4a83-8f63-1ab160b69a32] GET /health → 200 (0.85ms)
+2026-04-10 19:43:31 | INFO | [5d6eecbe-52c5-4ff2-b517-1d1f7149abd0] GET /health → 200 (0.47ms)
+2026-04-10 19:44:04 | INFO | [b7373bbc-16f9-4931-9c3c-efdc2968191d] GET /health → 200 (0.17ms)
+2026-04-10 19:44:38 | INFO | [fe4ca5ea-72b0-4d6a-869f-9281d5e98c66] GET /health → 200 (0.12ms)
+2026-04-10 19:45:11 | INFO | [1c5723c1-c808-4ec8-9133-e9284a706737] GET /health → 200 (0.21ms)
+2026-04-10 19:45:45 | INFO | [0e58ce36-6cd5-4124-9c73-06b0d39c2a91] GET /health → 200 (0.15ms)
+2026-04-10 19:46:18 | INFO | [8121ed89-0a03-4831-b81c-577c0ecbfdba] GET /health → 200 (0.15ms)
+2026-04-10 19:46:52 | INFO | [c4061816-686d-4a72-9547-f5f1b970d967] GET /health → 200 (0.12ms)
+2026-04-10 19:47:25 | INFO | [3a5025e1-784e-4989-9cac-bcb215141643] GET /health → 200 (0.14ms)
+2026-04-10 19:48:03 | INFO | [60766f51-8444-4e08-93a4-59fa749bc0d9] GET /health → 200 (12.74ms)
+2026-04-10 19:48:37 | INFO | [8117f958-2c5d-4b86-b2ee-1634c05dd4fd] GET /health → 200 (9.84ms)
+2026-04-10 19:49:10 | INFO | [80577744-406c-444e-9ca7-7d319cf1221b] GET /health → 200 (1.61ms)
+2026-04-10 19:49:44 | INFO | [776a9e39-cbb7-48fe-b7bf-6e79200a39bc] GET /health → 200 (1.97ms)
