@@ -48,3 +48,211 @@
 2026-04-10 12:49:05 | INFO | [5ba9eef7-ac8e-46de-a64d-1c43ce111c90] GET /health → 200 (2.05ms)
 2026-04-10 12:49:38 | INFO | [4e5e25e7-deb1-4652-b6f7-b88e82e85484] GET /health → 200 (0.16ms)
 2026-04-10 12:50:12 | INFO | [38f30be0-d951-454f-a2d6-6fbdbd9a185a] GET /health → 200 (0.12ms)
+2026-04-10 13:03:40 | SUCCESS | Database tables initialized
+2026-04-10 13:03:40 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 13:03:41 | INFO | [0f6d5313-4913-4f83-8ba3-776db69639f5] GET /health → 200 (5.19ms)
+2026-04-10 13:04:15 | INFO | [9977e0ac-c518-4625-984c-c3b8feb96626] GET /health → 200 (0.39ms)
+2026-04-10 13:04:39 | INFO | [d48736d2-4267-4dc1-afff-add30468dcf2] GET /health → 200 (0.95ms)
+2026-04-10 13:05:13 | INFO | [be04dde3-f164-4bbf-87b7-5029719bd026] GET /health → 200 (0.19ms)
+2026-04-10 13:05:46 | ERROR | Failed to send email to lmucugekkbkaqlffjn@nesopf.com: [Errno 111] Connection refused
+2026-04-10 13:05:46 | ERROR | Registration initiation failed: Failed to send verification email. Please try again.
+2026-04-10 13:05:46 | INFO | [e2d312a2-cd5b-42be-b656-36fb6e671a92] POST /auth/register → 500 (865.98ms)
+2026-04-10 13:05:54 | INFO | [3c35b167-bf4a-4a39-9458-ce71d85adcfc] GET /health → 200 (0.21ms)
+2026-04-10 13:08:36 | SUCCESS | Database tables initialized
+2026-04-10 13:08:36 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 13:08:40 | INFO | [25713a1b-e365-41f6-b062-7a1e280c949f] GET /health → 200 (0.49ms)
+2026-04-10 13:08:56 | ERROR | Failed to send email to lmucugekkbkaqlffjn@nesopf.com: [Errno 111] Connection refused
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x791e036445e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x791e02f4b4d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x791e02ebd6c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x791e024c57f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x791e02ebd800>
+    └ <gunicorn.arbiter.Arbiter object at 0x791e024c57f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x791e02ebd760>
+    └ <gunicorn.arbiter.Arbiter object at 0x791e024c57f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x791e02304360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x791e02304ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x791e023049a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x791e02398980>
+    │    └ <function SyncWorker.accept at 0x791e02358860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 60682)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 60682)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x791e02398980>
+    │    └ <function SyncWorker.handle at 0x791e02304b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 60682)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 60682)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x791dc9457380>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x791e02398980>
+    │    └ <function SyncWorker.handle_request at 0x791e02304c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x791e02358220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x791dbf2182f0>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x791dcbc520e0>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x791dfcf8cd70>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x791dbf2182f0>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x791dcbc520e0>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x791e01be1b20>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x791e01be1260>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x791e01be11c0>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'auth.register'
+           │    │           │    │              └ <Rule '/auth/register' (OPTIONS, POST) -> auth.register>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x791e02304fe0>, 'openapi.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x791e01be1440>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': RegisterBody(username='coder_pro', email='lmucugekkbkaqlffjn@nesopf.com', password='securePassword123', password_con...
+               └ <function register at 0x791dcdc1bba0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': RegisterBody(username='coder_pro', email='lmucugekkbkaqlffjn@nesopf.com', password='securePassword123', password_con...
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function register at 0x791dcdc1ba60>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x791e031c9940>
+
+  File "/app/app/auth/routes.py", line 76, in register
+    result = register_user(data["username"], data["email"], data["password"])
+             │             │                 │              └ {'username': 'coder_pro', 'email': 'lmucugekkbkaqlffjn@nesopf.com', 'password': 'securePassword123', 'password_confirm': 'sec...
+             │             │                 └ {'username': 'coder_pro', 'email': 'lmucugekkbkaqlffjn@nesopf.com', 'password': 'securePassword123', 'password_confirm': 'sec...
+             │             └ {'username': 'coder_pro', 'email': 'lmucugekkbkaqlffjn@nesopf.com', 'password': 'securePassword123', 'password_confirm': 'sec...
+             └ <function register_user at 0x791dce88df80>
+
+  File "/app/app/auth/controllers.py", line 63, in register_user
+    if not send_otp_email(email, otp, "registration"):
+           │              │      └ '564501'
+           │              └ 'lmucugekkbkaqlffjn@nesopf.com'
+           └ <function send_otp_email at 0x791dcddce8e0>
+
+> File "/app/app/utils/email_service.py", line 42, in send_otp_email
+    msg.send()
+    │   └ <function EmailMessage.send at 0x791dffa884a0>
+    └ <flask_mailman.message.EmailMessage object at 0x791dbf21a3c0>
+
+  File "/usr/local/lib/python3.13/site-packages/flask_mailman/message.py", line 290, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           │    │              │                             └ <flask_mailman.message.EmailMessage object at 0x791dbf21a3c0>
+           │    │              └ False
+           │    └ <function EmailMessage.get_connection at 0x791dffa882c0>
+           └ <flask_mailman.message.EmailMessage object at 0x791dbf21a3c0>
+  File "/usr/local/lib/python3.13/site-packages/flask_mailman/backends/smtp.py", line 124, in send_messages
+    new_conn_created = self.open()
+                       │    └ <function EmailBackend.open at 0x791dbe7d0220>
+                       └ <flask_mailman.backends.smtp.EmailBackend object at 0x791dbf21a7b0>
+  File "/usr/local/lib/python3.13/site-packages/flask_mailman/backends/smtp.py", line 80, in open
+    self.connection = self.connection_class(self.host, self.port, **connection_params)
+    │    │            │    │                │    │     │    │       └ {'local_hostname': '505b15df6b2e'}
+    │    │            │    │                │    │     │    └ 25
+    │    │            │    │                │    │     └ <flask_mailman.backends.smtp.EmailBackend object at 0x791dbf21a7b0>
+    │    │            │    │                │    └ 'localhost'
+    │    │            │    │                └ <flask_mailman.backends.smtp.EmailBackend object at 0x791dbf21a7b0>
+    │    │            │    └ <property object at 0x791dbe725300>
+    │    │            └ <flask_mailman.backends.smtp.EmailBackend object at 0x791dbf21a7b0>
+    │    └ None
+    └ <flask_mailman.backends.smtp.EmailBackend object at 0x791dbf21a7b0>
+  File "/usr/local/lib/python3.13/smtplib.py", line 264, in __init__
+    (code, msg) = self.connect(host, port)
+                  │    │       │     └ 25
+                  │    │       └ 'localhost'
+                  │    └ <function SMTP.connect at 0x791dbe73e840>
+                  └ <smtplib.SMTP object at 0x791dbf21aa50>
+  File "/usr/local/lib/python3.13/smtplib.py", line 350, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+    │    │      │    │           │     │     │    └ <object object at 0x791e036647d0>
+    │    │      │    │           │     │     └ <smtplib.SMTP object at 0x791dbf21aa50>
+    │    │      │    │           │     └ 25
+    │    │      │    │           └ 'localhost'
+    │    │      │    └ <function SMTP._get_socket at 0x791dbe73e7a0>
+    │    │      └ <smtplib.SMTP object at 0x791dbf21aa50>
+    │    └ None
+    └ <smtplib.SMTP object at 0x791dbf21aa50>
+  File "/usr/local/lib/python3.13/smtplib.py", line 321, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           │      │                  │     │      └ <object object at 0x791e036647d0>
+           │      │                  │     └ 25
+           │      │                  └ 'localhost'
+           │      └ <function create_connection at 0x791e02f6ad40>
+           └ <module 'socket' from '/usr/local/lib/python3.13/socket.py'>
+  File "/usr/local/lib/python3.13/socket.py", line 864, in create_connection
+    raise exceptions[0]
+          └ []
+  File "/usr/local/lib/python3.13/socket.py", line 849, in create_connection
+    sock.connect(sa)
+    │    │       └ ('127.0.0.1', 25)
+    │    └ <method 'connect' of '_socket.socket' objects>
+    └ <socket.socket [closed] fd=-1, family=2, type=1, proto=6>
+
+ConnectionRefusedError: [Errno 111] Connection refused
+2026-04-10 13:08:56 | ERROR | Registration initiation failed: Failed to send verification email. Please try again.
+2026-04-10 13:08:56 | INFO | [04911e22-cdef-4ec1-b4bc-7d4f83e88cae] POST /auth/register → 500 (798.61ms)
+2026-04-10 13:09:13 | INFO | [30deab9f-48a0-4fa0-ae5a-56dcd14449fc] GET /health → 200 (0.29ms)
+2026-04-10 13:09:46 | INFO | [3f20261d-b614-4e96-8ba0-28185add4092] GET /health → 200 (0.92ms)
+2026-04-10 13:12:26 | SUCCESS | Database tables initialized
+2026-04-10 13:12:26 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 13:12:28 | INFO | [bed21a4f-cb89-4e51-a1e3-26817d4f87d0] GET /health → 200 (0.33ms)
+2026-04-10 13:12:54 | INFO | OTP email sent to lmucugekkbkaqlffjn@nesopf.com (registration)
+2026-04-10 13:12:54 | INFO | [150377c6-c8e8-448b-bce5-2e873d44289b] POST /auth/register → 201 (4862.01ms)
+2026-04-10 13:13:09 | INFO | [7ee44b8a-785f-40ac-a06f-70fcba788ea9] GET /health → 200 (0.26ms)
+2026-04-10 13:13:42 | INFO | [915ad47f-9e16-4e30-9f93-fc30673c4ca8] GET /health → 200 (8.38ms)
+2026-04-10 13:13:58 | INFO | OTP email sent to lmucugekkbkaqlffjn@nesopf.com (registration)
+2026-04-10 13:13:58 | INFO | [33f035a9-8f60-4acd-b7cc-273a7a9d1ad9] POST /auth/register → 201 (2563.47ms)
+2026-04-10 13:14:16 | INFO | [7da4ba26-4637-4c24-a2d1-a505b2f32834] GET /health → 200 (1.95ms)
+2026-04-10 13:14:49 | INFO | [e3744425-be01-48d5-9eff-79688d2bc43a] GET /health → 200 (0.26ms)
+2026-04-10 13:15:23 | INFO | [86f1e58f-5da3-4d22-be6b-bdb2a75596ff] GET /health → 200 (0.15ms)

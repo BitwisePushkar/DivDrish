@@ -59,14 +59,15 @@ class BaseConfig:
     WEIGHTS_DIR = Path(os.getenv("WEIGHTS_DIR", str(BASE_DIR / "weights")))
 
     # ─── Email Settings (flask-mailman) ──────────────────
-    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "flask_mailman.backends.console.EmailBackend")
-    EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
-    EMAIL_PORT = int(os.getenv("EMAIL_PORT", "1025"))
-    EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "False").lower() == "true"
-    EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", "False").lower() == "true"
-    EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
-    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
-    DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", f"noreply@{APP_NAME.lower().replace(' ', '-')}.com")
+    EMAIL_BACKEND = os.getenv("EMAIL_BACKEND", "flask_mailman.backends.smtp.EmailBackend")
+    MAIL_SERVER = os.getenv("MAIL_SERVER", "localhost")
+    MAIL_PORT = int(os.getenv("MAIL_PORT", "1025"))
+    MAIL_USE_TLS = os.getenv("MAIL_USE_TLS", "False").lower() == "true"
+    MAIL_USE_SSL = os.getenv("MAIL_USE_SSL", "False").lower() == "true"
+    MAIL_USERNAME = os.getenv("MAIL_USERNAME", "")
+    MAIL_PASSWORD = os.getenv("MAIL_PASSWORD", "")
+    MAIL_DEFAULT_SENDER = os.getenv("MAIL_DEFAULT_SENDER", f"noreply@{APP_NAME.lower().replace(' ', '-')}.com")
+    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", "")
     # ─── Upload limits ───────────────────────────────────
     MAX_VIDEO_MB = int(os.getenv("MAX_VIDEO_MB", "200"))
     MAX_AUDIO_MB = int(os.getenv("MAX_AUDIO_MB", "50"))
