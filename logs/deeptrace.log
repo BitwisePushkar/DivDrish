@@ -606,3 +606,99 @@ swagger.swagger: /openapi/swagger
 2026-04-10 19:48:37 | INFO | [8117f958-2c5d-4b86-b2ee-1634c05dd4fd] GET /health → 200 (9.84ms)
 2026-04-10 19:49:10 | INFO | [80577744-406c-444e-9ca7-7d319cf1221b] GET /health → 200 (1.61ms)
 2026-04-10 19:49:44 | INFO | [776a9e39-cbb7-48fe-b7bf-6e79200a39bc] GET /health → 200 (1.97ms)
+2026-04-10 19:50:23 | SUCCESS | Database tables initialized
+2026-04-10 19:50:23 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 19:50:23 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 19:50:27 | INFO | [5837f95f-165a-48ee-97a0-9ceefa6b66a1] GET /health → 200 (8.16ms)
+2026-04-10 19:51:00 | INFO | [7b60ea07-a65b-411f-83c4-e6a9dbeb1b2a] GET /health → 200 (1.82ms)
+2026-04-10 19:51:33 | INFO | [3fcf94c1-12ba-4a0d-91a8-2787dc7a7525] GET /health → 200 (0.21ms)
+2026-04-10 19:52:07 | INFO | [b9ecbb13-320e-4b58-bd59-a7fe31216c69] GET /health → 200 (0.25ms)
+2026-04-10 19:52:40 | INFO | [3a5eb6ff-f987-4cfc-843b-b574c101a9e5] GET /health → 200 (0.19ms)
+2026-04-10 19:53:14 | INFO | [e8adc3ed-2339-4d96-8a09-3b2f7cf9d65a] GET /health → 200 (0.13ms)
+2026-04-10 19:53:47 | INFO | [eecb32fc-ea8e-48d7-98fb-87bf69947f47] GET /health → 200 (0.5ms)
+2026-04-10 19:54:14 | INFO | [d885e243-47e5-45c2-a0e0-e9ae41308b94] GET /health → 200 (0.11ms)
+2026-04-10 19:54:21 | INFO | [817ff6ed-8640-44f4-a7b6-5b4c734a8ff3] GET /health → 200 (0.11ms)
+2026-04-10 19:54:22 | INFO | [f1f2c4a7-c936-45df-9873-e726d602187c] GET /community/posts → 200 (238.53ms)
+2026-04-10 19:54:52 | INFO | [94fc4a16-e053-470a-87c7-41276fa7406e] POST /auth/register → 422 (48.39ms)
+2026-04-10 19:54:55 | INFO | [0c399a19-31ee-41ab-807d-55223ca9a678] GET /health → 200 (0.1ms)
+2026-04-10 19:55:28 | INFO | [5f1f0275-7a27-46e4-8476-85ca7ec58462] GET /health → 200 (0.11ms)
+2026-04-10 19:55:41 | ERROR | Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-04-10 19:55:41 | INFO | [f5a85e10-c45b-49c0-9b3f-48dd9ec425e2] POST /auth/register → 500 (101.4ms)
+2026-04-10 19:56:01 | INFO | [405a16e4-1437-4a3e-8c2a-4142d5ea6ae1] GET /health → 200 (0.2ms)
+2026-04-10 19:56:34 | INFO | [3c358475-eb60-42fc-8c89-971ff61967d6] GET /health → 200 (0.12ms)
+2026-04-10 19:57:03 | SUCCESS | Database tables initialized
+2026-04-10 19:57:03 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 19:57:03 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 19:57:07 | INFO | [1d8fb6af-620c-4e54-95d6-999f7d33f75b] GET /health → 200 (0.43ms)
+2026-04-10 19:57:23 | INFO | [3f548915-3e4b-49d6-aed7-4acb53f2d3a6] POST /auth/register → 201 (465.13ms)
+2026-04-10 19:57:40 | INFO | [02dadae2-82f7-4975-8b5c-86c837aec6d4] GET /health → 200 (0.2ms)

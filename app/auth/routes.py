@@ -67,7 +67,7 @@ _resend_otp_schema = ResendOTPSchema()
     }
 )
 @limiter.limit("5 per minute")
-async def register(body: RegisterBody):
+def register(body: RegisterBody):
     """Initial registration — sends OTP."""
     json_data = request.get_json()
     errors = _register_schema.validate(json_data)
@@ -99,7 +99,7 @@ async def register(body: RegisterBody):
     }
 )
 @limiter.limit("10 per minute")
-async def verify_otp(body: VerifyOTPBody):
+def verify_otp(body: VerifyOTPBody):
     """Verify registration OTP and create account."""
     json_data = request.get_json()
     errors = _verify_otp_schema.validate(json_data)
@@ -131,7 +131,7 @@ async def verify_otp(body: VerifyOTPBody):
     }
 )
 @limiter.limit("3 per minute")
-async def resend_otp(body: ResendOTPBody):
+def resend_otp(body: ResendOTPBody):
     """Resend registration OTP."""
     json_data = request.get_json()
     errors = _resend_otp_schema.validate(json_data)
@@ -161,7 +161,7 @@ async def resend_otp(body: ResendOTPBody):
     }
 )
 @limiter.limit("10 per minute")
-async def login(body: LoginBody):
+def login(body: LoginBody):
     """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
     errors = _login_schema.validate(json_data)
@@ -192,7 +192,7 @@ async def login(body: LoginBody):
     }
 )
 @limiter.limit("3 per hour")
-async def reset_request(body: PasswordResetRequestBody):
+def reset_request(body: PasswordResetRequestBody):
     """Request a password reset OTP."""
     json_data = request.get_json()
     errors = _reset_req_schema.validate(json_data)
@@ -222,7 +222,7 @@ async def reset_request(body: PasswordResetRequestBody):
     }
 )
 @limiter.limit("5 per minute")
-async def reset_verify(body: PasswordResetVerifyBody):
+def reset_verify(body: PasswordResetVerifyBody):
     """Verify reset OTP and get reset token."""
     json_data = request.get_json()
     errors = _verify_otp_schema.validate(json_data)
@@ -251,7 +251,7 @@ async def reset_verify(body: PasswordResetVerifyBody):
         429: ErrorResponse,
     }
 )
-async def reset_confirm(body: PasswordResetConfirmBody):
+def reset_confirm(body: PasswordResetConfirmBody):
     """Finalize password reset."""
     json_data = request.get_json()
     errors = _reset_confirm_schema.validate(json_data)
@@ -282,7 +282,7 @@ async def reset_confirm(body: PasswordResetConfirmBody):
         429: ErrorResponse,
     }
 )
-async def refresh(body: RefreshBody):
+def refresh(body: RefreshBody):
     """Refresh an expired access token."""
     json_data = request.get_json()
     errors = _refresh_schema.validate(json_data)
@@ -314,7 +314,7 @@ async def refresh(body: RefreshBody):
     }
 )
 @require_auth
-async def me():
+def me():
     """Get current authenticated user info."""
     current_user = getattr(g, "current_user", None)
     if not current_user or not current_user.get("user_id"):
