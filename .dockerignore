@@ -20,3 +20,16 @@ uploads/
 weights/
 tests/
 .vscode/
+
+# ── Add these ──────────────────────
+*.log
+*.md
+Makefile
+docker-compose*.yml
+.dockerignore
+.env.example
+.mypy_cache/
+.ruff_cache/
+**/*.egg-info/
+dist/
+build/

@@ -1,62 +1,15 @@
-# ─── Stage 1: Builder ─────────────────────────────────────
-FROM python:3.13-slim AS builder
-
-WORKDIR /build
-
-# Fix pip SSL issues (corporate proxy / self-signed certs)
-RUN pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org download.pytorch.org"
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libsndfile1-dev \
-    libgl1 \
-    libglib2.0-0 \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --no-cache-dir --prefix=/install \
-    torch torchaudio torchvision \
-    --index-url https://download.pytorch.org/whl/cpu
-
-ENV PYTHONPATH=/install/lib/python3.13/site-packages
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir --prefix=/install \
-    --extra-index-url https://download.pytorch.org/whl/cpu \
-    -r requirements.txt
-
-RUN pip install --no-cache-dir --prefix=/install --no-deps \
-    facenet-pytorch>=2.6.0
-
-
-# ─── Stage 2: Runtime ────────────────────────────────────
-FROM python:3.13-slim
+ARG BASE_IMAGE=ayushsingh23/deeptrace-ml:latest
+FROM ${BASE_IMAGE}
 
 LABEL maintainer="DeepTrace Team"
-LABEL description="DeepTrace Celery Worker — Background ML Processing"
+LABEL description="DeepTrace Celery Worker"
 
-RUN groupadd -r deeptrace && useradd -r -g deeptrace -d /app -s /sbin/nologin deeptrace
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libsndfile1 \
-    libgl1 \
-    libglib2.0-0 \
-    libpq5 \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY --from=builder /install /usr/local
-
-WORKDIR /app
-
+USER root
 COPY app/ ./app/
 COPY wsgi.py .
-
-RUN mkdir -p logs weights uploads && chown -R deeptrace:deeptrace /app
+RUN chown -R deeptrace:deeptrace /app
 
 USER deeptrace
 
-# Celery worker command
 CMD ["celery", "-A", "app.extensions.celery", "worker", \
-     "--loglevel=info", \
-     "--concurrency=2", \
-     "--max-tasks-per-child=50"]
+     "--loglevel=info", "--concurrency=2", "--max-tasks-per-child=50"]
