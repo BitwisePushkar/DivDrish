@@ -13,6 +13,7 @@ psycopg2-binary>=2.9.10
 flask-mailman>=1.0.0
 flask-openapi3[swagger]>=4.3.1
 email-validator>=2.2.0
+boto3>=1.35.0
 
 # ─── Celery / Redis ────────────────────────────────────
 celery>=5.4.0

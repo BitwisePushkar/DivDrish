@@ -19,6 +19,7 @@ class AnalysisSummary(BaseModel):
     confidence: float
     recommendation: str
     file_hash: str
+    media_url: Optional[str]
 
 class CommunityPostResponse(BaseModel):
     id: str

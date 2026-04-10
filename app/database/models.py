@@ -30,6 +30,7 @@ class AnalysisResult(db.Model):
     resolution = db.Column(db.String(32), nullable=True)
     recommendation = db.Column(db.String(16), nullable=False)
     metadata_anomalies_json = db.Column(db.Text, nullable=True)
+    media_url = db.Column(db.String(2048), nullable=True)
 
     def to_dict(self):
         return {
@@ -38,6 +39,7 @@ class AnalysisResult(db.Model):
             "media_type": self.media_type,
             "filename": self.filename,
             "file_hash": self.file_hash,
+            "media_url": self.media_url,
             "is_fake": self.is_fake,
             "confidence": self.confidence,
             "model_fingerprint": self.model_fingerprint,

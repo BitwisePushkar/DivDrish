@@ -1,16 +1,17 @@
 """
 Database repository — synchronous CRUD operations.
 
-Mirrors the async database.py from the FastAPI app, using
-synchronous SQLAlchemy sessions.
+Handles Analysis persistence and community post management.
 """
 import json
 import uuid
+import os
 from datetime import datetime, timezone
 from sqlalchemy import func, desc
 from app.extensions import db
 from app.database.models import AnalysisResult
 from app.utils.logger import logger
+from app.utils.s3_service import s3_service
 
 
 # ─── Analysis CRUD ────────────────────────────────────────
@@ -31,11 +32,24 @@ def save_analysis(
     recommendation: str,
     metadata_anomalies: list,
     user_id: str | None = None,
+    temp_path: str | None = None,
 ) -> str:
-    """Insert an analysis record and return its ID."""
+    """Insert an analysis record and upload to S3 if temp_path is provided."""
     record_id = str(uuid.uuid4())
+    media_url = None
 
-    # Serialize artifact signatures
+    # 1. Handle S3 Upload if file path is provided
+    if temp_path and os.path.exists(temp_path):
+        # We use a structured name: {user_id}/{record_id}_{filename}
+        # To avoid collisions and organize by user
+        safe_user_id = user_id or "anonymous"
+        object_name = f"history/{safe_user_id}/{record_id}_{filename}"
+        
+        # Determine content type based on extension if possible
+        # Or you could pass it in. For now, we let boto3 or a simple guess handle it.
+        media_url = s3_service.upload_file(temp_path, object_name)
+
+    # 2. Serialize artifact signatures
     serialized_artifacts = json.dumps([
         s if isinstance(s, dict) else s
         for s in artifact_signatures
@@ -48,6 +62,7 @@ def save_analysis(
         media_type=media_type,
         filename=filename,
         file_hash=file_hash,
+        media_url=media_url,
         is_fake=is_fake,
         confidence=confidence,
         model_fingerprint=model_fingerprint,
@@ -63,7 +78,7 @@ def save_analysis(
     try:
         db.session.add(record)
         db.session.commit()
-        logger.info(f"Analysis saved: {record_id}")
+        logger.info(f"Analysis saved: {record_id}{' with S3 URL' if media_url else ''}")
     except Exception as e:
         db.session.rollback()
         logger.error(f"Failed to save analysis: {e}")
@@ -127,6 +142,11 @@ def delete_analysis(record_id: str, user_id: str | None = None) -> bool:
         return False
     if user_id and record.user_id != user_id:
         return False
+    
+    # Optional: Delete from S3 as well? 
+    # Usually we keep it or mark as deleted, but for privacy let's skip for now
+    # as deleting S3 objects in a generic CRUD might be risky without confirmation.
+    
     db.session.delete(record)
     db.session.commit()
     return True

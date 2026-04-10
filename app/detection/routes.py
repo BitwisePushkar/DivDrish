@@ -39,7 +39,7 @@ _task_status_schema = TaskStatusSchema()
 MAX_BATCH_SIZE = 10
 
 
-def _save_to_db(result: dict):
+def _save_to_db(result: dict, temp_path: str = None):
     """Persist detection result to database (fire and forget)."""
     from flask import g
     db_meta = result.pop("_db_meta", {})
@@ -64,6 +64,7 @@ def _save_to_db(result: dict):
             recommendation=result["recommendation"],
             metadata_anomalies=result.get("metadata_anomalies", []),
             user_id=user_id,
+            temp_path=temp_path,
         )
     except Exception as e:
         logger.error(f"Failed to save analysis to DB: {e}")
@@ -134,7 +135,7 @@ def _handle_image(file):
 
     try:
         result = process_image(path, file.filename or "unknown")
-        _save_to_db(result)
+        _save_to_db(result, temp_path=path)
         return success_response(_detection_schema.dump(result))
     except Exception as e:
         logger.error(f"Image detection failed: {e}")
@@ -169,7 +170,7 @@ def _handle_video(file):
 
     try:
         result = process_video(path, file.filename or "unknown")
-        _save_to_db(result)
+        _save_to_db(result, temp_path=path)
         return success_response(_detection_schema.dump(result))
     except Exception as e:
         logger.error(f"Video detection failed: {e}")
@@ -204,7 +205,7 @@ def _handle_audio(file):
 
     try:
         result = process_audio(path, file.filename or "unknown")
-        _save_to_db(result)
+        _save_to_db(result, temp_path=path)
         return success_response(_detection_schema.dump(result))
     except Exception as e:
         logger.error(f"Audio detection failed: {e}")
