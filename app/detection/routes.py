@@ -4,7 +4,7 @@ Detection routes blueprint.
 All detection endpoints are protected by @require_auth.
 Heavy processing is offloaded to Celery when available.
 """
-from flask import Blueprint, request
+from flask import request
 from app.auth.decorators import require_auth
 from app.detection.controllers import process_image, process_video, process_audio
 from app.detection.schemas import DetectionResultSchema, BatchResultSchema, TaskStatusSchema
@@ -20,7 +20,10 @@ from app.tasks.detection_tasks import (
 )
 from app.extensions import celery
 
-detection_bp = Blueprint("detection", __name__)
+from flask_openapi3 import APIBlueprint, Tag
+
+_tag = Tag(name="Detection", description="AI-powered media analysis for deepfake detection")
+detection_bp = APIBlueprint("detection", __name__)
 
 _detection_schema = DetectionResultSchema()
 _batch_schema = BatchResultSchema()

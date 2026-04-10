@@ -1,14 +1,14 @@
-"""
-Analysis history routes blueprint.
-"""
-from flask import Blueprint, request
+from flask import request
 from app.auth.decorators import require_auth
 from app.history.controllers import get_history, get_single, delete_single, get_statistics
 from app.history.schemas import PaginatedHistorySchema, AnalysisRecordSchema, AnalysisStatsSchema
 from app.utils.responses import success_response, error_response
 from app.utils.logger import logger
 
-history_bp = Blueprint("history", __name__, url_prefix="/history")
+from flask_openapi3 import APIBlueprint, Tag
+
+_tag = Tag(name="History", description="Access to past detection records and usage statistics")
+history_bp = APIBlueprint("history", __name__, url_prefix="/history")
 
 _paginated_schema = PaginatedHistorySchema()
 _record_schema = AnalysisRecordSchema()

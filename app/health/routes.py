@@ -8,10 +8,13 @@ from flask import Blueprint, jsonify
 from app.config.settings import get_config
 from app.detection.controllers import get_detectors
 
-health_bp = Blueprint("health", __name__)
+from flask_openapi3 import APIBlueprint, Tag
+
+_tag = Tag(name="Health", description="System health and status monitoring")
+health_bp = APIBlueprint("health", __name__)
 
 
-@health_bp.route("/health", methods=["GET"])
+@health_bp.get("/health", tags=[_tag], summary="Check system health")
 def health():
     """System health check — returns model status and GPU info."""
     config = get_config()

@@ -1,7 +1,4 @@
-"""
-Provenance analysis routes blueprint.
-"""
-from flask import Blueprint, request
+from flask import request
 from app.auth.decorators import require_auth
 from app.provenance.controllers import analyze_provenance
 from app.provenance.schemas import ProvenanceReportSchema
@@ -9,7 +6,10 @@ from app.utils.file_handler import save_upload, cleanup, detect_media_type
 from app.utils.responses import success_response, error_response
 from app.utils.logger import logger
 
-provenance_bp = Blueprint("provenance", __name__, url_prefix="/provenance")
+from flask_openapi3 import APIBlueprint, Tag
+
+_tag = Tag(name="Provenance", description="Metadata analysis for tracing media origin")
+provenance_bp = APIBlueprint("provenance", __name__, url_prefix="/provenance")
 
 _provenance_schema = ProvenanceReportSchema()
 

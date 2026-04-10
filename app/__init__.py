@@ -43,7 +43,12 @@ def create_app(config_override=None):
     Args:
         config_override: Optional config object to use instead of env-based config.
     """
-    app = OpenAPI(__name__, info=_info, security_schemes=_security_schemes)
+    app = OpenAPI(
+        __name__, 
+        info=_info, 
+        security_schemes=_security_schemes,
+        doc_prefix="/openapi"
+    )
 
     # ─── Load configuration ──────────────────────────────
     if config_override:
