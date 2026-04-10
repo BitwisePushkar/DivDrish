@@ -1,0 +1,801 @@
+{
+	"info": {
+		"_postman_id": "divdrish-deeptrace-v2",
+		"name": "DivDrish — DeepTrace ML Engine v2.0.0",
+		"description": "Complete API collection for DivDrish DeepTrace ML Engine. Covers Auth, Detection, Community, History, Provenance, and Health endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"item": [
+		{
+			"name": "1. Health",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": ["{{base_url}}"],
+							"path": ["health"]
+						},
+						"description": "Public endpoint. Returns system status, model loading state, and GPU availability."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Auth — Registration",
+			"item": [
+				{
+					"name": "Step 1 — Register (Send OTP)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data && jsonData.data.email) {",
+									"    pm.collectionVariables.set('registered_email', jsonData.data.email);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"password_confirm\": \"SecurePass123!\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "register"]
+						},
+						"description": "Initiates registration. Sends a 6-digit OTP to the provided email. Rate limited: 5/minute."
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2 — Verify OTP (Create Account)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data) {",
+									"    if (jsonData.data.access_token) pm.collectionVariables.set('access_token', jsonData.data.access_token);",
+									"    if (jsonData.data.refresh_token) pm.collectionVariables.set('refresh_token', jsonData.data.refresh_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\",\n  \"otp\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/verify-otp",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "verify-otp"]
+						},
+						"description": "Verifies the 6-digit OTP and creates the user account. Returns JWT tokens immediately."
+					},
+					"response": []
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/resend-otp",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "resend-otp"]
+						},
+						"description": "Resend OTP if expired during registration. Rate limited: 3/minute."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Auth — Login & Tokens",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data) {",
+									"    if (jsonData.data.access_token) pm.collectionVariables.set('access_token', jsonData.data.access_token);",
+									"    if (jsonData.data.refresh_token) pm.collectionVariables.set('refresh_token', jsonData.data.refresh_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"identifier\": \"johndoe\",\n  \"password\": \"SecurePass123!\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "login"]
+						},
+						"description": "Authenticate via email or username. Returns access + refresh tokens. Auto-saves tokens to collection variables."
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.data && jsonData.data.access_token) {",
+									"    pm.collectionVariables.set('access_token', jsonData.data.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refresh_token\": \"{{refresh_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/refresh",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "refresh"]
+						},
+						"description": "Get a new access_token using the refresh_token."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Auth — Password Reset",
+			"item": [
+				{
+					"name": "Step 1 — Request Reset OTP",
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/password-reset/request",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "password-reset", "request"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2 — Verify Reset OTP",
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\",\n  \"otp\": \"837201\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/password-reset/verify",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "password-reset", "verify"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3 — Confirm New Password",
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\",\n  \"reset_token\": \"paste-reset-token-here\",\n  \"new_password\": \"NewSecurePass456!\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/password-reset/confirm",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "password-reset", "confirm"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Auth — Profile",
+			"item": [
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/me",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "me"]
+						},
+						"description": "Returns current user profile including display_name and profile_image_url."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile (Name / Username)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"display_name\": \"John Doe\",\n  \"username\": \"johndoe_v2\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/profile",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "profile"]
+						},
+						"description": "Update display_name and/or username. Both fields are optional — send only what you want to change."
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Profile Avatar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "",
+									"description": "Profile image (jpeg/png/webp, max 5MB)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/profile/avatar",
+							"host": ["{{base_url}}"],
+							"path": ["auth", "profile", "avatar"]
+						},
+						"description": "Upload a profile avatar image. Uploaded to S3. Replaces any existing avatar. Allowed types: image/jpeg, image/png, image/webp. Max 5MB."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Detection",
+			"item": [
+				{
+					"name": "Auto Detect (Any Media)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "",
+									"description": "Image, Video, or Audio file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect",
+							"host": ["{{base_url}}"],
+							"path": ["detect"]
+						},
+						"description": "Auto-detects the media type and routes to the appropriate deepfake detector."
+					},
+					"response": []
+				},
+				{
+					"name": "Detect Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "",
+									"description": "Image file (jpeg, png, webp, bmp)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/image",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "image"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detect Video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "",
+									"description": "Video file (mp4, mpeg, webm, mov)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/video",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "video"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detect Audio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "",
+									"description": "Audio file (mp3, wav, ogg, flac)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/audio",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "audio"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detect Batch (up to 10 files)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "",
+									"description": "File 1"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "",
+									"description": "File 2"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/batch",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "batch"]
+						},
+						"description": "Synchronously analyze up to 10 files. Use 'files' as the key for each."
+					},
+					"response": []
+				},
+				{
+					"name": "Async Detect (Image)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/async/image",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "async", "image"]
+						},
+						"description": "Offload image detection to Celery. Returns task_id to poll."
+					},
+					"response": []
+				},
+				{
+					"name": "Async Detect (Video)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/async/video",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "async", "video"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Async Detect (Audio)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/async/audio",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "async", "audio"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Async Batch Detect",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/detect/async/batch",
+							"host": ["{{base_url}}"],
+							"path": ["detect", "async", "batch"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Poll Task Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/task/:task_id",
+							"host": ["{{base_url}}"],
+							"path": ["task", ":task_id"],
+							"variable": [
+								{
+									"key": "task_id",
+									"value": "paste-task-id-here",
+									"description": "Celery task ID from async detect response"
+								}
+							]
+						},
+						"description": "Poll for the result of an async detection task."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "7. Community",
+			"item": [
+				{
+					"name": "List Community Posts (Public)",
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/community/posts?page=1&page_size=20",
+							"host": ["{{base_url}}"],
+							"path": ["community", "posts"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "page_size", "value": "20" }
+							]
+						},
+						"description": "Public feed of community-shared detection results. No auth required."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Community Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"analysis_id\": \"paste-analysis-uuid-here\",\n  \"title\": \"Found a deepfake!\",\n  \"description\": \"Look at the artifacts around the jawline.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/community/posts",
+							"host": ["{{base_url}}"],
+							"path": ["community", "posts"]
+						},
+						"description": "Share an analysis result with the community. You must own the analysis_id."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Community Post",
+					"request": {
+						"auth": { "type": "noauth" },
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/community/posts/:post_id",
+							"host": ["{{base_url}}"],
+							"path": ["community", "posts", ":post_id"],
+							"variable": [
+								{
+									"key": "post_id",
+									"value": "paste-post-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Community Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/community/posts/:post_id",
+							"host": ["{{base_url}}"],
+							"path": ["community", "posts", ":post_id"],
+							"variable": [
+								{
+									"key": "post_id",
+									"value": "paste-post-id-here"
+								}
+							]
+						},
+						"description": "Delete your own community post. Must be the author."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "8. History & Stats",
+			"item": [
+				{
+					"name": "List History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history?page=1&page_size=20",
+							"host": ["{{base_url}}"],
+							"path": ["history"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "page_size", "value": "20" },
+								{ "key": "media_type", "value": "", "disabled": true },
+								{ "key": "is_fake", "value": "", "disabled": true }
+							]
+						},
+						"description": "Paginated history of the authenticated user's detection scans. Optional filters: media_type (image/video/audio), is_fake (true/false)."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/stats",
+							"host": ["{{base_url}}"],
+							"path": ["history", "stats"]
+						},
+						"description": "Aggregated statistics for the authenticated user's scans."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Record",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/:record_id",
+							"host": ["{{base_url}}"],
+							"path": ["history", ":record_id"],
+							"variable": [
+								{
+									"key": "record_id",
+									"value": "paste-record-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/:record_id",
+							"host": ["{{base_url}}"],
+							"path": ["history", ":record_id"],
+							"variable": [
+								{
+									"key": "record_id",
+									"value": "paste-record-id-here"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "9. Provenance",
+			"item": [
+				{
+					"name": "Analyze File Provenance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "",
+									"description": "Image, Video, or Audio file for metadata/EXIF analysis"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/provenance/analyze",
+							"host": ["{{base_url}}"],
+							"path": ["provenance", "analyze"]
+						},
+						"description": "Lightweight metadata/EXIF analysis for signs of manipulation. No ML inference."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

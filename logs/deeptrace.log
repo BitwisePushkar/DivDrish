@@ -938,3 +938,210 @@ WHERE users.id = %(pk_1)s]
 2026-04-10 21:07:07 | INFO | [f86fd80f-fd86-46d9-88ab-5e05e64ad052] PUT /auth/profile → 200 (22.12ms)
 2026-04-10 21:07:16 | INFO | [3e6b444a-1ab0-452c-8809-dac902d516e7] GET /auth/me → 200 (32.17ms)
 2026-04-10 21:07:34 | INFO | [45eb5772-5258-47ae-bb01-bc26b42fc47b] GET /health → 200 (0.19ms)
+2026-04-10 21:08:33 | SUCCESS | Database tables initialized
+2026-04-10 21:08:33 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 21:08:33 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 21:08:36 | INFO | [578c6784-c4f5-4ed5-8a3d-d6510c9c00ea] GET /health → 200 (0.58ms)
+2026-04-10 21:09:06 | INFO | [03a049a4-3cf4-463e-ba4b-ff1555afc926] GET /health → 200 (0.41ms)
+2026-04-10 21:09:36 | INFO | [9961c633-4944-4f5f-9c94-2e6817ff9802] GET /health → 200 (0.16ms)
+2026-04-10 21:10:07 | INFO | [af3306ca-773d-4a8d-85ae-4f74daf6453d] GET /health → 200 (0.14ms)
+2026-04-10 21:10:37 | INFO | [7eaf5058-374b-41fe-b93a-2a9f2269b7f9] GET /health → 200 (0.1ms)
+2026-04-10 21:11:07 | INFO | [aded0679-c247-47e7-a97b-19abf7106ae4] GET /health → 200 (0.16ms)
+2026-04-10 21:11:37 | INFO | [b5523ca8-a66c-437c-b150-1868feacec33] GET /health → 200 (0.1ms)
+2026-04-10 21:12:07 | INFO | [f13ec941-dacc-41e1-b126-be8643ecaf20] GET /health → 200 (1.26ms)
+2026-04-10 21:12:37 | INFO | [86fc9698-2222-494c-928d-b6ed839d243f] GET /health → 200 (1.81ms)
+2026-04-10 21:13:08 | INFO | [cd8c40e7-5758-4956-8b38-ed986e2c7d13] GET /health → 200 (0.13ms)
+2026-04-10 21:13:38 | INFO | [f4a6d75d-56bc-48e6-9a07-b62709e0c349] GET /health → 200 (2.16ms)
+2026-04-10 21:14:08 | INFO | [3bf39b2e-4112-4985-a062-ed2031239d39] GET /health → 200 (0.11ms)
+2026-04-10 21:14:38 | INFO | [86a93c39-e67d-48f8-a66d-e82aadf1d609] GET /health → 200 (0.1ms)
+2026-04-10 21:15:08 | INFO | [c7d18249-eec1-4079-aafb-c0ef037bd646] GET /health → 200 (0.22ms)
+2026-04-10 21:15:39 | INFO | [8e16b881-879c-4be4-bb9e-342f691f4025] GET /health → 200 (0.11ms)
+2026-04-10 21:16:09 | INFO | [e4bb0fd1-8da9-4b0b-922f-67000c2eede3] GET /health → 200 (0.11ms)
+2026-04-10 21:16:39 | INFO | [3f8578b2-8706-47e9-9517-ece61ae5101e] GET /health → 200 (0.1ms)
+2026-04-10 21:17:09 | INFO | [11b79a45-f738-43bc-90d3-3b7c6d44af9d] GET /health → 200 (0.19ms)
+2026-04-10 21:17:39 | INFO | [321f891f-fbe6-4b26-99ce-d6b538beda91] GET /health → 200 (0.84ms)
+2026-04-10 21:18:09 | INFO | [0dd92f02-0073-4b6e-a243-4e8e1647b4cc] GET /health → 200 (0.14ms)
+2026-04-10 21:18:40 | INFO | [373ebfb9-648d-4dc7-aaba-a34e8d22bc5e] GET /health → 200 (2.1ms)
+2026-04-10 21:19:10 | INFO | [3aab4821-adf4-4d98-a27e-15fa63a9026f] GET /health → 200 (0.19ms)
+2026-04-10 21:19:40 | INFO | [ce26964e-20b8-41e2-883f-44160d7f9aac] GET /health → 200 (0.23ms)
+2026-04-10 21:20:10 | INFO | [382d2197-9c05-4411-a7ae-d5e9ddb1bc57] GET /health → 200 (0.15ms)
+2026-04-10 21:20:40 | INFO | [8ac2e6f2-e25b-4beb-a084-0af90d194162] GET /health → 200 (0.11ms)
+2026-04-10 21:21:11 | INFO | [0c8cabed-cda5-4cac-8da8-9b68d8cb9f00] GET /health → 200 (0.2ms)
+2026-04-10 21:21:41 | INFO | [57648507-5bf2-41f3-8a91-bd7bd650a2f2] GET /health → 200 (0.1ms)
+2026-04-10 21:22:11 | INFO | [d65a016c-8c58-47bd-a6b5-a59e7cd571a8] GET /health → 200 (0.11ms)
+2026-04-10 21:22:41 | INFO | [7be0045b-ef8d-4cbe-9c61-1892555e59c8] GET /health → 200 (0.62ms)
+2026-04-10 21:23:11 | INFO | [3e9c6dea-2f3e-4f7f-8671-d2a52ee9d862] GET /health → 200 (0.16ms)
+2026-04-10 21:23:41 | INFO | [7d1eb114-286d-4e60-9861-ad595883b68e] GET /health → 200 (3.31ms)
+2026-04-10 21:24:12 | INFO | [f39120f2-88ac-40c5-9406-df6fa369ddfc] GET /health → 200 (0.25ms)
+2026-04-10 21:24:42 | INFO | [2fc3374c-4af5-4754-b1fe-3cd08228f084] GET /health → 200 (0.11ms)
+2026-04-10 21:25:12 | INFO | [22bc72b2-feb7-4672-97ad-976f890fe889] GET /health → 200 (0.11ms)
+2026-04-10 21:25:42 | INFO | [feeae724-5a31-4256-bce6-b2f88670662e] GET /health → 200 (0.1ms)
+2026-04-10 21:26:12 | INFO | [01966d90-8580-4375-95d8-052d91cd8f6f] GET /health → 200 (0.1ms)
+2026-04-10 21:26:42 | INFO | [96262141-77ac-4f98-8854-a01686164fa2] GET /health → 200 (0.11ms)
+2026-04-10 21:27:13 | INFO | [bde4ed67-86b2-4789-8966-ddbfc48bd62b] GET /health → 200 (0.22ms)
+2026-04-10 21:27:43 | INFO | [7bb12bfa-a737-4a17-a788-c63dfceec436] GET /health → 200 (3.5ms)
+2026-04-10 21:28:13 | INFO | [50fe5c2e-9b5b-49a1-9447-6b2ff8e2fc43] GET /health → 200 (0.15ms)
+2026-04-10 21:28:43 | INFO | [1f06d4d5-00f3-4ce8-8e29-3d2eff9e19af] GET /health → 200 (2.0ms)
+2026-04-10 21:29:32 | SUCCESS | Database tables initialized
+2026-04-10 21:29:32 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 21:29:32 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 21:29:35 | INFO | [0b0b7b36-0a54-421d-8e54-c0efbbaa8d64] GET /health → 200 (0.53ms)
+2026-04-10 21:30:05 | INFO | [29f7eea7-807f-45b9-b328-6762934e97cf] GET /health → 200 (6.62ms)
+2026-04-10 21:30:50 | SUCCESS | Database tables initialized
+2026-04-10 21:30:50 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 21:30:50 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 21:30:55 | INFO | [e7352ea0-44de-4d1e-9d74-a69e001713dc] GET /health → 200 (6.24ms)
+2026-04-10 21:31:26 | INFO | [bfe3aac1-2412-4911-a3a8-1f1767631814] GET /health → 200 (0.68ms)
+2026-04-10 21:31:56 | INFO | [0f956589-9ff9-4bf7-b279-5e1f8f9ee6e3] GET /health → 200 (0.17ms)
+2026-04-10 21:32:42 | SUCCESS | Database tables initialized
+2026-04-10 21:32:42 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 21:32:42 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 21:32:44 | INFO | [5a623279-ae74-4c02-9cc0-962d3e8a3047] GET /health → 200 (1.58ms)

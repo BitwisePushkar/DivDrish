@@ -35,7 +35,13 @@ redis_client = redis.from_url("redis://redis:6379/3", decode_responses=False)
 cors = CORS()
 
 # ─── Celery ──────────────────────────────────────────────
-celery = Celery("deeptrace")
+celery = Celery(
+    "deeptrace",
+    include=[
+        "app.tasks.email_tasks",
+        "app.tasks.detection_tasks",
+    ]
+)
 
 
 def init_celery(app):
