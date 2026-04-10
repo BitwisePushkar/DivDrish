@@ -24,13 +24,15 @@ from app.auth.controllers import (
     request_password_reset,
     verify_password_reset_otp,
     confirm_password_reset,
-    resend_registration_otp
+    resend_registration_otp,
+    update_user_profile,
+    update_user_avatar,
 )
 from app.auth.decorators import require_auth
 from app.auth.swagger_models import (
     RegisterBody, VerifyOTPBody, LoginBody, RefreshBody,
     PasswordResetRequestBody, PasswordResetVerifyBody, PasswordResetConfirmBody,
-    ResendOTPBody,
+    ResendOTPBody, ProfileUpdateBody,
     TokenResponse, MessageResponse, ResetTokenResponse, ErrorResponse, UserOut
 )
 from app.utils.responses import success_response, error_response
@@ -325,3 +327,93 @@ def me():
         return error_response("User not found", 404)
 
     return success_response(user)
+
+
+@auth_bp.put(
+    "/profile",
+    summary="Update Profile",
+    description="Update the authenticated user's display name or username.",
+    tags=[_auth_tag],
+    security=_security,
+    responses={
+        200: UserOut,
+        400: ErrorResponse,
+        401: ErrorResponse,
+    }
+)
+@require_auth
+def update_profile(body: ProfileUpdateBody):
+    """Update user profile (display_name, username)."""
+    current_user = getattr(g, "current_user", None)
+    if not current_user or not current_user.get("user_id"):
+        return error_response("Authentication required", 401)
+
+    json_data = request.get_json()
+    if not json_data:
+        return error_response("No data provided", 400)
+
+    try:
+        updated = update_user_profile(
+            user_id=current_user["user_id"],
+            display_name=json_data.get("display_name"),
+            username=json_data.get("username"),
+        )
+        return success_response(updated, message="Profile updated successfully")
+    except ValueError as e:
+        return error_response(str(e), 400)
+    except Exception as e:
+        logger.error(f"Profile update failed: {e}")
+        return error_response("Failed to update profile", 500)
+
+
+@auth_bp.post(
+    "/profile/avatar",
+    summary="Upload Profile Image",
+    description="Upload or replace the authenticated user's profile avatar. Accepts image/jpeg, image/png, image/webp. Max 5MB.",
+    tags=[_auth_tag],
+    security=_security,
+    responses={
+        200: UserOut,
+        400: ErrorResponse,
+        401: ErrorResponse,
+        422: ErrorResponse,
+    }
+)
+@require_auth
+def upload_avatar():
+    """Upload a profile avatar image to S3."""
+    current_user = getattr(g, "current_user", None)
+    if not current_user or not current_user.get("user_id"):
+        return error_response("Authentication required", 401)
+
+    if "file" not in request.files:
+        return error_response("No file provided. Use 'file' field.", 400)
+
+    file = request.files["file"]
+    allowed_types = ["image/jpeg", "image/png", "image/webp"]
+    if file.content_type not in allowed_types:
+        return error_response(
+            f"Unsupported image type: {file.content_type}. Allowed: {', '.join(allowed_types)}",
+            422
+        )
+
+    from app.utils.file_handler import save_upload, cleanup
+    try:
+        temp_path = save_upload(file, "image", max_mb=5)
+    except ValueError as e:
+        return error_response(str(e), 422)
+
+    try:
+        updated = update_user_avatar(
+            user_id=current_user["user_id"],
+            temp_path=temp_path,
+            original_filename=file.filename or "avatar.jpg",
+        )
+        return success_response(updated, message="Avatar updated successfully")
+    except ValueError as e:
+        return error_response(str(e), 400)
+    except Exception as e:
+        logger.error(f"Avatar upload failed: {e}")
+        return error_response("Failed to upload avatar", 500)
+    finally:
+        cleanup(temp_path)

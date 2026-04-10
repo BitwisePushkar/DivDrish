@@ -61,6 +61,8 @@ class User(db.Model):
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     username = db.Column(db.String(64), unique=True, nullable=False, index=True)
     email = db.Column(db.String(255), unique=True, nullable=False, index=True)
+    display_name = db.Column(db.String(100), nullable=True)
+    profile_image_url = db.Column(db.String(2048), nullable=True)
     password_hash = db.Column(db.String(256), nullable=False)
     api_key = db.Column(db.String(64), unique=True, nullable=True, index=True)
     is_active = db.Column(db.Boolean, default=True, nullable=False)
@@ -77,7 +79,9 @@ class User(db.Model):
         data = {
             "id": self.id,
             "username": self.username,
+            "display_name": self.display_name,
             "email": self.email,
+            "profile_image_url": self.profile_image_url,
             "is_active": self.is_active,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }
@@ -110,7 +114,9 @@ class CommunityPost(db.Model):
             "description": self.description,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "author": {
-                "username": self.user.username if self.user else "Unknown"
+                "username": self.user.username if self.user else "Unknown",
+                "display_name": self.user.display_name if self.user else None,
+                "profile_image_url": self.user.profile_image_url if self.user else None,
             },
             "analysis": {
                 "media_type": self.analysis.media_type,

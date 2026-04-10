@@ -272,6 +272,75 @@ def get_user_by_id(user_id: str) -> dict | None:
     return user.to_dict() if user else None
 
 
+def update_user_profile(user_id: str, display_name: str | None = None, username: str | None = None) -> dict:
+    """
+    Update user profile fields (display_name, username).
+    Raises ValueError on validation or uniqueness failures.
+    """
+    user = db.session.get(User, user_id)
+    if not user:
+        raise ValueError("User not found")
+
+    if username is not None:
+        username = username.strip()
+        if len(username) < 5 or len(username) > 50:
+            raise ValueError("Username must be between 5 and 50 characters")
+        # Check uniqueness (case-insensitive)
+        existing = User.query.filter(
+            func.lower(User.username) == func.lower(username),
+            User.id != user_id
+        ).first()
+        if existing:
+            raise ValueError("Username already taken")
+        user.username = username
+
+    if display_name is not None:
+        display_name = display_name.strip()
+        if len(display_name) > 100:
+            raise ValueError("Display name must be 100 characters or less")
+        user.display_name = display_name
+
+    try:
+        db.session.commit()
+        logger.info(f"Profile updated for user {user_id}")
+        return user.to_dict()
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Profile update failed: {e}")
+        raise ValueError("Failed to update profile")
+
+
+def update_user_avatar(user_id: str, temp_path: str, original_filename: str) -> dict:
+    """
+    Upload a profile image to S3 and update the user's profile_image_url.
+    """
+    from app.utils.s3_service import s3_service
+
+    user = db.session.get(User, user_id)
+    if not user:
+        raise ValueError("User not found")
+
+    # Build S3 object key: avatars/{user_id}/{filename}
+    import os
+    ext = os.path.splitext(original_filename)[1] or ".jpg"
+    object_name = f"avatars/{user_id}/profile{ext}"
+
+    media_url = s3_service.upload_file(temp_path, object_name)
+    if not media_url:
+        raise ValueError("Failed to upload avatar image. Check S3 configuration.")
+
+    user.profile_image_url = media_url
+
+    try:
+        db.session.commit()
+        logger.info(f"Avatar updated for user {user_id}: {media_url}")
+        return user.to_dict()
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Avatar update failed: {e}")
+        raise ValueError("Failed to save avatar URL")
+
+
 # ─── Internal Helpers ─────────────────────────────────────
 
 def _generate_auth_packet(user: User) -> dict:

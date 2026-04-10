@@ -112,12 +112,29 @@ class ResendOTPBody(BaseModel):
     }
 
 
+class ProfileUpdateBody(BaseModel):
+    """Body for PUT /auth/profile — update display name or username"""
+    display_name: Optional[str] = Field(None, max_length=100, description="User's display name")
+    username: Optional[str] = Field(None, min_length=5, max_length=50, description="New username (must be unique)")
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "display_name": "John Doe",
+                "username": "johndoe_new"
+            }
+        }
+    }
+
+
 # ─── Response Models ──────────────────────────────────────────────
 
 class UserOut(BaseModel):
     id: str
     username: str
+    display_name: Optional[str] = None
     email: str
+    profile_image_url: Optional[str] = None
     api_key: Optional[str] = None
     is_active: bool
     created_at: Optional[str] = None
@@ -146,3 +163,4 @@ class ErrorResponse(BaseModel):
     error: str
     status_code: int
     detail: Optional[object] = None
+
