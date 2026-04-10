@@ -3,6 +3,9 @@ FROM python:3.13-slim AS builder
 
 WORKDIR /build
 
+# Fix pip SSL issues (corporate proxy / self-signed certs)
+RUN pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org download.pytorch.org"
+
 # Install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \

@@ -27,8 +27,10 @@ limiter = Limiter(
 # ─── Mail ────────────────────────────────────────────────
 mail = Mail()
 
-# ─── Redis (for OTPs/lockout) ────────────────────────────
-redis_client = redis.Redis()
+# ─── Redis (for OTPs/lockout) — URL set in app factory ───
+# Default points to the Docker service name; overridden by REDIS_URL env var
+redis_client = redis.from_url("redis://redis:6379/3", decode_responses=False)
+
 # ─── CORS ────────────────────────────────────────────────
 cors = CORS()
 

@@ -5,12 +5,35 @@ Creates and configures the Flask app with all extensions,
 blueprints, middleware, and error handlers.
 """
 import os
-from flask import Flask, jsonify
+from flask import jsonify
+from flask_openapi3 import OpenAPI, Info, SecurityScheme
+
 from app.config.settings import get_config
 from app.extensions import db, ma, limiter, cors, init_celery, mail, redis_client
 from app.middleware.request_middleware import register_middleware
 from app.utils.logger import logger
-import redis
+
+# ─── OpenAPI / Swagger metadata ──────────────────────────
+_info = Info(
+    title="DivDrish — DeepTrace ML Engine",
+    version="2.0.0",
+    description=(
+        "## DeepTrace Authentication API\n\n"
+        "Multi-step registration with OTP verification, dual-identifier login, "
+        "and secure password reset.\n\n"
+        "### Authentication\n"
+        "Use the `Authorization: Bearer <access_token>` header for protected endpoints."
+    ),
+)
+
+_security_schemes = {
+    "BearerAuth": SecurityScheme(
+        type="http",
+        scheme="bearer",
+        bearerFormat="JWT",
+    )
+}
+
 
 
 def create_app(config_override=None):
@@ -20,7 +43,7 @@ def create_app(config_override=None):
     Args:
         config_override: Optional config object to use instead of env-based config.
     """
-    app = Flask(__name__)
+    app = OpenAPI(__name__, info=_info, security_schemes=_security_schemes)
 
     # ─── Load configuration ──────────────────────────────
     if config_override:
@@ -49,9 +72,12 @@ def create_app(config_override=None):
 
     mail.init_app(app)
 
-    # ─── Initialize Redis client ─────────────────────────
+    # ─── Reconfigure Redis client with app config URL ─────
+    import redis as _redis
     redis_url = app.config.get("REDIS_URL", "redis://redis:6379/3")
-    redis_client.connection_pool = redis.ConnectionPool.from_url(redis_url)
+    redis_client.connection_pool = _redis.ConnectionPool.from_url(
+        redis_url, decode_responses=False
+    )
     # ─── Initialize Celery ───────────────────────────────
     init_celery(app)
 

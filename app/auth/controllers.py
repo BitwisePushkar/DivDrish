@@ -4,7 +4,6 @@ Auth business logic — registration, login, token generation, and security.
 import uuid
 import json
 import random
-import time
 from datetime import datetime, timezone, timedelta
 
 from jose import jwt
@@ -52,12 +51,12 @@ def register_user(username: str, email: str, password: str) -> dict:
         json.dumps({"otp": otp, "data": registration_data})
     )
     
+    # Increment throttle counter BEFORE sending email
+    _increment_throttle(email, "reg_otp")
+
     # 4. Send Email
     if not send_otp_email(email, otp, "registration"):
         raise RuntimeError("Failed to send verification email")
-
-    # Increment throttle counter
-    _increment_throttle(email, "reg_otp")
     
     return {"message": "Verification code sent to email", "email": email}
 
@@ -129,11 +128,13 @@ def request_password_reset(email: str) -> dict:
 
     otp = f"{random.randint(100000, 999999)}"
     redis_client.setex(f"otp:reset:{email}", OTP_EXPIRY, otp)
-    
+
+    # Increment throttle counter BEFORE sending email
+    _increment_throttle(email, "reset_otp")
+
     if not send_otp_email(email, otp, "password_reset"):
         raise RuntimeError("Failed to send reset email")
 
-    _increment_throttle(email, "reset_otp")
     return {"message": "Reset code sent to email"}
 
 
