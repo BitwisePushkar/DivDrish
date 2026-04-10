@@ -6,22 +6,28 @@ LABEL description="DeepTrace Celery Worker"
 
 USER root
 
-# Fix pip SSL issues (corporate proxy / self-signed certs)
+# Fix pip SSL issues (optional but fine)
 RUN pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org download.pytorch.org"
 
 WORKDIR /app
 
-# Install requirements (ensures 'celery' is in PATH)
+# Install requirements (ensures celery installed)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code
+# Copy app
 COPY app/ ./app/
 COPY wsgi.py .
-RUN chown -R deeptrace:deeptrace /app
+
+# ✅ CRITICAL FIX (same as Flask)
+RUN mkdir -p /app/logs /app/weights /app/uploads \
+     && touch /app/logs/deeptrace.log \
+     && chown -R deeptrace:deeptrace /app \
+     && chmod -R 755 /app \
+     && chmod 664 /app/logs/deeptrace.log
 
 USER deeptrace
 
-# Celery worker command
-CMD ["celery", "-A", "app.extensions.celery", "worker", \
+# Celery worker
+CMD ["celery", "-A", "wsgi.celery", "worker", \
      "--loglevel=info", "--concurrency=2", "--max-tasks-per-child=50"]

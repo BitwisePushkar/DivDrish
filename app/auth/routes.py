@@ -68,7 +68,7 @@ _resend_otp_schema = ResendOTPSchema()
         429: ErrorResponse,
     }
 )
-@limiter.limit("5 per minute")
+@limiter.limit("30 per minute")
 def register(body: RegisterBody):
     """Initial registration — sends OTP."""
     json_data = request.get_json()
@@ -100,7 +100,7 @@ def register(body: RegisterBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("10 per minute")
+@limiter.limit("60 per minute")
 def verify_otp(body: VerifyOTPBody):
     """Verify registration OTP and create account."""
     json_data = request.get_json()
@@ -132,7 +132,7 @@ def verify_otp(body: VerifyOTPBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("3 per minute")
+@limiter.limit("20 per minute")
 def resend_otp(body: ResendOTPBody):
     """Resend registration OTP."""
     json_data = request.get_json()
@@ -162,7 +162,7 @@ def resend_otp(body: ResendOTPBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("10 per minute")
+@limiter.limit("60 per minute")
 def login(body: LoginBody):
     """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
@@ -193,7 +193,7 @@ def login(body: LoginBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("3 per hour")
+@limiter.limit("20 per hour")
 def reset_request(body: PasswordResetRequestBody):
     """Request a password reset OTP."""
     json_data = request.get_json()
@@ -223,7 +223,7 @@ def reset_request(body: PasswordResetRequestBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("5 per minute")
+@limiter.limit("30 per minute")
 def reset_verify(body: PasswordResetVerifyBody):
     """Verify reset OTP and get reset token."""
     json_data = request.get_json()

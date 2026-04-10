@@ -1186,3 +1186,173 @@ swagger.static: /openapi/swagger/<path:filename>
 swagger.swagger: /openapi/swagger
 2026-04-10 21:33:44 | INFO | DeepTrace ML Engine v2.0.0 started
 2026-04-10 21:33:48 | INFO | [dd9f1999-1e57-4bf1-914e-5473dcd0efb5] GET /health → 200 (0.69ms)
+2026-04-10 21:34:18 | INFO | [c2d23671-4f4f-410c-b347-06d15d9be38a] GET /health → 200 (1.32ms)
+2026-04-10 21:34:48 | INFO | [d3da1de9-4729-4002-8c87-ba56f362b466] GET /health → 200 (0.36ms)
+2026-04-10 21:35:19 | INFO | [71eb1ef8-587d-4e5b-8c6c-303e82a247b1] GET /health → 200 (0.28ms)
+2026-04-10 21:35:49 | INFO | [d9f4c476-5743-47cb-9085-a4000106177d] GET /health → 200 (2.49ms)
+2026-04-10 21:36:19 | INFO | [48dee562-fb55-4459-a6c3-fabf0613dcb8] GET /health → 200 (0.16ms)
+2026-04-10 21:36:49 | INFO | [1fe27a8f-7e1d-4f27-8516-77c85e01db82] GET /health → 200 (0.13ms)
+2026-04-10 21:37:20 | INFO | [a696ff9b-2ae6-46c3-b2e0-7d66bf9f9f67] GET /health → 200 (0.28ms)
+2026-04-10 21:37:50 | INFO | [02b2a90e-ebac-467c-b004-bf05ef8233c0] GET /health → 200 (0.23ms)
+2026-04-10 21:38:20 | INFO | [008d14a1-a338-4149-9491-c956406790bd] GET /health → 200 (0.23ms)
+2026-04-10 21:38:50 | INFO | [353daea0-f0cc-4a6d-b10c-cc0afebbc523] GET /health → 200 (0.28ms)
+2026-04-10 21:39:20 | INFO | [aba20442-e528-4726-8b08-af978f0eb923] GET /health → 200 (0.18ms)
+2026-04-10 21:39:51 | INFO | [f93dc18d-8577-43ce-a99f-1c8a6373d595] GET /health → 200 (18.69ms)
+2026-04-10 21:40:21 | INFO | [791ed099-429a-44bc-b020-f5c89ef12941] GET /health → 200 (0.24ms)
+2026-04-10 21:40:52 | INFO | [273c95b0-2050-41fe-9f00-429322d4c23b] GET /health → 200 (0.15ms)
+2026-04-10 21:41:22 | INFO | [04c087a3-88e4-49f6-b8a5-54239da0eacb] GET /health → 200 (0.22ms)
+2026-04-10 21:41:52 | INFO | [dfd30f47-48f5-430b-9de2-358da5249f32] GET /health → 200 (0.17ms)
+2026-04-10 21:42:22 | INFO | [9e8fd7bc-6c5c-4d97-b062-dd37768389a5] GET /health → 200 (0.1ms)
+2026-04-10 21:42:52 | INFO | [982ca094-909c-4fc2-992c-8c9529d74b6e] GET /health → 200 (0.3ms)
+2026-04-10 21:43:23 | INFO | [edabfb50-e79e-4f98-8b0a-4891be3bf44d] GET /health → 200 (2.93ms)
+2026-04-10 21:43:53 | INFO | [b4724e5b-ee85-42f2-a0b6-17ff1cf62302] GET /health → 200 (0.31ms)
+2026-04-10 21:44:23 | INFO | [1c02b6ef-f9fd-440b-b5bb-34b8744b7372] GET /health → 200 (1.11ms)
+2026-04-10 21:44:53 | INFO | [1943c73e-fe40-4f38-94a3-27ce0f73b1ff] GET /health → 200 (0.63ms)
+2026-04-10 21:45:23 | INFO | [dc7564cc-6e0f-4760-a088-ea9e94a5ecaa] GET /health → 200 (0.16ms)
+2026-04-10 21:45:53 | INFO | [4e3fa17e-6ffe-49e7-b981-9daac772097e] GET /health → 200 (0.18ms)
+2026-04-10 21:46:24 | INFO | [993e13de-6043-450b-8bbb-df095afc807a] GET /health → 200 (5.05ms)
+2026-04-10 21:46:54 | INFO | [f15251eb-4c9d-45c1-8811-e61d144224a8] GET /health → 200 (0.6ms)
+2026-04-10 21:47:24 | INFO | [cadf46a3-4841-4068-8c4d-4f9117af8a04] GET /health → 200 (0.53ms)
+2026-04-10 21:47:54 | INFO | [7e7b05ac-ef4a-4735-a1c2-3feb91da27d8] GET /health → 200 (0.22ms)
+2026-04-10 21:48:25 | INFO | [0ec7a20d-0c71-426b-a5a6-42b8f807ac3d] GET /health → 200 (0.29ms)
+2026-04-10 21:48:55 | INFO | [cc4f98dc-f65a-4671-b198-33ece0eef936] GET /health → 200 (3.54ms)
+2026-04-10 21:49:25 | INFO | [c5425fa2-0c59-4fed-a068-b514ac97c397] GET /health → 200 (0.24ms)
+2026-04-10 21:49:55 | INFO | [e243658d-571c-45f8-8e8c-c504895451bd] GET /health → 200 (0.75ms)
+2026-04-10 21:50:26 | INFO | [acddb895-35ce-4a08-9547-22f8c3663de9] GET /health → 200 (0.29ms)
+2026-04-10 21:50:56 | INFO | [6ee45d27-4ac1-4384-842d-cbfbe0e671a2] GET /health → 200 (0.23ms)
+2026-04-10 21:51:26 | INFO | [b8fa70e5-0ab6-4e9e-a5bf-2756ee641ff6] GET /health → 200 (0.32ms)
+2026-04-10 21:51:56 | INFO | [1787961c-2c62-487d-b0bd-c591dbd0abe8] GET /health → 200 (0.23ms)
+2026-04-10 21:52:26 | INFO | [555e5500-86e6-4b90-a199-48fdffe1bf2e] GET /health → 200 (1.63ms)
+2026-04-10 21:52:57 | INFO | [8059d70b-8265-4fa5-a484-49b3cab45ee0] GET /health → 200 (0.73ms)
+2026-04-10 21:53:27 | INFO | [cdee9dbf-66ff-496e-bd6c-d0862fdae688] GET /health → 200 (0.28ms)
+2026-04-10 21:53:57 | INFO | [26452c34-f211-4c99-a425-71416edbd9a5] GET /health → 200 (0.25ms)
+2026-04-10 21:54:28 | INFO | [845887e1-ee6f-4bd9-b55b-0d8b7471a2b8] GET /health → 200 (0.83ms)
+2026-04-10 21:54:58 | INFO | [fae606fb-69de-4238-b92c-9fd8849bd3da] GET /health → 200 (0.9ms)
+2026-04-10 21:55:28 | INFO | [745264f0-48f8-4fd7-95da-b3471addf824] GET /health → 200 (0.21ms)
+2026-04-10 21:55:58 | INFO | [d418702c-0103-42e7-99df-7ed8a65c6585] GET /health → 200 (0.35ms)
+2026-04-10 21:56:28 | INFO | [767c4724-e7b4-49c5-b649-c859fcb58fa6] GET /health → 200 (3.48ms)
+2026-04-10 21:56:59 | INFO | [13f4c55b-a0eb-451a-81df-c12b31cbed4a] GET /health → 200 (0.29ms)
+2026-04-10 21:57:29 | INFO | [14eafcd3-fe7d-44b8-afb4-d94a4aab7c88] GET /health → 200 (0.33ms)
+2026-04-10 21:57:59 | INFO | [0a830d0c-7053-4cb2-8594-4ea39afa4287] GET /health → 200 (0.2ms)
+2026-04-10 21:58:29 | SUCCESS | Database tables initialized
+2026-04-10 21:58:29 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 21:58:29 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 21:58:33 | INFO | [e3b6386e-380a-422c-a8b6-aef4a6fa59e8] GET /health → 200 (1.44ms)
+2026-04-10 21:59:03 | INFO | [44ef7fea-9a01-4acb-a709-d41e7afbca62] GET /health → 200 (0.89ms)
+2026-04-10 21:59:34 | INFO | [8a411e46-618a-4dd4-b620-34da133028c0] GET /health → 200 (0.5ms)
+2026-04-10 22:00:04 | INFO | [10d55b52-a468-44ef-84da-d2f36fa2f05b] GET /health → 200 (1.03ms)
+2026-04-10 22:00:34 | INFO | [b8cddb25-cae7-44b1-b488-46a7d075533f] GET /health → 200 (0.2ms)
+2026-04-10 22:00:44 | INFO | [51441208-f383-4ed0-bd41-d50cef6ddb29] POST /auth/register → 201 (1965.09ms)
+2026-04-10 22:01:04 | INFO | [091993f2-fd24-454c-b650-d6ea475005f4] GET /health → 200 (1.59ms)
+2026-04-10 22:01:35 | INFO | [a41c36eb-e38b-4336-8701-0fa09679e1ad] GET /health → 200 (0.7ms)
+2026-04-10 22:02:05 | INFO | [8d8b23eb-a2e5-4256-9bb1-0dc0b6e89291] GET /health → 200 (0.8ms)
+2026-04-10 22:02:36 | SUCCESS | Database tables initialized
+2026-04-10 22:02:36 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 22:02:36 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 22:02:39 | INFO | [30d38d01-afe4-469f-be40-66700357e38e] GET /health → 200 (1.01ms)
+2026-04-10 22:02:50 | INFO | [75958fbc-b062-495f-9bc5-e32a10321cee] POST /auth/register → 201 (1060.16ms)
+2026-04-10 22:02:50 | WARNING | Retrying email task for ayurajput249@gmail.com due to: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2026-04-10 22:03:10 | INFO | [7990e8ed-7905-47ca-bd0e-fec3920a12ec] GET /health → 200 (1.63ms)
+2026-04-10 22:03:37 | WARNING | Retrying email task for ayurajput249@gmail.com due to: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2026-04-10 22:03:37 | INFO | [aacad7d0-61a6-453f-8322-919312d715cc] POST /auth/register → 201 (769.51ms)
+2026-04-10 22:03:40 | INFO | [1beb5718-c29b-4e56-9716-db9b04eca8ed] GET /health → 200 (0.38ms)
+2026-04-10 22:03:50 | WARNING | Retrying email task for ayurajput249@gmail.com due to: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2026-04-10 22:04:10 | INFO | [688db599-16f5-4bcf-8361-7a89a8ee1f59] GET /health → 200 (0.29ms)
+2026-04-10 22:04:37 | WARNING | Retrying email task for ayurajput249@gmail.com due to: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2026-04-10 22:04:40 | INFO | [11149328-2f3e-4769-bbcc-f50ef2f4050e] GET /health → 200 (0.23ms)
+2026-04-10 22:04:50 | WARNING | Retrying email task for ayurajput249@gmail.com due to: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2026-04-10 22:05:10 | INFO | [d4366e6d-7dc7-42bf-ae8b-f66d6055deed] GET /health → 200 (5.97ms)

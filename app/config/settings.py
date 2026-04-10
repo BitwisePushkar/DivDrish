@@ -79,7 +79,7 @@ class BaseConfig:
     MAX_FRAMES = int(os.getenv("MAX_FRAMES") or "60")
 
     # ─── Rate limiting ───────────────────────────────────
-    RATE_LIMIT = os.getenv("RATE_LIMIT", "30/minute")
+    RATE_LIMIT = os.getenv("RATE_LIMIT", "200/minute")
     RATELIMIT_STORAGE_URI = os.getenv("RATELIMIT_STORAGE_URI", "redis://localhost:6379/2")
     REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/3")
 
