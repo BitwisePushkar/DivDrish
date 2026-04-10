@@ -15,7 +15,7 @@ _record_schema = AnalysisRecordSchema()
 _stats_schema = AnalysisStatsSchema()
 
 
-@history_bp.route("", methods=["GET"])
+@history_bp.get("", tags=[_tag], summary="List analysis history")
 @require_auth
 def list_history():
     """Retrieve paginated analysis history with optional filters."""
@@ -41,7 +41,7 @@ def list_history():
         return error_response(f"Failed to retrieve history: {str(e)}", 500)
 
 
-@history_bp.route("/stats", methods=["GET"])
+@history_bp.get("/stats", tags=[_tag], summary="Get overall analysis statistics")
 @require_auth
 def stats():
     """Aggregate statistics across all analysis records."""
@@ -53,7 +53,7 @@ def stats():
         return error_response(f"Failed to retrieve stats: {str(e)}", 500)
 
 
-@history_bp.route("/<record_id>", methods=["GET"])
+@history_bp.get("/<record_id>", tags=[_tag], summary="Get single analysis record details")
 @require_auth
 def get_record(record_id):
     """Get full details of a single analysis record."""
@@ -63,7 +63,7 @@ def get_record(record_id):
     return success_response(_record_schema.dump(record))
 
 
-@history_bp.route("/<record_id>", methods=["DELETE"])
+@history_bp.delete("/<record_id>", tags=[_tag], summary="Delete an analysis record")
 @require_auth
 def delete_record(record_id):
     """Delete a single analysis record."""

@@ -12,7 +12,8 @@ from app.auth.schemas import (
     RefreshSchema,
     UserSchema,
     PasswordResetRequestSchema,
-    PasswordResetConfirmSchema
+    PasswordResetConfirmSchema,
+    ResendOTPSchema
 )
 from app.auth.controllers import (
     register_user,
@@ -22,12 +23,14 @@ from app.auth.controllers import (
     get_user_by_id,
     request_password_reset,
     verify_password_reset_otp,
-    confirm_password_reset
+    confirm_password_reset,
+    resend_registration_otp
 )
 from app.auth.decorators import require_auth
 from app.auth.swagger_models import (
     RegisterBody, VerifyOTPBody, LoginBody, RefreshBody,
     PasswordResetRequestBody, PasswordResetVerifyBody, PasswordResetConfirmBody,
+    ResendOTPBody,
     TokenResponse, MessageResponse, ResetTokenResponse, ErrorResponse, UserOut
 )
 from app.utils.responses import success_response, error_response
@@ -62,7 +65,7 @@ _reset_confirm_schema = PasswordResetConfirmSchema()
         429: ErrorResponse,
     }
 )
-@limiter.limit("5 per hour")
+@limiter.limit("500000 per hour")
 def register(body: RegisterBody):
     """Initial registration — sends OTP."""
     json_data = request.get_json()
@@ -94,7 +97,7 @@ def register(body: RegisterBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("10 per minute")
+@limiter.limit("10000000 per minute")
 def verify_otp(body: VerifyOTPBody):
     """Verify registration OTP and create account."""
     json_data = request.get_json()
@@ -125,7 +128,7 @@ def verify_otp(body: VerifyOTPBody):
         401: ErrorResponse,
     }
 )
-@limiter.limit("10 per minute")
+@limiter.limit("10000000 per minute")
 def login(body: LoginBody):
     """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
@@ -156,7 +159,7 @@ def login(body: LoginBody):
         429: ErrorResponse,
     }
 )
-@limiter.limit("3 per hour")
+@limiter.limit("30000000 per hour")
 def reset_request(body: PasswordResetRequestBody):
     """Request a password reset OTP."""
     json_data = request.get_json()
@@ -185,7 +188,7 @@ def reset_request(body: PasswordResetRequestBody):
         401: ErrorResponse,
     }
 )
-@limiter.limit("10 per minute")
+@limiter.limit("10000000 per minute")
 def reset_verify(body: PasswordResetVerifyBody):
     """Verify reset OTP and get reset token."""
     json_data = request.get_json()

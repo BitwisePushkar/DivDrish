@@ -15,14 +15,17 @@ def detect_image_task(self, file_path: str, filename: str):
     """Async image detection task."""
     try:
         result = process_image(file_path, filename)
-        # Persist to DB within task
         _save_result(result)
+        cleanup(file_path) # Successful completion
         return result
     except Exception as exc:
-        logger.error(f"Image detection task failed: {exc}")
-        raise self.retry(exc=exc, countdown=5)
-    finally:
-        cleanup(file_path)
+        if self.request.retries >= self.max_retries:
+            logger.error(f"Image detection task failed after max retries: {exc}")
+            cleanup(file_path) # Final failure
+        else:
+            logger.warning(f"Retrying image detection task due to: {exc}")
+            raise self.retry(exc=exc, countdown=5)
+        return {"error": str(exc), "status": "failed"}
 
 
 @celery.task(bind=True, name="detect_video_task", max_retries=2)
@@ -31,12 +34,16 @@ def detect_video_task(self, file_path: str, filename: str):
     try:
         result = process_video(file_path, filename)
         _save_result(result)
+        cleanup(file_path)
         return result
     except Exception as exc:
-        logger.error(f"Video detection task failed: {exc}")
-        raise self.retry(exc=exc, countdown=10)
-    finally:
-        cleanup(file_path)
+        if self.request.retries >= self.max_retries:
+            logger.error(f"Video detection task failed after max retries: {exc}")
+            cleanup(file_path)
+        else:
+            logger.warning(f"Retrying video detection task due to: {exc}")
+            raise self.retry(exc=exc, countdown=10)
+        return {"error": str(exc), "status": "failed"}
 
 
 @celery.task(bind=True, name="detect_audio_task", max_retries=2)
@@ -45,12 +52,16 @@ def detect_audio_task(self, file_path: str, filename: str):
     try:
         result = process_audio(file_path, filename)
         _save_result(result)
+        cleanup(file_path)
         return result
     except Exception as exc:
-        logger.error(f"Audio detection task failed: {exc}")
-        raise self.retry(exc=exc, countdown=5)
-    finally:
-        cleanup(file_path)
+        if self.request.retries >= self.max_retries:
+            logger.error(f"Audio detection task failed after max retries: {exc}")
+            cleanup(file_path)
+        else:
+            logger.warning(f"Retrying audio detection task due to: {exc}")
+            raise self.retry(exc=exc, countdown=5)
+        return {"error": str(exc), "status": "failed"}
 
 
 @celery.task(name="detect_batch_task")
@@ -67,6 +78,7 @@ def detect_batch_task(items: list):
     results = []
 
     for item in items:
+        file_path = item.get("file_path", "")
         try:
             processor = processors.get(item["media_type"])
             if not processor:
@@ -76,9 +88,10 @@ def detect_batch_task(items: list):
                     "result": None,
                     "error": f"Unknown media type: {item['media_type']}",
                 })
+                cleanup(file_path)
                 continue
 
-            result = processor(item["file_path"], item["filename"])
+            result = processor(file_path, item["filename"])
             _save_result(result)
             results.append({
                 "filename": item["filename"],
@@ -86,6 +99,7 @@ def detect_batch_task(items: list):
                 "result": result,
                 "error": None,
             })
+            cleanup(file_path) # Processed successfully
         except Exception as e:
             logger.error(f"Batch item failed ({item['filename']}): {e}")
             results.append({
@@ -94,8 +108,7 @@ def detect_batch_task(items: list):
                 "result": None,
                 "error": str(e),
             })
-        finally:
-            cleanup(item.get("file_path", ""))
+            cleanup(file_path) # Failed, but cleaning up as batch items don't currently retry
 
     return results
 

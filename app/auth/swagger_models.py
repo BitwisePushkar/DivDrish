@@ -103,6 +103,15 @@ class RefreshBody(BaseModel):
     }
 
 
+class ResendOTPBody(BaseModel):
+    """Body for POST /auth/resend-otp"""
+    email: str
+
+    model_config = {
+        "json_schema_extra": {"example": {"email": "john@example.com"}}
+    }
+
+
 # ─── Response Models ──────────────────────────────────────────────
 
 class UserOut(BaseModel):

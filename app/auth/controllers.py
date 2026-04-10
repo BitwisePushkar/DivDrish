@@ -59,15 +59,45 @@ def register_user(username: str, email: str, password: str) -> dict:
     # Increment throttle counter BEFORE sending email
     _increment_throttle(email, "reg_otp")
 
-    # 4. Send Email
-    if not send_otp_email(email, otp, "registration"):
-        # Cleanup on failure so user isn't penalized for system error
-        redis_client.delete(f"otp:reg:{email}")
-        throttle_key = f"throttle:reg_otp:{email}"
-        redis_client.decr(throttle_key)
-        raise RuntimeError("Failed to send verification email. Please try again.")
+    # 4. Send Email (Asynchronous)
+    from app.tasks.email_tasks import send_otp_email_task
+    send_otp_email_task.delay(email, otp, "registration")
     
     return {"message": "Verification code sent to email", "email": email}
+
+
+def resend_registration_otp(email: str) -> dict:
+    """
+    Resend registration OTP for an in-progress registration.
+    Regenerates a new code and resets the expiry timer.
+    """
+    # 1. Check if reg data exists in Redis
+    cached = redis_client.get(f"otp:reg:{email}")
+    if not cached:
+        raise ValueError("No registration in progress for this email. Please register again.")
+
+    # 2. Check throttling
+    if _is_throttled(email, "reg_otp"):
+        raise ValueError("Too many resend attempts. Please try again later.")
+
+    # 3. Regenerate OTP and update cache
+    payload = json.loads(cached)
+    new_otp = f"{random.randint(100000, 999999)}"
+    payload["otp"] = new_otp
+    
+    redis_client.setex(
+        f"otp:reg:{email}", 
+        OTP_EXPIRY, 
+        json.dumps(payload)
+    )
+    
+    _increment_throttle(email, "reg_otp")
+
+    # 4. Send Email (Asynchronous)
+    from app.tasks.email_tasks import send_otp_email_task
+    send_otp_email_task.delay(email, new_otp, "registration")
+    
+    return {"message": "New verification code sent to email", "email": email}
 
 
 def verify_registration_otp(email: str, otp: str) -> dict:
@@ -142,14 +172,11 @@ def request_password_reset(email: str) -> dict:
     # Increment throttle counter BEFORE sending email
     _increment_throttle(email, "reset_otp")
 
-    if not send_otp_email(email, otp, "password_reset"):
-        # Cleanup
-        redis_client.delete(f"otp:reset:{email}")
-        throttle_key = f"throttle:reset_otp:{email}"
-        redis_client.decr(throttle_key)
-        raise RuntimeError("Failed to send reset email. Please try again.")
-
-    return {"message": "Reset code sent to email"}
+    # 4. Send Email (Asynchronous)
+    from app.tasks.email_tasks import send_otp_email_task
+    send_otp_email_task.delay(email, otp, "registration")
+    
+    return {"message": "Verification code sent to email", "email": email}
 
 
 def verify_password_reset_otp(email: str, otp: str) -> dict:

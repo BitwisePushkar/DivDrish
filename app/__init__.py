@@ -43,19 +43,20 @@ def create_app(config_override=None):
     Args:
         config_override: Optional config object to use instead of env-based config.
     """
-    app = OpenAPI(
-        __name__, 
-        info=_info, 
-        security_schemes=_security_schemes,
-        doc_prefix="/openapi"
-    )
-
+    app = OpenAPI(__name__, info=_info, security_schemes=_security_schemes)
+    
     # ─── Load configuration ──────────────────────────────
     if config_override:
         app.config.from_object(config_override)
     else:
         config = get_config()
         app.config.from_object(config)
+
+    # Configure Swagger UI path
+    app.config["OPENAPI_VERSION"] = "3.0.3"
+    app.config["OPENAPI_URL_PREFIX"] = "/openapi"
+    app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger"
+    app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
     # ─── Ensure directories exist ────────────────────────
     os.makedirs("logs", exist_ok=True)
@@ -111,7 +112,7 @@ def create_app(config_override=None):
         return jsonify({
             "service": app.config.get("APP_NAME", "DeepTrace ML Engine"),
             "version": app.config.get("VERSION", "2.0.0"),
-            "docs": "/health",
+            "docs": "/openapi/swagger",
             "endpoints": {
                 "health": "GET /health",
                 "auth": "POST /auth/register, /auth/login, /auth/refresh",
@@ -121,13 +122,21 @@ def create_app(config_override=None):
             },
         })
 
-    # ─── Create tables on startup ────────────────────────
+    # ─── Create tables on startup (with Retry) ───────────
+    import time
     with app.app_context():
-        try:
-            db.create_all()
-            logger.success("Database tables initialized")
-        except Exception as e:
-            logger.error(f"Database initialization failed: {e}")
+        max_retries = 5
+        for attempt in range(max_retries):
+            try:
+                db.create_all()
+                logger.success("Database tables initialized")
+                break
+            except Exception as e:
+                if attempt == max_retries - 1:
+                    logger.error(f"Database initialization failed after {max_retries} attempts: {e}")
+                else:
+                    logger.warning(f"Database not ready (attempt {attempt+1}/{max_retries}). Retrying in 5s...")
+                    time.sleep(5)
 
     logger.info(f"DeepTrace ML Engine v{app.config.get('VERSION', '2.0.0')} started")
 

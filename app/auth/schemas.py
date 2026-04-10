@@ -52,6 +52,11 @@ class RefreshSchema(Schema):
     refresh_token = fields.String(required=True)
 
 
+class ResendOTPSchema(Schema):
+    """Schema for requesting an OTP resend."""
+    email = fields.Email(required=True)
+
+
 class UserSchema(Schema):
     """Schema for user info response."""
     id = fields.String()

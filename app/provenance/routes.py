@@ -14,7 +14,7 @@ provenance_bp = APIBlueprint("provenance", __name__, url_prefix="/provenance")
 _provenance_schema = ProvenanceReportSchema()
 
 
-@provenance_bp.route("/analyze", methods=["POST"])
+@provenance_bp.post("/analyze", tags=[_tag], summary="Analyze file provenance and metadata")
 @require_auth
 def analyze():
     """

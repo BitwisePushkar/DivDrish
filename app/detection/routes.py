@@ -64,7 +64,7 @@ def _get_max_mb(media_type: str) -> int:
 
 # ─── Auto-detect endpoint ────────────────────────────────
 
-@detection_bp.route("/detect", methods=["POST"])
+@detection_bp.post("/detect", tags=[_tag], summary="Auto-detect media type and analyze")
 @require_auth
 def detect_auto():
     """Auto-detect media type and route to appropriate detector."""
@@ -89,7 +89,7 @@ def detect_auto():
 
 # ─── Image endpoint ──────────────────────────────────────
 
-@detection_bp.route("/detect/image", methods=["POST"])
+@detection_bp.post("/detect/image", tags=[_tag], summary="Analyze image for deepfakes")
 @require_auth
 def detect_image():
     """Detect deepfake in uploaded image."""
@@ -118,7 +118,7 @@ def _handle_image(file):
 
 # ─── Video endpoint ──────────────────────────────────────
 
-@detection_bp.route("/detect/video", methods=["POST"])
+@detection_bp.post("/detect/video", tags=[_tag], summary="Analyze video for deepfakes")
 @require_auth
 def detect_video():
     """Detect deepfake in uploaded video."""
@@ -147,7 +147,7 @@ def _handle_video(file):
 
 # ─── Audio endpoint ──────────────────────────────────────
 
-@detection_bp.route("/detect/audio", methods=["POST"])
+@detection_bp.post("/detect/audio", tags=[_tag], summary="Analyze audio for deepfakes")
 @require_auth
 def detect_audio():
     """Detect deepfake in uploaded audio."""
@@ -176,7 +176,7 @@ def _handle_audio(file):
 
 # ─── Batch endpoint ──────────────────────────────────────
 
-@detection_bp.route("/detect/batch", methods=["POST"])
+@detection_bp.post("/detect/batch", tags=[_tag], summary="Batch analysis of multiple files")
 @require_auth
 def detect_batch():
     """Analyze up to 10 files in a single request."""
@@ -336,7 +336,7 @@ def detect_async_batch():
     }, status_code=202)
 
 
-@detection_bp.route("/task/<task_id>", methods=["GET"])
+@detection_bp.get("/task/<task_id>", tags=[_tag], summary="Check status of an async detection task")
 @require_auth
 def get_task_status(task_id):
     """Poll for the status of an async task."""
