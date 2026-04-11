@@ -1,6 +1,3 @@
-"""
-Marshmallow schemas for Community feature.
-"""
 from marshmallow import Schema, fields, validate
 
 class PostCreateSchema(Schema):

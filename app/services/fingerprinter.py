@@ -10,7 +10,6 @@ FINGERPRINTS = {
     "GAN Generic":  {"gan_checkerboard": (0.5,1.0)},
     "Midjourney":   {"gan_checkerboard":(0.1,0.4), "noise_inconsistency": (0.2,0.5)},
 }
-
 def fingerprint_model(artifact_scores: dict) -> Optional[str]:
     best_match, best_score = None, 0.0
     for model_name, signatures in FINGERPRINTS.items():

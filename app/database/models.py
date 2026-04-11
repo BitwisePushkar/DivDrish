@@ -1,17 +1,9 @@
-"""
-SQLAlchemy ORM models.
-
-Maintains schema compatibility with the existing FastAPI database.
-"""
 import uuid
 from datetime import datetime, timezone
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import db
 
-
 class AnalysisResult(db.Model):
-    """Stores every detection run for history/audit."""
-
     __tablename__ = "analysis_results"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -52,10 +44,7 @@ class AnalysisResult(db.Model):
             "metadata_anomalies_json": self.metadata_anomalies_json,
         }
 
-
 class User(db.Model):
-    """User model for authentication."""
-
     __tablename__ = "users"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -89,10 +78,7 @@ class User(db.Model):
             data["api_key"] = self.api_key
         return data
 
-
 class CommunityPost(db.Model):
-    """Posts created by users to share their detection results."""
-
     __tablename__ = "community_posts"
 
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -101,13 +87,10 @@ class CommunityPost(db.Model):
     title = db.Column(db.String(255), nullable=True)
     description = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc))
-
-    # Relationships mapped back
     user = db.relationship("User", backref="community_posts")
     analysis = db.relationship("AnalysisResult", backref="community_post")
 
     def to_dict(self):
-        """Serialize securely. Do not expose PII (like email)."""
         return {
             "id": self.id,
             "title": self.title,

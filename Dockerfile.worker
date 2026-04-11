@@ -6,20 +6,16 @@ LABEL description="DeepTrace Celery Worker"
 
 USER root
 
-# Fix pip SSL issues (optional but fine)
 RUN pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org download.pytorch.org"
 
 WORKDIR /app
 
-# Install requirements (ensures celery installed)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app
 COPY app/ ./app/
 COPY wsgi.py .
 
-# ✅ CRITICAL FIX (same as Flask)
 RUN mkdir -p /app/logs /app/weights /app/uploads \
      && touch /app/logs/deeptrace.log \
      && chown -R deeptrace:deeptrace /app \
@@ -28,6 +24,5 @@ RUN mkdir -p /app/logs /app/weights /app/uploads \
 
 USER deeptrace
 
-# Celery worker
 CMD ["celery", "-A", "wsgi.celery", "worker", \
      "--loglevel=info", "--concurrency=2", "--max-tasks-per-child=50"]

@@ -1,8 +1,4 @@
-"""
-Marshmallow schemas for detection endpoints.
-"""
 from marshmallow import Schema, fields
-
 
 class ArtifactSignatureSchema(Schema):
     name = fields.String()
@@ -10,13 +6,11 @@ class ArtifactSignatureSchema(Schema):
     severity = fields.Float()
     description = fields.String()
 
-
 class FrameResultSchema(Schema):
     frame_index = fields.Integer()
     timestamp_sec = fields.Float()
     confidence = fields.Float()
     face_detected = fields.Boolean()
-
 
 class DetectionResultSchema(Schema):
     media_type = fields.String()
@@ -33,13 +27,11 @@ class DetectionResultSchema(Schema):
     provenance_score = fields.Float(allow_none=True)
     recommendation = fields.String()
 
-
 class BatchItemResultSchema(Schema):
     filename = fields.String()
     success = fields.Boolean()
     result = fields.Nested(DetectionResultSchema, allow_none=True)
     error = fields.String(allow_none=True)
-
 
 class BatchResultSchema(Schema):
     total_files = fields.Integer()
@@ -47,7 +39,6 @@ class BatchResultSchema(Schema):
     fake_count = fields.Integer()
     average_confidence = fields.Float()
     results = fields.List(fields.Nested(BatchItemResultSchema))
-
 
 class TaskStatusSchema(Schema):
     task_id = fields.String()

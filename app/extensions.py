@@ -1,9 +1,3 @@
-"""
-Flask extension instances.
-
-Created here (unbound) and initialized in the app factory
-via init_app() to avoid circular imports.
-"""
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_limiter import Limiter
@@ -13,28 +7,14 @@ from celery import Celery
 from flask_mailman import Mail
 import redis
 
-# ─── SQLAlchemy ORM ──────────────────────────────────────
 db = SQLAlchemy()
-
-# ─── Marshmallow serialization / validation ──────────────
 ma = Marshmallow()
-
-# ─── Rate limiter ────────────────────────────────────────
 limiter = Limiter(
     key_func=get_remote_address,
 )
-
-# ─── Mail ────────────────────────────────────────────────
 mail = Mail()
-
-# ─── Redis (for OTPs/lockout) — URL set in app factory ───
-# Default points to the Docker service name; overridden by REDIS_URL env var
 redis_client = redis.from_url("redis://redis:6379/3", decode_responses=False)
-
-# ─── CORS ────────────────────────────────────────────────
 cors = CORS()
-
-# ─── Celery ──────────────────────────────────────────────
 celery = Celery(
     "deeptrace",
     include=[
@@ -43,9 +23,7 @@ celery = Celery(
     ]
 )
 
-
 def init_celery(app):
-    """Configure Celery to use Flask app context."""
     celery.conf.update(
         broker_url=app.config["CELERY_BROKER_URL"],
         result_backend=app.config["CELERY_RESULT_BACKEND"],
@@ -55,10 +33,8 @@ def init_celery(app):
         result_expires=app.config.get("CELERY_RESULT_EXPIRES", 86400),
         task_track_started=True,
     )
-
     class ContextTask(celery.Task):
         abstract = True
-
         def __call__(self, *args, **kwargs):
             with app.app_context():
                 return self.run(*args, **kwargs)

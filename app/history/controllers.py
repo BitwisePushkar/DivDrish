@@ -1,6 +1,3 @@
-"""
-History controllers — user-scoped queries.
-"""
 from app.database.repository import (
     get_analysis,
     list_analyses,
@@ -8,9 +5,7 @@ from app.database.repository import (
     get_stats,
 )
 
-
 def get_history(page, page_size, media_type=None, is_fake=None, user_id=None):
-    """Get paginated analysis history scoped to user."""
     rows, total = list_analyses(
         page=page,
         page_size=page_size,
@@ -25,17 +20,11 @@ def get_history(page, page_size, media_type=None, is_fake=None, user_id=None):
         "results": rows,
     }
 
-
 def get_single(record_id, user_id=None):
-    """Get single analysis record (scoped to user)."""
     return get_analysis(record_id, user_id=user_id)
 
-
 def delete_single(record_id, user_id=None):
-    """Delete single analysis record (scoped to user)."""
     return delete_analysis(record_id, user_id=user_id)
 
-
 def get_statistics(user_id=None):
-    """Get aggregate statistics (scoped to user)."""
     return get_stats(user_id=user_id)

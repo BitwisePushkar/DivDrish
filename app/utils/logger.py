@@ -1,6 +1,3 @@
-"""
-Structured logging configuration using Loguru.
-"""
 import sys
 from loguru import logger
 

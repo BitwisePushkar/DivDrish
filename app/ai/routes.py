@@ -8,8 +8,6 @@ from app.ai.controllers import analyze_media_with_gemini, chat_with_gemini
 from app.utils.logger import logger
 from app.auth.decorators import require_auth
 from app.extensions import limiter
-
-# Reuse common response wrapper structure from other modules
 from app.auth.swagger_models import ErrorResponse 
 
 @ai_bp.post(
@@ -25,28 +23,19 @@ from app.auth.swagger_models import ErrorResponse
 @limiter.limit("10 per minute")
 @require_auth
 def detect_media():
-    """Endpoint for Gemini analysis on media uploads."""
     if "file" not in request.files:
         return {"status": "error", "message": "No file part in the request"}, 400
-        
     file = request.files["file"]
     if file.filename == "":
         return {"status": "error", "message": "No selected file"}, 400
-
-    # Ensure upload folder exists
     upload_folder = current_app.config.get("UPLOAD_FOLDER", "uploads")
     os.makedirs(upload_folder, exist_ok=True)
-    
-    # Save file temporarily
     filename = secure_filename(file.filename)
     unique_id = str(uuid.uuid4())[:8]
     temp_filename = f"{unique_id}_{filename}"
     temp_path = os.path.join(upload_folder, temp_filename)
-    
     file.save(temp_path)
-    
     try:
-        # Determine mime type fallback based on extension if not provided by browser
         mime_type = file.mimetype
         if not mime_type or mime_type == "application/octet-stream":
             ext = filename.rsplit(".", 1)[-1].lower()
@@ -56,16 +45,13 @@ def detect_media():
                 mime_type = "image/jpeg"
             elif ext in ["mp3", "wav", "ogg"]:
                 mime_type = "audio/mpeg"
-        
         logger.info(f"Processing Gemini detect for {temp_filename} ({mime_type})")
         result = analyze_media_with_gemini(temp_path, mime_type)
-        
         return {
             "status": "success",
             "message": "Media analyzed successfully",
             "data": result
-        }, 200
-        
+        }, 200    
     except ValueError as e:
         logger.error(f"Configuration Error: {e}")
         return {"status": "error", "message": str(e)}, 500
@@ -73,7 +59,6 @@ def detect_media():
         logger.exception(f"Error during Gemini detect: {e}")
         return {"status": "error", "message": f"Analysis failed: {str(e)}"}, 500
     finally:
-        # Clean up local file 
         if os.path.exists(temp_path):
             try:
                 os.remove(temp_path)
@@ -93,16 +78,13 @@ def detect_media():
 @limiter.limit("30 per minute")
 @require_auth
 def ai_chat(body: ChatBotRequest):
-    """Deepfake & Platform Guide Chatbot"""
     try:
         result = chat_with_gemini(body.message, body.history)
-        
         return {
             "status": "success",
             "message": "Chat completed",
             "data": result
         }, 200
-        
     except ValueError as e:
         logger.error(f"Configuration Error: {e}")
         return {"status": "error", "message": str(e)}, 500

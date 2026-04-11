@@ -18,7 +18,6 @@ build:
 	  --tag $(FULL_IMAGE):$(TAG) \
 	  --file Dockerfile --progress=plain .
 
-# ✅ Worker uses the already-built Flask image as base
 build-worker: build
 	@echo Building $(FULL_WORKER):$(TAG) from $(FULL_IMAGE):$(TAG) ...
 	docker build --platform $(PLATFORM) \

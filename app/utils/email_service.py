@@ -1,22 +1,8 @@
-"""
-Email service for the DeepTrace ML Engine.
-
-Handles sending OTPs and security alerts.
-"""
 from flask import current_app
 from flask_mailman import EmailMessage
 from app.utils.logger import logger
 
-
 def send_otp_email(email: str, otp: str, purpose: str = "registration"):
-    """
-    Send a 6-digit OTP to the specified email address.
-    
-    Args:
-        email: Recipient email address.
-        otp: 6-digit code.
-        purpose: 'registration' or 'password_reset'.
-    """
     subjects = {
         "registration": f"Verify your registration for {current_app.config.get('APP_NAME')}",
         "password_reset": f"Password reset OTP for {current_app.config.get('APP_NAME')}",

@@ -1,10 +1,8 @@
 from app.models.base_detector import RawDetection
 
-
 def _get_config():
     from app.config.settings import get_config
     return get_config()
-
 
 def compute_final_score(raw: RawDetection, media_type: str) -> dict:
     config = _get_config()

@@ -1,12 +1,5 @@
-"""
-Detection controllers — orchestrate ML pipeline per media type.
-
-These are pure functions that take a file path and return result dicts.
-They can be called synchronously from routes or from Celery tasks.
-"""
 import os
 import time
-
 from app.models.image_detector import ImageDetector
 from app.models.video_detector import VideoDetector
 from app.models.audio_detector import AudioDetector
@@ -17,26 +10,19 @@ from app.services.metadata_analyzer import analyze_metadata
 from app.utils.hasher import sha256_file
 from app.utils.logger import logger
 
-# ─── Singleton detectors (loaded once, reused) ───────────
-
 _image_detector = ImageDetector()
 _video_detector = VideoDetector()
 _audio_detector = AudioDetector()
 
-
 def get_detectors() -> dict:
-    """Return detector registry for health checks."""
     return {
         "image": _image_detector,
         "video": _video_detector,
         "audio": _audio_detector,
     }
 
-
 def process_image(file_path: str, filename: str) -> dict:
-    """Run full image detection pipeline. Returns result dict."""
     t0 = time.time()
-
     file_hash = sha256_file(file_path)
     raw = _image_detector.predict(file_path)
     scores = compute_final_score(raw, "image")
@@ -46,7 +32,6 @@ def process_image(file_path: str, filename: str) -> dict:
     file_size = round(os.path.getsize(file_path) / 1024 / 1024, 3)
     resolution = f"{raw.metadata.get('width')}x{raw.metadata.get('height')}"
     proc_time = round((time.time() - t0) * 1000, 1)
-
     result = {
         "media_type": "image",
         "is_fake": scores["is_fake"],
@@ -62,20 +47,14 @@ def process_image(file_path: str, filename: str) -> dict:
         "provenance_score": provenance["provenance_score"],
         "recommendation": scores["recommendation"],
     }
-
-    # DB persistence metadata
     result["_db_meta"] = {
         "filename": filename,
         "file_hash": file_hash,
     }
-
     return result
 
-
 def process_video(file_path: str, filename: str) -> dict:
-    """Run full video detection pipeline. Returns result dict."""
     t0 = time.time()
-
     file_hash = sha256_file(file_path)
     raw = _video_detector.predict(file_path)
     scores = compute_final_score(raw, "video")
@@ -85,7 +64,6 @@ def process_video(file_path: str, filename: str) -> dict:
     file_size = round(os.path.getsize(file_path) / 1024 / 1024, 3)
     resolution = raw.metadata.get("resolution", "")
     proc_time = round((time.time() - t0) * 1000, 1)
-
     frame_results = [
         {
             "frame_index": f["frame"],
@@ -111,19 +89,14 @@ def process_video(file_path: str, filename: str) -> dict:
         "provenance_score": provenance["provenance_score"],
         "recommendation": scores["recommendation"],
     }
-
     result["_db_meta"] = {
         "filename": filename,
         "file_hash": file_hash,
     }
-
     return result
 
-
 def process_audio(file_path: str, filename: str) -> dict:
-    """Run full audio detection pipeline. Returns result dict."""
     t0 = time.time()
-
     file_hash = sha256_file(file_path)
     raw = _audio_detector.predict(file_path)
     scores = compute_final_score(raw, "audio")

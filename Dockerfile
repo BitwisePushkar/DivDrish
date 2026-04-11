@@ -1,4 +1,3 @@
-# ─── Stage 1: Builder ─────────────────────────────────────
 FROM python:3.13-slim AS builder
 
 WORKDIR /build
@@ -21,7 +20,6 @@ RUN pip install --no-cache-dir --prefix=/install \
     --extra-index-url https://download.pytorch.org/whl/cpu \
     -r requirements.txt
 
-# ─── Stage 2: Runtime ────────────────────────────────────
 FROM python:3.13-slim
 
 RUN groupadd -r deeptrace && useradd -r -g deeptrace -d /app -s /sbin/nologin deeptrace
@@ -33,12 +31,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=builder /install /usr/local
 
 WORKDIR /app
+
 COPY app/ ./app/
 COPY wsgi.py .
 COPY gunicorn.conf.py .
-RUN mkdir -p logs weights uploads && chown -R deeptrace:deeptrace /app
+
+RUN mkdir -p /app/logs /app/weights /app/uploads \
+    && touch /app/logs/deeptrace.log \
+    && chown -R deeptrace:deeptrace /app \
+    && chmod -R 755 /app \
+    && chmod 664 /app/logs/deeptrace.log
 
 USER deeptrace
+
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \

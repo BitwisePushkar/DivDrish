@@ -1,8 +1,4 @@
-"""
-Marshmallow schemas for history endpoints.
-"""
 from marshmallow import Schema, fields
-
 
 class AnalysisRecordSchema(Schema):
     id = fields.String()
@@ -19,13 +15,11 @@ class AnalysisRecordSchema(Schema):
     resolution = fields.String(allow_none=True)
     recommendation = fields.String()
 
-
 class PaginatedHistorySchema(Schema):
     total = fields.Integer()
     page = fields.Integer()
     page_size = fields.Integer()
     results = fields.List(fields.Nested(AnalysisRecordSchema))
-
 
 class AnalysisStatsSchema(Schema):
     total_scans = fields.Integer()

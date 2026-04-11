@@ -1,8 +1,3 @@
-"""
-Database repository — synchronous CRUD operations.
-
-Handles Analysis persistence and community post management.
-"""
 import json
 import uuid
 import os
@@ -12,10 +7,6 @@ from app.extensions import db
 from app.database.models import AnalysisResult
 from app.utils.logger import logger
 from app.utils.s3_service import s3_service
-
-
-# ─── Analysis CRUD ────────────────────────────────────────
-
 
 def save_analysis(
     media_type: str,
@@ -34,27 +25,16 @@ def save_analysis(
     user_id: str | None = None,
     temp_path: str | None = None,
 ) -> str:
-    """Insert an analysis record and upload to S3 if temp_path is provided."""
     record_id = str(uuid.uuid4())
     media_url = None
-
-    # 1. Handle S3 Upload if file path is provided
     if temp_path and os.path.exists(temp_path):
-        # We use a structured name: {user_id}/{record_id}_{filename}
-        # To avoid collisions and organize by user
         safe_user_id = user_id or "anonymous"
         object_name = f"history/{safe_user_id}/{record_id}_{filename}"
-        
-        # Determine content type based on extension if possible
-        # Or you could pass it in. For now, we let boto3 or a simple guess handle it.
         media_url = s3_service.upload_file(temp_path, object_name)
-
-    # 2. Serialize artifact signatures
     serialized_artifacts = json.dumps([
         s if isinstance(s, dict) else s
         for s in artifact_signatures
     ])
-
     record = AnalysisResult(
         id=record_id,
         user_id=user_id,
@@ -74,7 +54,6 @@ def save_analysis(
         recommendation=recommendation,
         metadata_anomalies_json=json.dumps(metadata_anomalies),
     )
-
     try:
         db.session.add(record)
         db.session.commit()
@@ -83,20 +62,15 @@ def save_analysis(
         db.session.rollback()
         logger.error(f"Failed to save analysis: {e}")
         raise
-
     return record_id
 
-
 def get_analysis(record_id: str, user_id: str | None = None) -> dict | None:
-    """Fetch a single analysis record by ID, optionally scoped to user."""
     record = db.session.get(AnalysisResult, record_id)
     if not record:
         return None
-    # If user_id is provided, enforce ownership
     if user_id and record.user_id != user_id:
         return None
     return record.to_dict()
-
 
 def list_analyses(
     page: int = 1,
@@ -105,25 +79,18 @@ def list_analyses(
     is_fake: bool | None = None,
     user_id: str | None = None,
 ) -> tuple[list[dict], int]:
-    """List analysis records with pagination, filtering, and user scoping."""
     query = AnalysisResult.query
     count_query = db.session.query(func.count(AnalysisResult.id))
-
-    # Scope to user
     if user_id:
         query = query.filter(AnalysisResult.user_id == user_id)
         count_query = count_query.filter(AnalysisResult.user_id == user_id)
-
     if media_type:
         query = query.filter(AnalysisResult.media_type == media_type)
         count_query = count_query.filter(AnalysisResult.media_type == media_type)
-
     if is_fake is not None:
         query = query.filter(AnalysisResult.is_fake == is_fake)
         count_query = count_query.filter(AnalysisResult.is_fake == is_fake)
-
     total = count_query.scalar() or 0
-
     records = (
         query
         .order_by(desc(AnalysisResult.timestamp))
@@ -131,48 +98,33 @@ def list_analyses(
         .limit(page_size)
         .all()
     )
-
     return [r.to_dict() for r in records], total
 
-
 def delete_analysis(record_id: str, user_id: str | None = None) -> bool:
-    """Delete a record by ID. Enforces ownership if user_id provided."""
     record = db.session.get(AnalysisResult, record_id)
     if not record:
         return False
     if user_id and record.user_id != user_id:
         return False
-    
-    # Optional: Delete from S3 as well? 
-    # Usually we keep it or mark as deleted, but for privacy let's skip for now
-    # as deleting S3 objects in a generic CRUD might be risky without confirmation.
-    
     db.session.delete(record)
     db.session.commit()
     return True
 
-
 def get_stats(user_id: str | None = None) -> dict:
-    """Aggregate statistics, optionally scoped to a user."""
     base_filter = []
     if user_id:
         base_filter.append(AnalysisResult.user_id == user_id)
-
     total = db.session.query(func.count(AnalysisResult.id)).filter(*base_filter).scalar() or 0
-
     fake_count = (
         db.session.query(func.count(AnalysisResult.id))
         .filter(AnalysisResult.is_fake == True, *base_filter)  # noqa: E712
         .scalar() or 0
     )
-
     avg_conf = (
         db.session.query(func.avg(AnalysisResult.confidence))
         .filter(*base_filter)
         .scalar() or 0.0
     )
-
-    # By media type
     mt_rows = (
         db.session.query(
             AnalysisResult.media_type,
@@ -183,8 +135,6 @@ def get_stats(user_id: str | None = None) -> dict:
         .all()
     )
     by_media_type = {row.media_type: row.count for row in mt_rows}
-
-    # By recommendation
     rec_rows = (
         db.session.query(
             AnalysisResult.recommendation,
@@ -195,7 +145,6 @@ def get_stats(user_id: str | None = None) -> dict:
         .all()
     )
     by_recommendation = {row.recommendation: row.count for row in rec_rows}
-
     real_count = total - fake_count
     return {
         "total_scans": total,

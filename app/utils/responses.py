@@ -1,13 +1,6 @@
-"""
-Standardized JSON response helpers.
-
-Ensures consistent response format across all endpoints.
-"""
 from flask import jsonify, request
 
-
 def success_response(data, status_code=200, message="Success"):
-    """Return a standardized success JSON response."""
     response = {
         "status": "success",
         "message": message,
@@ -18,9 +11,7 @@ def success_response(data, status_code=200, message="Success"):
         response["request_id"] = request_id
     return jsonify(response), status_code
 
-
 def error_response(message, status_code=400, details=None):
-    """Return a standardized error JSON response."""
     response = {
         "status": "error",
         "error": message,
@@ -36,9 +27,7 @@ def error_response(message, status_code=400, details=None):
         pass
     return jsonify(response), status_code
 
-
 def paginated_response(items, total, page, page_size):
-    """Return a standardized paginated JSON response."""
     return success_response({
         "total": total,
         "page": page,

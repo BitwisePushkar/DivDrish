@@ -1,8 +1,4 @@
-"""
-Marshmallow schemas for provenance analysis.
-"""
 from marshmallow import Schema, fields
-
 
 class ProvenanceReportSchema(Schema):
     filename = fields.String()

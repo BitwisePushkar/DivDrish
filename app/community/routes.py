@@ -1,6 +1,3 @@
-"""
-Community routes blueprint.
-"""
 from flask import request, g
 from app.auth.decorators import require_auth
 from app.community.controllers import add_post, fetch_posts, fetch_single_post, remove_post
@@ -9,13 +6,11 @@ from app.community.swagger_models import CommunityPostCreate, PaginatedCommunity
 from app.auth.swagger_models import MessageResponse, ErrorResponse
 from app.utils.responses import success_response, error_response
 from app.utils.logger import logger
-
 from flask_openapi3 import APIBlueprint, Tag
 
 _tag = Tag(name="Community", description="Share detection results with the community")
 _security = [{"jwt": []}]
 community_bp = APIBlueprint("community", __name__, url_prefix="/community")
-
 _post_create_schema = PostCreateSchema()
 
 @community_bp.post(
@@ -28,20 +23,15 @@ _post_create_schema = PostCreateSchema()
 )
 @require_auth
 def create_community_post(body: CommunityPostCreate):
-    """Create a new community post."""
     current_user = getattr(g, "current_user", None)
     if not current_user:
         return error_response("Authentication required", 401)
-        
     user_id = current_user.get("user_id")
     json_data = request.get_json()
-    
     errors = _post_create_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-        
     data = _post_create_schema.load(json_data)
-    
     try:
         post = add_post(
             user_id=user_id,
@@ -56,7 +46,6 @@ def create_community_post(body: CommunityPostCreate):
         logger.error(f"Failed to create community post: {e}")
         return error_response("Internal server error", 500)
 
-
 @community_bp.get(
     "/posts",
     tags=[_tag],
@@ -65,16 +54,12 @@ def create_community_post(body: CommunityPostCreate):
     responses={200: PaginatedCommunityPosts}
 )
 def list_community_posts(query: PaginationQuery):
-    """Fetch paginated community posts."""
-    # This route is deliberately completely public (no @require_auth)
-    # Allows spreading awareness without login
     try:
         result = fetch_posts(page=query.page, page_size=query.page_size)
         return success_response(result)
     except Exception as e:
         logger.error(f"Failed to fetch community posts: {e}")
         return error_response("Failed to fetch posts", 500)
-
 
 @community_bp.get(
     "/posts/<post_id>",
@@ -83,7 +68,6 @@ def list_community_posts(query: PaginationQuery):
     responses={200: CommunityPostResponse, 404: ErrorResponse}
 )
 def get_community_post(path: PostIdPath):
-    """Fetch a single post by ID."""
     try:
         post = fetch_single_post(path.post_id)
         if not post:
@@ -92,7 +76,6 @@ def get_community_post(path: PostIdPath):
     except Exception as e:
         logger.error(f"Failed to fetch community post: {e}")
         return error_response("Failed to fetch post", 500)
-
 
 @community_bp.delete(
     "/posts/<post_id>",
@@ -103,18 +86,13 @@ def get_community_post(path: PostIdPath):
 )
 @require_auth
 def delete_community_post(path: PostIdPath):
-    """Delete a community post. Must be the author."""
     current_user = getattr(g, "current_user", None)
     if not current_user:
         return error_response("Authentication required", 401)
-        
     user_id = current_user.get("user_id")
-    
     try:
         success = remove_post(path.post_id, user_id)
         if not success:
-            # We return 404 conceptually if the post either doesn't exist OR user doesn't own it
-            # To hide existence from unauthorized users
             return error_response("Post not found or unauthorized", 404)
         return success_response({"message": "Post deleted successfully"})
     except Exception as e:

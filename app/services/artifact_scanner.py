@@ -1,6 +1,5 @@
 from typing import List
 
-
 ARTIFACT_META = {
     "gan_checkerboard":    ("GAN checkerboard pattern",  "High-freq grid artifacts from upsampling layers"),
     "blend_boundary":      ("Facial blend seams",         "Visible boundary between swapped face region"),
@@ -12,9 +11,7 @@ ARTIFACT_META = {
     "unnatural_silence":   ("Unnatural silence",          "Overly clean silence typical of synthesized audio"),
 }
 
-
 def build_artifact_list(scores: dict) -> list[dict]:
-    """Build artifact signature list from raw scores."""
     results = []
     for key, severity in scores.items():
         if key not in ARTIFACT_META:

@@ -1,5 +1,4 @@
 services:
-  # ─── PostgreSQL Database ──────────────────────────────
   postgres:
     image: postgres:16-alpine
     container_name: deeptrace-flask-db
@@ -17,8 +16,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  # ─── Redis (Celery Broker + Result Backend) ────────────
   redis:
     image: redis:7-alpine
     container_name: deeptrace-redis
@@ -32,8 +29,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  # ─── DeepTrace Flask App ──────────────────────────────
   flask-app:
     build: 
       context: .
@@ -66,8 +61,6 @@ services:
       timeout: 10s
       start_period: 90s
       retries: 3
-
-  # ─── Celery Worker ─────────────────────────────────────
   celery-worker:
     build:
       context: .
@@ -92,7 +85,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-
 volumes:
   postgres_flask_data:
     driver: local

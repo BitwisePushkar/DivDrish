@@ -1,10 +1,5 @@
-"""
-Authentication routes blueprint.
-Uses flask-openapi3 APIBlueprint for Swagger UI documentation.
-"""
 from flask import request, g
 from flask_openapi3 import APIBlueprint, Tag
-
 from app.auth.schemas import (
     RegisterSchema,
     VerifyOTPSchema,
@@ -36,16 +31,13 @@ from app.auth.swagger_models import (
     TokenResponse, MessageResponse, ResetTokenResponse, ErrorResponse, UserOut
 )
 from app.utils.responses import success_response, error_response
+from app.utils.file_handler import save_upload, cleanup
 from app.utils.logger import logger
 from app.extensions import limiter
 
-# Security and tag definitions for Swagger UI
 _auth_tag = Tag(name="Authentication", description="User registration, login, and password management")
 _security = [{"jwt": []}]
-
 auth_bp = APIBlueprint("auth", __name__, url_prefix="/auth")
-
-# Marshmallow schema instances
 _register_schema = RegisterSchema()
 _verify_otp_schema = VerifyOTPSchema()
 _login_schema = LoginSchema()
@@ -54,7 +46,6 @@ _user_schema = UserSchema()
 _reset_req_schema = PasswordResetRequestSchema()
 _reset_confirm_schema = PasswordResetConfirmSchema()
 _resend_otp_schema = ResendOTPSchema()
-
 
 @auth_bp.post(
     "/register",
@@ -70,14 +61,11 @@ _resend_otp_schema = ResendOTPSchema()
 )
 @limiter.limit("30 per minute")
 def register(body: RegisterBody):
-    """Initial registration — sends OTP."""
     json_data = request.get_json()
     errors = _register_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     data = _register_schema.load(json_data)
-
     try:
         result = register_user(data["username"], data["email"], data["password"])
         return success_response(result, 201)
@@ -86,7 +74,6 @@ def register(body: RegisterBody):
     except Exception as e:
         logger.error(f"Registration initiation failed: {e}")
         return error_response("Failed to send verification code", 500)
-
 
 @auth_bp.post(
     "/verify-otp",
@@ -102,14 +89,11 @@ def register(body: RegisterBody):
 )
 @limiter.limit("60 per minute")
 def verify_otp(body: VerifyOTPBody):
-    """Verify registration OTP and create account."""
     json_data = request.get_json()
     errors = _verify_otp_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     data = _verify_otp_schema.load(json_data)
-
     try:
         result = verify_registration_otp(data["email"], data["otp"])
         return success_response(result, 201, "Account verified successfully")
@@ -118,7 +102,6 @@ def verify_otp(body: VerifyOTPBody):
     except Exception as e:
         logger.error(f"OTP verification failed: {e}")
         return error_response("Verification failed", 500)
-
 
 @auth_bp.post(
     "/resend-otp",
@@ -134,12 +117,10 @@ def verify_otp(body: VerifyOTPBody):
 )
 @limiter.limit("20 per minute")
 def resend_otp(body: ResendOTPBody):
-    """Resend registration OTP."""
     json_data = request.get_json()
     errors = _resend_otp_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     try:
         result = resend_registration_otp(json_data["email"])
         return success_response(result)
@@ -148,7 +129,6 @@ def resend_otp(body: ResendOTPBody):
     except Exception as e:
         logger.error(f"OTP resend failed: {e}")
         return error_response("Failed to resend code", 500)
-
 
 @auth_bp.post(
     "/login",
@@ -164,14 +144,11 @@ def resend_otp(body: ResendOTPBody):
 )
 @limiter.limit("60 per minute")
 def login(body: LoginBody):
-    """Authenticate via email/username and receive JWT tokens."""
     json_data = request.get_json()
     errors = _login_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     data = _login_schema.load(json_data)
-
     try:
         tokens = login_user(data["identifier"], data["password"])
         return success_response(tokens, 200, "Login successful")
@@ -180,7 +157,6 @@ def login(body: LoginBody):
     except Exception as e:
         logger.error(f"Login failed: {e}")
         return error_response("Login failed", 500)
-
 
 @auth_bp.post(
     "/password-reset/request",
@@ -195,12 +171,10 @@ def login(body: LoginBody):
 )
 @limiter.limit("20 per hour")
 def reset_request(body: PasswordResetRequestBody):
-    """Request a password reset OTP."""
     json_data = request.get_json()
     errors = _reset_req_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     try:
         result = request_password_reset(json_data["email"])
         return success_response(result)
@@ -209,7 +183,6 @@ def reset_request(body: PasswordResetRequestBody):
     except Exception as e:
         logger.error(f"Password reset request failed: {e}")
         return error_response("Failed to send reset code", 500)
-
 
 @auth_bp.post(
     "/password-reset/verify",
@@ -225,12 +198,10 @@ def reset_request(body: PasswordResetRequestBody):
 )
 @limiter.limit("30 per minute")
 def reset_verify(body: PasswordResetVerifyBody):
-    """Verify reset OTP and get reset token."""
     json_data = request.get_json()
     errors = _verify_otp_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     try:
         result = verify_password_reset_otp(json_data["email"], json_data["otp"])
         return success_response(result)
@@ -239,7 +210,6 @@ def reset_verify(body: PasswordResetVerifyBody):
     except Exception as e:
         logger.error(f"Reset verification failed: {e}")
         return error_response("Verification failed", 500)
-
 
 @auth_bp.post(
     "/password-reset/confirm",
@@ -254,14 +224,11 @@ def reset_verify(body: PasswordResetVerifyBody):
     }
 )
 def reset_confirm(body: PasswordResetConfirmBody):
-    """Finalize password reset."""
     json_data = request.get_json()
     errors = _reset_confirm_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     data = _reset_confirm_schema.load(json_data)
-
     try:
         result = confirm_password_reset(data["email"], data["reset_token"], data["new_password"])
         return success_response(result)
@@ -270,7 +237,6 @@ def reset_confirm(body: PasswordResetConfirmBody):
     except Exception as e:
         logger.error(f"Password reset confirmation failed: {e}")
         return error_response("Failed to update password", 500)
-
 
 @auth_bp.post(
     "/refresh",
@@ -285,14 +251,11 @@ def reset_confirm(body: PasswordResetConfirmBody):
     }
 )
 def refresh(body: RefreshBody):
-    """Refresh an expired access token."""
     json_data = request.get_json()
     errors = _refresh_schema.validate(json_data)
     if errors:
         return error_response("Validation error", 422, errors)
-
     data = _refresh_schema.load(json_data)
-
     try:
         tokens = refresh_access_token(data["refresh_token"])
         return success_response(tokens, 200, "Token refreshed successfully")
@@ -301,7 +264,6 @@ def refresh(body: RefreshBody):
     except Exception as e:
         logger.error(f"Token refresh failed: {e}")
         return error_response("Token refresh failed", 500)
-
 
 @auth_bp.get(
     "/me",
@@ -317,17 +279,13 @@ def refresh(body: RefreshBody):
 )
 @require_auth
 def me():
-    """Get current authenticated user info."""
     current_user = getattr(g, "current_user", None)
     if not current_user or not current_user.get("user_id"):
         return error_response("User not found", 404)
-
     user = get_user_by_id(current_user["user_id"])
     if not user:
         return error_response("User not found", 404)
-
     return success_response(user)
-
 
 @auth_bp.put(
     "/profile",
@@ -343,15 +301,12 @@ def me():
 )
 @require_auth
 def update_profile(body: ProfileUpdateBody):
-    """Update user profile (display_name, username)."""
     current_user = getattr(g, "current_user", None)
     if not current_user or not current_user.get("user_id"):
         return error_response("Authentication required", 401)
-
     json_data = request.get_json()
     if not json_data:
         return error_response("No data provided", 400)
-
     try:
         updated = update_user_profile(
             user_id=current_user["user_id"],
@@ -364,7 +319,6 @@ def update_profile(body: ProfileUpdateBody):
     except Exception as e:
         logger.error(f"Profile update failed: {e}")
         return error_response("Failed to update profile", 500)
-
 
 @auth_bp.post(
     "/profile/avatar",
@@ -381,14 +335,11 @@ def update_profile(body: ProfileUpdateBody):
 )
 @require_auth
 def upload_avatar():
-    """Upload a profile avatar image to S3."""
     current_user = getattr(g, "current_user", None)
     if not current_user or not current_user.get("user_id"):
         return error_response("Authentication required", 401)
-
     if "file" not in request.files:
         return error_response("No file provided. Use 'file' field.", 400)
-
     file = request.files["file"]
     allowed_types = ["image/jpeg", "image/png", "image/webp"]
     if file.content_type not in allowed_types:
@@ -396,13 +347,10 @@ def upload_avatar():
             f"Unsupported image type: {file.content_type}. Allowed: {', '.join(allowed_types)}",
             422
         )
-
-    from app.utils.file_handler import save_upload, cleanup
     try:
         temp_path = save_upload(file, "image", max_mb=5)
     except ValueError as e:
         return error_response(str(e), 422)
-
     try:
         updated = update_user_avatar(
             user_id=current_user["user_id"],
