@@ -450,6 +450,42 @@ POST /provenance/analyze
   Response 200: EXIF data, modification history, origin tracking results.
 
 ================================================================================
+10. AI ASSISTANT (GEMINI)
+================================================================================
+
+POST /ai/detect
+  Auth: JWT Required
+  Description: Uploads media (image, video, audio) to Gemini 1.5 Pro to detect if it is AI generated and find its internet footprint.
+  Body (multipart/form-data):
+    file: Binary file
+  Response 200:
+  {
+    "data": {
+      "analysis": "This image is highly likely AI generated. The left hand has 6 fingers...",
+      "gemini_file_uri": "https://generativelanguage.googleapis.com/... "
+    }
+  }
+
+POST /ai/chat
+  Auth: JWT Required
+  Description: Chat with the DivDrish deepfake guide and safety assistant.
+  Body (application/json):
+    {
+      "message": "How can I spot an AI video?",
+      "history": [
+         { "role": "user", "parts": "Hello" },
+         { "role": "model", "parts": "Hi, I am your guide." }
+      ]
+    }
+  Response 200:
+  {
+    "data": {
+      "reply": "Here are 5 tips to spot an AI video...",
+      "role": "model"
+    }
+  }
+
+================================================================================
 SUPPORTED FILE TYPES
 ================================================================================
 

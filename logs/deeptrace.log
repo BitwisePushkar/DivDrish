@@ -1356,3 +1356,2478 @@ This typically means that you attempted to use functionality that needed
 the current application. To solve this, set up an application context
 with app.app_context(). See the documentation for more information.
 2026-04-10 22:05:10 | INFO | [d4366e6d-7dc7-42bf-ae8b-f66d6055deed] GET /health → 200 (5.97ms)
+2026-04-10 22:05:53 | SUCCESS | Database tables initialized
+2026-04-10 22:05:53 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 22:05:53 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 22:05:54 | SUCCESS | Database tables initialized
+2026-04-10 22:05:54 | INFO | Registered routes: 
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 22:05:54 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 22:05:55 | INFO | [99dbd2ef-c315-4662-b030-c1071c06adb5] GET /health → 200 (3.39ms)
+2026-04-10 22:06:00 | INFO | [47f2840c-6f28-41c8-ad03-2aaa5fd5ce3b] POST /auth/register → 400 (367.07ms)
+2026-04-10 22:06:18 | INFO | [18ed1c75-f3ba-4979-8aea-af8f50dc9522] POST /auth/register → 201 (258.27ms)
+2026-04-10 22:06:23 | INFO | OTP email sent to ayushsingh212109@gmail.com (registration)
+2026-04-10 22:06:23 | INFO | OTP email sent to ayushsingh212109@gmail.com for registration
+2026-04-10 22:06:26 | INFO | [af7ec842-10fe-43bd-a1a5-37ded86977bd] GET /health → 200 (0.18ms)
+2026-04-10 22:06:56 | INFO | [9732d0db-83bf-43f2-ab48-0d3483745ce8] GET /health → 200 (0.39ms)
+2026-04-10 22:07:26 | INFO | [de21b4c8-9415-42a7-8702-df7be5b3bc96] GET /health → 200 (0.28ms)
+2026-04-10 22:07:56 | INFO | [5866a310-5b8a-4db9-98c8-af4e3d7a586d] GET /health → 200 (0.32ms)
+2026-04-10 22:08:27 | INFO | [ad424a2d-673f-418b-a82a-be17bcaee2dc] GET /health → 200 (4.2ms)
+2026-04-10 22:08:57 | INFO | [21403bcb-ca71-4c27-b51f-d1e4535e5445] GET /health → 200 (0.47ms)
+2026-04-10 22:09:27 | INFO | [51fb9975-a45f-4fb5-9434-e31faf36cf11] GET /health → 200 (0.21ms)
+2026-04-10 22:09:57 | INFO | [6df8495c-2e99-483a-a1d6-8242dfce576f] GET /health → 200 (0.43ms)
+2026-04-10 22:10:28 | INFO | [376503cb-0547-4a40-8568-251bdee84c5e] GET /health → 200 (0.22ms)
+2026-04-10 22:10:58 | INFO | [b7e7d9aa-fae7-4742-8531-7d0af3edeed6] GET /health → 200 (0.42ms)
+2026-04-10 22:11:28 | INFO | [5abd2894-1d9b-4375-8e33-c742c97ec139] GET /health → 200 (0.37ms)
+2026-04-10 22:11:58 | INFO | [6558b400-76fd-4be0-bafc-faf879bd8de8] GET /health → 200 (0.31ms)
+2026-04-10 22:12:28 | INFO | [ebae73a6-7c3b-46d9-804e-9674bc322a4d] GET /health → 200 (0.82ms)
+2026-04-10 22:12:59 | INFO | [af5208b5-d424-4487-a6cf-a86f95939074] GET /health → 200 (0.38ms)
+2026-04-10 22:13:29 | INFO | [49e684be-786f-4140-beaa-ca83822e581c] GET /health → 200 (0.32ms)
+2026-04-10 22:13:59 | INFO | [10b6d2f3-f08f-4917-b268-d857ee317e67] GET /health → 200 (0.16ms)
+2026-04-10 22:14:30 | INFO | [c27a908b-e48e-4e86-96f1-86be577e0c34] GET /health → 200 (14.69ms)
+2026-04-10 22:15:00 | INFO | [f880af78-e528-44e6-9a12-dc297e19c274] GET /health → 200 (1.17ms)
+2026-04-10 22:15:30 | INFO | [1ba4cbe2-a81b-4ae3-b616-f11d974d9f9a] GET /health → 200 (0.36ms)
+2026-04-10 22:16:00 | INFO | [9e245aca-575a-4e21-8cd8-5ce947e4910e] GET /health → 200 (7.36ms)
+2026-04-10 22:16:31 | INFO | [79e04acd-d18f-48ec-acd5-47c2df76a7ce] GET /health → 200 (3.6ms)
+2026-04-10 22:17:01 | INFO | [d4353b2d-d3b2-41e8-a446-4a16326447f6] GET /health → 200 (0.51ms)
+2026-04-10 22:17:31 | INFO | [6638d479-0077-4ed5-800f-d757ac9b49a3] GET /health → 200 (0.35ms)
+2026-04-10 22:18:01 | INFO | [5d760739-af81-482f-a82f-b3bc7c371e00] GET /health → 200 (0.17ms)
+2026-04-10 22:18:32 | INFO | [1a21ff9e-6b45-4a47-9a28-d7be728e91ed] GET /health → 200 (0.28ms)
+2026-04-10 22:19:02 | INFO | [be31967c-6241-4aeb-9f2c-cbfd7a06081a] GET /health → 200 (0.19ms)
+2026-04-10 22:19:32 | INFO | [7f44990d-3b38-4a93-a27f-d4a788edb7b4] GET /health → 200 (0.88ms)
+2026-04-10 22:20:02 | INFO | [6b443d28-c6ae-4e26-b743-f4bc3b745917] GET /health → 200 (1.31ms)
+2026-04-10 22:20:32 | INFO | [07830250-1313-4b4e-ba37-c545bbce9154] GET /health → 200 (1.51ms)
+2026-04-10 22:21:03 | INFO | [5b2cc45f-0fd0-43ff-9d26-93e9fb6a069d] GET /health → 200 (0.34ms)
+2026-04-10 22:21:33 | INFO | [3d3040ee-00e8-453d-8c85-a0617306f3de] GET /health → 200 (0.43ms)
+2026-04-10 22:22:03 | INFO | [c6b51f68-1372-4ad1-8aec-09422cc90a20] GET /health → 200 (0.24ms)
+2026-04-10 22:22:33 | INFO | [7a2e4695-5bd9-4f5a-ab97-89e6aee9f247] GET /health → 200 (0.74ms)
+2026-04-10 22:23:04 | INFO | [ac2b4225-23c0-4dc1-a0da-77ecc7ca7fec] GET /health → 200 (0.19ms)
+2026-04-10 22:23:34 | INFO | [889a46ff-992a-493b-b0a2-a64de7ff4961] GET /health → 200 (0.23ms)
+2026-04-10 22:24:04 | INFO | [b344ad13-07d2-45ad-a2be-f6aeccdfa665] GET /health → 200 (0.33ms)
+2026-04-10 22:24:34 | INFO | [4f86c855-33d2-4b39-849e-d9fb760dcc71] GET /health → 200 (0.11ms)
+2026-04-10 22:25:04 | INFO | [2e84b77f-d2ee-49b3-8580-9635961f5a78] GET /health → 200 (0.11ms)
+2026-04-10 22:25:34 | INFO | [4412869f-ae5c-4464-8f26-d30962d54106] GET /health → 200 (0.11ms)
+2026-04-10 22:26:04 | INFO | [177fef22-c048-4340-9d7e-d8d47ab97c3b] GET /health → 200 (0.11ms)
+2026-04-10 22:26:35 | INFO | [8758db00-e211-4ed1-990b-c1cb164e4451] GET /health → 200 (0.32ms)
+2026-04-10 22:27:05 | INFO | [8939d964-d7bd-4a04-85bc-2de07d9e5a3d] GET /health → 200 (0.13ms)
+2026-04-10 22:27:35 | INFO | [94760b74-9b30-492a-9021-f01df98b5cb4] GET /health → 200 (0.33ms)
+2026-04-10 22:28:05 | INFO | [a3fa113e-e76b-4935-85a4-dc5272633e7a] GET /health → 200 (0.12ms)
+2026-04-10 22:28:35 | INFO | [b9b46252-0dda-4678-a29c-818613542f34] GET /health → 200 (0.11ms)
+2026-04-10 22:29:05 | INFO | [d3f615f4-9f7b-46d1-b7e8-43cd5d25dca1] GET /health → 200 (1.94ms)
+2026-04-10 22:29:35 | INFO | [31ed5335-4a6b-4e95-9a48-3fc155e6e3dc] GET /health → 200 (0.22ms)
+2026-04-10 22:30:05 | INFO | [67d61ea0-54e6-4c0b-912e-5155ff9ee552] GET /health → 200 (0.11ms)
+2026-04-10 22:30:36 | INFO | [6b73b217-aa36-423f-8a8e-075d371e7fc4] GET /health → 200 (0.19ms)
+2026-04-10 22:31:06 | INFO | [141a84fa-7278-4342-ab37-397a5bebd297] GET /health → 200 (1.01ms)
+2026-04-10 22:31:36 | INFO | [1f974432-9402-4ccb-bde3-1728ccf71e49] GET /health → 200 (0.64ms)
+2026-04-10 22:32:06 | INFO | [6815bf3f-e99f-49ec-9c95-37930f4a3624] GET /health → 200 (0.12ms)
+2026-04-10 22:32:36 | INFO | [5b3a1ebe-9465-4a81-8e54-f3f4a7a8bbf0] GET /health → 200 (0.12ms)
+2026-04-10 22:33:06 | INFO | [9d828fe1-777b-4b14-829f-6b573ac9e16a] GET /health → 200 (0.11ms)
+2026-04-10 22:33:37 | INFO | [b3137464-9ebc-45a4-a37d-d88da429cba7] GET /health → 200 (2.82ms)
+2026-04-10 22:34:07 | INFO | [60a6951c-4d5b-4439-b8fe-5b5f95cec006] GET /health → 200 (0.42ms)
+2026-04-10 22:34:37 | INFO | [dda30fa7-b712-4305-832d-226ebbd6e5a6] GET /health → 200 (4.63ms)
+2026-04-10 22:35:07 | INFO | [6575ee0c-43ec-45dd-b420-ee7ee42ab617] GET /health → 200 (2.69ms)
+2026-04-10 22:35:37 | INFO | [dd607dec-b7d1-469e-9374-b975cd55a0b8] GET /health → 200 (1.77ms)
+2026-04-10 22:36:08 | INFO | [3c5a273e-0143-4965-8641-951de7faf6d0] GET /health → 200 (12.5ms)
+2026-04-10 22:36:38 | INFO | [800c993d-fa9f-4b36-8c1c-68f3ca1b550c] GET /health → 200 (4.71ms)
+2026-04-10 22:37:09 | INFO | [874a763e-80e2-4e6a-9ff8-abca079fa8f8] GET /health → 200 (4.9ms)
+2026-04-10 22:37:39 | INFO | [74aa5202-2116-4ebb-8548-e00671dee4d8] GET /health → 200 (2.0ms)
+2026-04-10 22:38:09 | INFO | [e1c47ad3-57a0-43eb-9b08-979d802addda] GET /health → 200 (4.93ms)
+2026-04-10 22:38:40 | INFO | [81e1f389-fb2b-4b01-82d7-42e18936b780] GET /health → 200 (5.67ms)
+2026-04-10 22:39:10 | INFO | [7377f13f-b7e8-4471-8425-4851f72fc92b] GET /health → 200 (0.2ms)
+2026-04-10 22:57:01 | SUCCESS | Database tables initialized
+2026-04-10 22:57:01 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 22:57:01 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 22:57:01 | SUCCESS | Database tables initialized
+2026-04-10 22:57:01 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 22:57:01 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 22:57:01 | INFO | [8346cd81-9871-4cb1-aa7f-7b6e850aae1e] GET /health → 200 (1.2ms)
+2026-04-10 22:57:31 | INFO | [289f9fb0-abb2-4fc5-a0fd-cbd1880a1328] GET /health → 200 (1.17ms)
+2026-04-10 22:58:02 | INFO | [585fc662-8eff-49b5-bcc2-2150d6fcf6ce] GET /health → 200 (4.89ms)
+2026-04-10 22:58:32 | INFO | [5cf8a6fd-a525-4b71-a798-ba0ca9961bb3] GET /health → 200 (2.51ms)
+2026-04-10 22:58:49 | INFO | [debc82c2-4a89-4f4c-ac59-06639da559c9] GET / → 200 (6.62ms)
+2026-04-10 22:58:59 | INFO | [ee5cb6dd-c748-474c-8f1f-062744cfd8bb] GET /openai/swagger → 404 (8.17ms)
+2026-04-10 22:59:02 | INFO | [80b9652b-2e4d-48d2-a819-bf0867ada063] GET /health → 200 (1.37ms)
+2026-04-10 22:59:05 | INFO | [cc325d81-b2c8-419b-a0e2-abfe1b4cbd08] GET /docs → 404 (1.49ms)
+2026-04-10 22:59:10 | INFO | [3fb160a2-70df-420f-a295-8baca1a28d0e] GET / → 200 (0.52ms)
+2026-04-10 22:59:23 | INFO | [194118bd-7199-47d9-8cdf-bcccedf4fa47] GET /openapi/swagger → 200 (123.72ms)
+2026-04-10 22:59:23 | INFO | [1a57ceb1-d675-46b5-910d-22be83ea36c3] GET /openapi/swagger/js/swagger-ui-bundle.js → 200 (30.98ms)
+2026-04-10 22:59:23 | INFO | [8e893baf-3689-4491-a326-8aa38ef354ed] GET /openapi/swagger/css/swagger-ui.css → 200 (25.97ms)
+2026-04-10 22:59:23 | INFO | [31f87293-cb59-4103-b51a-962de60b2d0c] GET /openapi/swagger/js/swagger-ui-standalone-preset.js → 200 (1.16ms)
+2026-04-10 22:59:23 | INFO | [06bfaa5f-b107-45c3-9f81-f72dcc620fed] GET /openapi/swagger/images/swagger.svg → 200 (3.47ms)
+2026-04-10 22:59:24 | INFO | [69a36135-fb8d-483c-9859-5d1b6ffc7f9b] GET /openapi/openapi.json → 200 (405.75ms)
+2026-04-10 22:59:32 | INFO | [f04f1b67-879b-41e3-ba01-31b373c17564] GET /health → 200 (3.36ms)
+2026-04-10 22:59:55 | WARNING | Request missing authentication
+2026-04-10 22:59:55 | INFO | [ee16f232-8db8-411e-9f14-63ed0a8cf6cd] POST /ai/chat → 401 (243.7ms)
+2026-04-10 23:00:03 | INFO | [6513a4ed-392e-472f-ad55-0717c80e5331] GET /health → 200 (0.13ms)
+2026-04-10 23:00:33 | INFO | [5aa0b439-9086-4f28-882a-befaebe2c76f] GET /health → 200 (0.55ms)
+2026-04-10 23:01:03 | INFO | [9ddac98a-1fb7-4571-ac79-c5271a493cb7] GET /health → 200 (2.22ms)
+2026-04-10 23:01:33 | INFO | [09b1a6a1-7fd2-467f-9d99-7070d32caceb] GET /health → 200 (0.62ms)
+2026-04-10 23:01:36 | INFO | [3616d405-4e46-4cbd-a4bc-d891622b3623] POST /auth/login → 401 (1112.34ms)
+2026-04-10 23:02:00 | INFO | [695fab79-04d6-4cc7-943c-390c24a2e946] POST /auth/login → 401 (231.01ms)
+2026-04-10 23:02:04 | INFO | [274fc9b1-bc62-44b8-ac85-26b37d42bcb2] GET /health → 200 (1.15ms)
+2026-04-10 23:02:34 | INFO | [42577869-17c3-4010-a6ec-978e739dc330] GET /health → 200 (2.42ms)
+2026-04-10 23:03:04 | INFO | [b087a8fc-9ae0-4aed-9665-3908730ea034] GET /health → 200 (0.39ms)
+2026-04-10 23:03:34 | INFO | [dd072626-9655-49d3-a5c7-464ddaf31314] GET /health → 200 (0.2ms)
+2026-04-10 23:04:04 | INFO | [73968656-04b9-4872-a396-a5c3e6dc118d] GET /health → 200 (3.26ms)
+2026-04-10 23:04:26 | INFO | [955ada31-9066-4777-b1e2-174ac39dcc0e] POST /auth/login → 401 (75.97ms)
+2026-04-10 23:04:35 | INFO | [0feeb2ec-ac9d-4dc9-87ae-15931f7bc424] GET /health → 200 (0.15ms)
+2026-04-10 23:04:35 | INFO | [3057cc8b-3298-456c-bb97-f6d9f3dee3a9] POST /auth/register → 201 (1632.71ms)
+2026-04-10 23:04:41 | INFO | OTP email sent to ayushsingh212109@gmail.com (registration)
+2026-04-10 23:04:41 | INFO | OTP email sent to ayushsingh212109@gmail.com for registration
+2026-04-10 23:05:05 | INFO | [a6a717fa-4d18-4025-8b86-4e9650fda2e3] GET /health → 200 (0.72ms)
+2026-04-10 23:05:08 | INFO | User verified and registered: ayushsingh212109@gmail.com
+2026-04-10 23:05:08 | INFO | [eb4cba6b-a7da-4b09-aa70-53e75a336164] POST /auth/verify-otp → 201 (239.55ms)
+2026-04-10 23:05:14 | INFO | User logged in: 10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b
+2026-04-10 23:05:14 | INFO | [d8b9d1d2-4222-46bc-975a-eda02b2b8970] POST /auth/login → 200 (225.92ms)
+2026-04-10 23:05:20 | INFO | OTP email sent to ayurajput249@gmail.com (registration)
+2026-04-10 23:05:20 | INFO | OTP email sent to ayurajput249@gmail.com for registration
+2026-04-10 23:05:20 | INFO | OTP email sent to ayurajput249@gmail.com (registration)
+2026-04-10 23:05:20 | INFO | OTP email sent to ayurajput249@gmail.com for registration
+2026-04-10 23:05:25 | WARNING | Request missing authentication
+2026-04-10 23:05:25 | INFO | [d7acea89-1453-4bfb-82d1-220469ce1e46] POST /ai/chat → 401 (23.52ms)
+2026-04-10 23:05:35 | INFO | [5f23cd36-eb09-4a68-84e0-5d32aa17eefc] GET /health → 200 (0.41ms)
+2026-04-10 23:06:05 | INFO | [c825cd08-9e7e-446c-9482-ae1c0f53d195] GET /health → 200 (0.13ms)
+2026-04-10 23:06:16 | INFO | Starting Gemini Chat with 0 previous messages.
+2026-04-10 23:06:17 | ERROR | Error during Gemini chat: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x75a6c67445e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x75a6c60434d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x75a6c5fb96c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x75a6c55c57f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x75a6c5fb9800>
+    └ <gunicorn.arbiter.Arbiter object at 0x75a6c55c57f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x75a6c5fb9760>
+    └ <gunicorn.arbiter.Arbiter object at 0x75a6c55c57f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x75a6c5408360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x75a6c5408ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x75a6c54089a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x75a6c5490980>
+    │    └ <function SyncWorker.accept at 0x75a6c545c860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 38538)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 38538)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x75a6c5490980>
+    │    └ <function SyncWorker.handle at 0x75a6c5408b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 38538)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 38538)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x75a6c34f9910>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x75a6c5490980>
+    │    └ <function SyncWorker.handle_request at 0x75a6c5408c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x75a6c545c220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x75a6c327fe90>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x75a6c65bdd80>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x75a6bff78c20>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x75a6c327fe90>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x75a6c65bdd80>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x75a6c4cd5c60>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x75a6c4cd53a0>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x75a6c4cd5300>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'ai.ai_chat'
+           │    │           │    │              └ <Rule '/ai/chat' (POST, OPTIONS) -> ai.ai_chat>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x75a6c5408fe0>, 'swagger.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x75a6c4cd5580>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': ChatBotRequest(message='Hello', history=[])}
+               └ <function ai_chat at 0x75a644232fc0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function ai_chat at 0x75a644232e80>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x75a6c62bd940>
+
+  File "/app/app/auth/decorators.py", line 63, in decorated
+    return f(*args, **kwargs)
+           │  │       └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │  └ ()
+           └ <function ai_chat at 0x75a644232de0>
+
+> File "/app/app/ai/routes.py", line 98, in ai_chat
+    result = chat_with_gemini(body.message, body.history)
+             │                │    │        │    └ []
+             │                │    │        └ ChatBotRequest(message='Hello', history=[])
+             │                │    └ 'Hello'
+             │                └ ChatBotRequest(message='Hello', history=[])
+             └ <function chat_with_gemini at 0x75a644ecb420>
+
+  File "/app/app/ai/controllers.py", line 112, in chat_with_gemini
+    response = chat_session.send_message(message)
+               │            │            └ 'Hello'
+               │            └ <function Chat.send_message at 0x75a6441ce660>
+               └ <google.genai.chats.Chat object at 0x75a696eb3d90>
+
+  File "/usr/local/lib/python3.13/site-packages/google/genai/chats.py", line 252, in send_message
+    response = self._modules.generate_content(
+               │    │        └ <function Models.generate_content at 0x75a6441ccfe0>
+               │    └ <google.genai.models.Models object at 0x75a696d64ad0>
+               └ <google.genai.chats.Chat object at 0x75a696eb3d90>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 6229, in generate_content
+    response = self._generate_content(
+               │    └ <function Models._generate_content at 0x75a6441cc5e0>
+               └ <google.genai.models.Models object at 0x75a696d64ad0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+               │    │           └ <function BaseApiClient.request at 0x75a644332c00>
+               │    └ <google.genai._api_client.BaseApiClient object at 0x75a696eca900>
+               └ <google.genai.models.Models object at 0x75a696d64ad0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1537, in request
+    response = self._request(http_request, http_options, stream=False)
+               │    │        │             └ None
+               │    │        └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'your_gemini_api_key_here', 'user-agent': 'google-...
+               │    └ <function BaseApiClient._request at 0x75a644332980>
+               └ <google.genai._api_client.BaseApiClient object at 0x75a696eca900>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1332, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           │    │      │    │              │             └ False
+           │    │      │    │              └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'your_gemini_api_key_here', 'user-agent': 'google-...
+           │    │      │    └ <function BaseApiClient._request_once at 0x75a6443328e0>
+           │    │      └ <google.genai._api_client.BaseApiClient object at 0x75a696eca900>
+           │    └ <Retrying object at 0x75a696ecb8c0 (stop=<tenacity.stop.stop_after_attempt object at 0x75a696ecb770>, wait=<tenacity.wait.wai...
+           └ <google.genai._api_client.BaseApiClient object at 0x75a696eca900>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         │    │                └ <RetryCallState 129358355649872: attempt #1; slept for 0.0; last result: failed (ClientError 400 INVALID_ARGUMENT. {'error': ...
+         │    └ <function BaseRetrying.iter at 0x75a6444b54e0>
+         └ <Retrying object at 0x75a696ecb8c0 (stop=<tenacity.stop.stop_after_attempt object at 0x75a696ecb770>, wait=<tenacity.wait.wai...
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             │      └ <RetryCallState 129358355649872: attempt #1; slept for 0.0; last result: failed (ClientError 400 INVALID_ARGUMENT. {'error': ...
+             └ <function BaseRetrying._post_stop_check_actions.<locals>.exc_check at 0x75a696f2bf60>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          │         └ <function RetryError.reraise at 0x75a6444b4a40>
+          └ RetryError(<Future at 0x75a696d65be0 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          │    │            └ <function Future.result at 0x75a6c447a340>
+          │    └ <Future at 0x75a696d65be0 state=finished raised ClientError>
+          └ RetryError(<Future at 0x75a696d65be0 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           └ None
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+          └ None
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             │   │       └ {}
+             │   └ (HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'your_gemini_api_key_here', 'user-agent': 'google...
+             └ <bound method BaseApiClient._request_once of <google.genai._api_client.BaseApiClient object at 0x75a696eca900>>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1309, in _request_once
+    errors.APIError.raise_for_response(response)
+    │      │        │                  └ <Response [400 Bad Request]>
+    │      │        └ <classmethod(<function APIError.raise_for_response at 0x75a6444b7e20>)>
+    │      └ <class 'google.genai.errors.APIError'>
+    └ <module 'google.genai.errors' from '/usr/local/lib/python3.13/site-packages/google/genai/errors.py'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    │   │           │        │            │              └ <Response [400 Bad Request]>
+    │   │           │        │            └ {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details'...
+    │   │           │        └ 400
+    │   │           └ <Response [400 Bad Request]>
+    │   └ <classmethod(<function APIError.raise_error at 0x75a6444b7f60>)>
+    └ <class 'google.genai.errors.APIError'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+          │           │            │              └ <Response [400 Bad Request]>
+          │           │            └ {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details'...
+          │           └ 400
+          └ <class 'google.genai.errors.ClientError'>
+
+google.genai.errors.ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'API_KEY_INVALID', 'domain': 'googleapis.com', 'metadata': {'service': 'generativelanguage.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'API key not valid. Please pass a valid API key.'}]}}
+2026-04-10 23:06:17 | INFO | [107c9ccf-6859-4e60-9a26-f6b739c92763] POST /ai/chat → 500 (1131.37ms)
+2026-04-10 23:06:35 | INFO | [1d43cb30-4005-4856-8f7e-526d2c569bfb] GET /health → 200 (0.14ms)
+2026-04-10 23:07:05 | INFO | [ad797563-e741-4852-a3c1-41d6ad55bc24] GET /health → 200 (0.13ms)
+2026-04-10 23:07:35 | INFO | [6d307577-d6ec-4e27-b1f8-7400a354b6ee] GET /health → 200 (0.17ms)
+2026-04-10 23:08:05 | INFO | [ab144e8a-d7c6-44bb-a893-ab0f2f325063] GET /health → 200 (0.1ms)
+2026-04-10 23:08:36 | INFO | [d7398ca1-2957-4870-a254-8f77086f8321] GET /health → 200 (0.11ms)
+2026-04-10 23:09:06 | INFO | [4e12bdc0-ac8e-40ab-8961-2e59c4d0312d] GET /health → 200 (0.13ms)
+2026-04-10 23:09:20 | INFO | [00ed68b6-692d-4d6d-a26c-98f44b540085] POST /auth/profile/avatar → 422 (61.31ms)
+2026-04-10 23:09:36 | INFO | [7bf2ae90-7e1b-43d2-8d0d-2cbf180e6a2e] GET /health → 200 (0.12ms)
+2026-04-10 23:10:06 | INFO | [058431fd-3596-426b-a8a5-cb98acccb399] GET /health → 200 (0.15ms)
+2026-04-10 23:10:35 | INFO | S3 client initialized for bucket 'your-s3-bucket-name' in 'us-east-1'
+2026-04-10 23:10:36 | ERROR | Unexpected error during S3 upload: Failed to upload /tmp/tmphotji7hp.png to your-s3-bucket-name/avatars/10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b/profile.png: An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.
+2026-04-10 23:10:36 | INFO | [1cf93b1d-e21a-4acc-aaf2-7744b8c5df7a] POST /auth/profile/avatar → 400 (3701.92ms)
+2026-04-10 23:10:36 | INFO | [8613858e-bc02-408a-81bd-6f0b1d89b490] GET /health → 200 (0.32ms)
+2026-04-10 23:11:06 | INFO | [bf19c3f8-ed6b-455f-b80d-8156d8bb8fbc] GET /health → 200 (0.11ms)
+2026-04-10 23:11:36 | INFO | [5ad9262a-1810-489b-8d04-4b85e2da69b8] GET /health → 200 (0.08ms)
+2026-04-10 23:12:07 | INFO | [cd3fdf14-5391-4129-a58b-22d8559d9319] GET /health → 200 (0.11ms)
+2026-04-10 23:12:37 | INFO | [1572ce57-d322-4eee-89cf-70b9378d0409] GET /health → 200 (0.12ms)
+2026-04-10 23:13:07 | INFO | [92695573-d32a-4d71-8bd5-da93764d3a6c] GET /health → 200 (2.72ms)
+2026-04-10 23:13:37 | INFO | [c593da1e-0156-40f9-b6ed-510103684645] GET /health → 200 (0.13ms)
+2026-04-10 23:14:07 | INFO | [e3a0364e-d0a2-4a3a-9495-5c556b62a745] GET /health → 200 (0.11ms)
+2026-04-10 23:15:26 | SUCCESS | Database tables initialized
+2026-04-10 23:15:26 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:15:26 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:15:27 | SUCCESS | Database tables initialized
+2026-04-10 23:15:27 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:15:27 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:15:28 | INFO | S3 client initialized for bucket 'your-s3-bucket-name' in 'us-east-1'
+2026-04-10 23:15:29 | ERROR | Unexpected error during S3 upload: Failed to upload /tmp/tmpwxo9pk5d.png to your-s3-bucket-name/avatars/10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b/profile.png: An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.
+2026-04-10 23:15:29 | INFO | [ae52b89d-6284-4e4e-90b1-5f9657ba7538] POST /auth/profile/avatar → 400 (2258.85ms)
+2026-04-10 23:15:31 | INFO | [19741a11-fb92-4f0d-beaf-e0e9a91923b8] GET /health → 200 (0.38ms)
+2026-04-10 23:16:01 | INFO | [f5d24cfe-ca2c-460d-8108-57553bc4e4ad] GET /health → 200 (5.21ms)
+2026-04-10 23:17:03 | SUCCESS | Database tables initialized
+2026-04-10 23:17:03 | SUCCESS | Database tables initialized
+2026-04-10 23:17:03 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:17:03 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:17:03 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:17:03 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:17:05 | INFO | [75bc09ce-1d50-456a-ad90-8429b88a986e] GET /health → 200 (2.17ms)
+2026-04-10 23:17:35 | INFO | [0232320d-32df-4e74-8956-0833e44b7c04] GET /health → 200 (0.54ms)
+2026-04-10 23:18:05 | INFO | [722b272d-a1ef-491a-be9c-189e1e501d8a] GET /health → 200 (1.28ms)
+2026-04-10 23:18:37 | INFO | [5beee2cf-606b-4d7c-b98f-8d595e5e54e3] GET /health → 200 (0.11ms)
+2026-04-10 23:19:07 | INFO | [a6d38af1-09b1-4a30-922a-467ad46f9178] GET /health → 200 (2.1ms)
+2026-04-10 23:19:38 | INFO | [f9711cc0-fa66-47a8-b9bc-e5d5f6ddb76e] GET /health → 200 (8.53ms)
+2026-04-10 23:25:25 | INFO | [e60aa9bd-a00d-4d54-b331-e403d964bb84] GET /health → 200 (0.44ms)
+2026-04-10 23:25:55 | INFO | [6375ef68-5ec3-4517-9326-1cd0a2ffe869] GET /health → 200 (2.15ms)
+2026-04-10 23:26:26 | INFO | [194e8720-5b05-4b59-9fb9-674613006565] GET /health → 200 (0.17ms)
+2026-04-10 23:26:56 | INFO | [b49aeda3-bd18-45ab-90de-cd21540df9d6] GET /health → 200 (0.12ms)
+2026-04-10 23:27:26 | INFO | [e6b7b86d-02c1-4f99-a153-bccba8b46275] GET /health → 200 (0.21ms)
+2026-04-10 23:27:56 | INFO | [9793bc69-fe45-4648-aabb-843721c29ef4] GET /health → 200 (0.15ms)
+2026-04-10 23:28:26 | INFO | [a87ae9fd-9a9f-4d9a-9280-ac5330c53c80] GET /health → 200 (0.46ms)
+2026-04-10 23:28:56 | INFO | [852bbced-d333-434e-9bc9-75039114e4ac] GET /health → 200 (0.28ms)
+2026-04-10 23:29:26 | INFO | [6b79f95f-cba6-4eb2-9ef4-3c866865602f] GET /health → 200 (0.12ms)
+2026-04-10 23:29:57 | INFO | [e97701df-85ea-4c3c-9b2f-6aa3cb711d88] GET /health → 200 (0.11ms)
+2026-04-10 23:30:27 | INFO | [d6e63839-8cd6-4fe6-b92a-010c350ac357] GET /health → 200 (0.11ms)
+2026-04-10 23:30:57 | INFO | [8f094ea8-13b4-4766-8f6d-7927cea826a9] GET /health → 200 (0.11ms)
+2026-04-10 23:31:27 | INFO | [c941d3ea-050b-4649-8936-9b154064233a] GET /health → 200 (0.15ms)
+2026-04-10 23:31:57 | INFO | [6dd9df5d-df70-434d-82db-4ec2e9f11012] GET /health → 200 (0.13ms)
+2026-04-10 23:33:05 | SUCCESS | Database tables initialized
+2026-04-10 23:33:05 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:33:05 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:33:05 | SUCCESS | Database tables initialized
+2026-04-10 23:33:05 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:33:05 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:33:08 | INFO | [26ebb207-ed27-4fd1-a897-2335d22c7aa5] GET /health → 200 (1.52ms)
+2026-04-10 23:33:38 | INFO | [71ed9faf-6b86-4143-9d51-8692bdb732c9] GET /health → 200 (0.63ms)
+2026-04-10 23:33:44 | INFO | [20fcd02c-ae30-4ad4-ba10-7203ba2c99de] POST /auth/profile/avatar → 400 (94.93ms)
+2026-04-10 23:33:52 | INFO | User logged in: 10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b
+2026-04-10 23:33:52 | INFO | [baa98bc7-6e4b-483a-8787-bf2c84bdbdb1] POST /auth/login → 200 (708.05ms)
+2026-04-10 23:34:03 | INFO | S3 client initialized for bucket 'nimantran-prints' in 'ap-south-1'
+2026-04-10 23:34:04 | ERROR | Unexpected error during S3 upload: Failed to upload /tmp/tmpx8i38x2g.png to nimantran-prints/avatars/10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b/profile.png: An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.
+2026-04-10 23:34:04 | INFO | [033cc2b8-7d47-45a5-87c8-9c4282c7cc7c] POST /auth/profile/avatar → 400 (1148.79ms)
+2026-04-10 23:34:08 | INFO | [65b41a6d-143a-4237-a63f-23597035fca7] GET /health → 200 (0.2ms)
+2026-04-10 23:35:22 | SUCCESS | Database tables initialized
+2026-04-10 23:35:22 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:35:22 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:35:22 | SUCCESS | Database tables initialized
+2026-04-10 23:35:22 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:35:22 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:35:26 | INFO | [5872f038-e182-4ebc-a0e3-ef6f7a30d261] GET /health → 200 (0.72ms)
+2026-04-10 23:35:33 | INFO | S3 client initialized for bucket 'div-s' in 'ap-south-1'
+2026-04-10 23:35:34 | INFO | File uploaded to S3: https://div-s.s3.ap-south-1.amazonaws.com/avatars/10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b/profile.png
+2026-04-10 23:35:34 | INFO | Avatar updated for user 10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b: https://div-s.s3.ap-south-1.amazonaws.com/avatars/10e6e1db-d9b4-4ebf-a9f5-fa3f7f8b759b/profile.png
+2026-04-10 23:35:34 | INFO | [e62fa775-53f8-46f7-8c86-18f893d0c7ed] POST /auth/profile/avatar → 200 (799.39ms)
+2026-04-10 23:35:57 | INFO | [b822192a-a0ff-42c4-9171-e38e9e088230] GET /health → 200 (10.42ms)
+2026-04-10 23:36:22 | INFO | Starting Gemini Chat with 0 previous messages.
+2026-04-10 23:36:22 | ERROR | Error during Gemini chat: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x782ad16685e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x782ad0f674d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x782ad0ee56c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x782ad04f17f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x782ad0ee5800>
+    └ <gunicorn.arbiter.Arbiter object at 0x782ad04f17f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x782ad0ee5760>
+    └ <gunicorn.arbiter.Arbiter object at 0x782ad04f17f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x782ad0330360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x782ad0330ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x782ad03309a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x782ad03b8980>
+    │    └ <function SyncWorker.accept at 0x782ad037c860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 38892)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 38892)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x782ad03b8980>
+    │    └ <function SyncWorker.handle at 0x782ad0330b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 38892)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 38892)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x782a4fd67c50>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x782ad03b8980>
+    │    └ <function SyncWorker.handle_request at 0x782ad0330c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x782ad037c220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x782a4f0082d0>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x782a4f484670>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x782acaf78c20>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x782a4f0082d0>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x782a4f484670>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x782acfc11c60>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x782acfc113a0>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x782acfc11300>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'ai.ai_chat'
+           │    │           │    │              └ <Rule '/ai/chat' (POST, OPTIONS) -> ai.ai_chat>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x782ad0330fe0>, 'swagger.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x782acfc11580>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': ChatBotRequest(message='Hello', history=[])}
+               └ <function ai_chat at 0x782a4f19afc0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function ai_chat at 0x782a4f19ae80>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x782ad1259940>
+
+  File "/app/app/auth/decorators.py", line 63, in decorated
+    return f(*args, **kwargs)
+           │  │       └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │  └ ()
+           └ <function ai_chat at 0x782a4f19ade0>
+
+> File "/app/app/ai/routes.py", line 98, in ai_chat
+    result = chat_with_gemini(body.message, body.history)
+             │                │    │        │    └ []
+             │                │    │        └ ChatBotRequest(message='Hello', history=[])
+             │                │    └ 'Hello'
+             │                └ ChatBotRequest(message='Hello', history=[])
+             └ <function chat_with_gemini at 0x782a4fe33420>
+
+  File "/app/app/ai/controllers.py", line 112, in chat_with_gemini
+    response = chat_session.send_message(message)
+               │            │            └ 'Hello'
+               │            └ <function Chat.send_message at 0x782a4f136660>
+               └ <google.genai.chats.Chat object at 0x782a4f009590>
+
+  File "/usr/local/lib/python3.13/site-packages/google/genai/chats.py", line 252, in send_message
+    response = self._modules.generate_content(
+               │    │        └ <function Models.generate_content at 0x782a4f134fe0>
+               │    └ <google.genai.models.Models object at 0x782a4eff2f90>
+               └ <google.genai.chats.Chat object at 0x782a4f009590>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 6229, in generate_content
+    response = self._generate_content(
+               │    └ <function Models._generate_content at 0x782a4f1345e0>
+               └ <google.genai.models.Models object at 0x782a4eff2f90>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+               │    │           └ <function BaseApiClient.request at 0x782a4f29ac00>
+               │    └ <google.genai._api_client.BaseApiClient object at 0x782a4eff06e0>
+               └ <google.genai.models.Models object at 0x782a4eff2f90>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1537, in request
+    response = self._request(http_request, http_options, stream=False)
+               │    │        │             └ None
+               │    │        └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+               │    └ <function BaseApiClient._request at 0x782a4f29a980>
+               └ <google.genai._api_client.BaseApiClient object at 0x782a4eff06e0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1332, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           │    │      │    │              │             └ False
+           │    │      │    │              └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+           │    │      │    └ <function BaseApiClient._request_once at 0x782a4f29a8e0>
+           │    │      └ <google.genai._api_client.BaseApiClient object at 0x782a4eff06e0>
+           │    └ <Retrying object at 0x782a4eff1e80 (stop=<tenacity.stop.stop_after_attempt object at 0x782a4eff1d30>, wait=<tenacity.wait.wai...
+           └ <google.genai._api_client.BaseApiClient object at 0x782a4eff06e0>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         │    │                └ <RetryCallState 132123109308944: attempt #1; slept for 0.0; last result: failed (ClientError 404 NOT_FOUND. {'error': {'code'...
+         │    └ <function BaseRetrying.iter at 0x782a4f2214e0>
+         └ <Retrying object at 0x782a4eff1e80 (stop=<tenacity.stop.stop_after_attempt object at 0x782a4eff1d30>, wait=<tenacity.wait.wai...
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             │      └ <RetryCallState 132123109308944: attempt #1; slept for 0.0; last result: failed (ClientError 404 NOT_FOUND. {'error': {'code'...
+             └ <function BaseRetrying._post_stop_check_actions.<locals>.exc_check at 0x782a4effe700>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          │         └ <function RetryError.reraise at 0x782a4f220a40>
+          └ RetryError(<Future at 0x782a4f0341a0 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          │    │            └ <function Future.result at 0x782acf1ba340>
+          │    └ <Future at 0x782a4f0341a0 state=finished raised ClientError>
+          └ RetryError(<Future at 0x782a4f0341a0 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           └ None
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+          └ None
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             │   │       └ {}
+             │   └ (HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-...
+             └ <bound method BaseApiClient._request_once of <google.genai._api_client.BaseApiClient object at 0x782a4eff06e0>>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1309, in _request_once
+    errors.APIError.raise_for_response(response)
+    │      │        │                  └ <Response [404 Not Found]>
+    │      │        └ <classmethod(<function APIError.raise_for_response at 0x782a4f223e20>)>
+    │      └ <class 'google.genai.errors.APIError'>
+    └ <module 'google.genai.errors' from '/usr/local/lib/python3.13/site-packages/google/genai/errors.py'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    │   │           │        │            │              └ <Response [404 Not Found]>
+    │   │           │        │            └ {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for gene...
+    │   │           │        └ 404
+    │   │           └ <Response [404 Not Found]>
+    │   └ <classmethod(<function APIError.raise_error at 0x782a4f223f60>)>
+    └ <class 'google.genai.errors.APIError'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+          │           │            │              └ <Response [404 Not Found]>
+          │           │            └ {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for gene...
+          │           └ 404
+          └ <class 'google.genai.errors.ClientError'>
+
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-10 23:36:22 | INFO | [e2d5f645-18c4-4036-8c2b-dc99b853eb87] POST /ai/chat → 500 (467.42ms)
+2026-04-10 23:36:27 | INFO | [b7054b29-6718-49c8-bdc0-abdf340cc3dd] GET /health → 200 (1.62ms)
+2026-04-10 23:36:57 | INFO | [1a562478-8124-48dc-a8d8-c996d6c17bf7] GET /health → 200 (2.92ms)
+2026-04-10 23:37:27 | INFO | [39568080-3ba6-47b8-a6a5-74ad1ff3dc86] GET /health → 200 (0.77ms)
+2026-04-10 23:37:58 | INFO | [4f866935-9d98-4de9-9d51-3bb891e33d8c] GET /health → 200 (0.1ms)
+2026-04-10 23:38:28 | INFO | [f613432e-235c-42af-a89b-f7adbec78ce1] GET /health → 200 (0.35ms)
+2026-04-10 23:38:58 | INFO | [b14afd7f-d17a-40fe-bf5d-5a6611ccafe0] GET /health → 200 (1.79ms)
+2026-04-10 23:39:28 | INFO | [0ab10013-bc85-452f-bbb9-36d2121f544d] GET /health → 200 (0.86ms)
+2026-04-10 23:39:58 | INFO | [c33ba246-d466-415d-8b41-29c185d851ab] GET /health → 200 (0.68ms)
+2026-04-10 23:40:28 | INFO | [609f3bf0-ce63-407a-864f-d284c3d393fd] GET /health → 200 (0.82ms)
+2026-04-10 23:40:58 | INFO | [29e9b47a-c6aa-49f6-a3f2-39e64ee19b6e] GET /health → 200 (0.21ms)
+2026-04-10 23:41:29 | INFO | [93ebda22-db4d-4e26-9361-8e8cf9b79ac7] GET /health → 200 (0.17ms)
+2026-04-10 23:41:59 | INFO | [f863d272-690d-45b0-a7df-5210498e5c43] GET /health → 200 (2.95ms)
+2026-04-10 23:42:29 | INFO | [19a1bd25-f498-4add-8b0e-6834b3933403] GET /health → 200 (0.18ms)
+2026-04-10 23:42:59 | INFO | [95ef8cdc-409f-4324-ad6c-00e59b7292d5] GET /health → 200 (0.11ms)
+2026-04-10 23:43:29 | INFO | [d43793b2-b3cb-43c8-980e-e6989b3367ce] GET /health → 200 (3.69ms)
+2026-04-10 23:43:59 | INFO | [1aea47b8-fa2c-4d53-bc85-de9c10582958] GET /health → 200 (0.11ms)
+2026-04-10 23:44:30 | INFO | [a7992aac-ed53-440e-a0fb-87ca18e01aeb] GET /health → 200 (0.34ms)
+2026-04-10 23:45:00 | INFO | [c737a5ed-f3f5-4934-ad61-94aaa27a12aa] GET /health → 200 (0.15ms)
+2026-04-10 23:45:30 | INFO | [24f23109-cf9d-4cfb-93ba-85d432e52b55] GET /health → 200 (0.11ms)
+2026-04-10 23:46:00 | INFO | [baffad1d-8f9d-4f3d-be9b-099daaa194de] GET /health → 200 (0.12ms)
+2026-04-10 23:46:30 | INFO | [3f5829a4-d14f-4b2a-8f45-cb89bc00b146] GET /health → 200 (0.41ms)
+2026-04-10 23:47:00 | INFO | [f2952c6b-6ead-45ef-a533-c418846aacd8] GET /health → 200 (0.14ms)
+2026-04-10 23:47:30 | INFO | [1cc7d626-b4a7-47ba-b3a4-2f4c7924d513] GET /health → 200 (0.17ms)
+2026-04-10 23:48:00 | INFO | [f7e7e56f-e742-44f1-bd97-ab54c54b68c4] GET /health → 200 (0.1ms)
+2026-04-10 23:48:31 | INFO | [6a8f3ada-b6e4-426d-ae0d-141c2516107a] GET /health → 200 (0.15ms)
+2026-04-10 23:49:01 | INFO | [5af16f07-e4b0-44c8-9fba-2fad3441143d] GET /health → 200 (0.12ms)
+2026-04-10 23:49:31 | INFO | [3bf689ff-bd6b-409b-8026-688bc59e1d25] GET /health → 200 (0.13ms)
+2026-04-10 23:50:01 | INFO | [80eba4f3-099f-4b61-8c50-db8138edd789] GET /health → 200 (0.11ms)
+2026-04-10 23:50:31 | INFO | [8aee1c3d-e3c1-46e3-a87c-8c92b20cf70e] GET /health → 200 (0.11ms)
+2026-04-10 23:51:22 | SUCCESS | Database tables initialized
+2026-04-10 23:51:22 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:51:22 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:51:23 | SUCCESS | Database tables initialized
+2026-04-10 23:51:23 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:51:23 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:51:28 | INFO | [964bd432-3c33-4dc4-904f-ec482482e4bf] GET /health → 200 (0.67ms)
+2026-04-10 23:51:36 | INFO | Starting Gemini Chat with 0 previous messages.
+2026-04-10 23:51:36 | ERROR | Error during Gemini chat: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x7390745585e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x739073f334d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x739073dcd6c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x7390733d97f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x739073dcd800>
+    └ <gunicorn.arbiter.Arbiter object at 0x7390733d97f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x739073dcd760>
+    └ <gunicorn.arbiter.Arbiter object at 0x7390733d97f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x739073218360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x739073218ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x7390732189a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7390732a0980>
+    │    └ <function SyncWorker.accept at 0x739073260860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 49450)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 49450)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7390732a0980>
+    │    └ <function SyncWorker.handle at 0x739073218b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 49450)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 49450)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x738ff2094050>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x7390732a0980>
+    │    └ <function SyncWorker.handle_request at 0x739073218c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x739073260220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x738ff2094550>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x73903d727fa0>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x7390723d4cd0>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x738ff2094550>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x73903d727fa0>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x739072ae9c60>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x739072ae93a0>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x739072ae9300>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'ai.ai_chat'
+           │    │           │    │              └ <Rule '/ai/chat' (POST, OPTIONS) -> ai.ai_chat>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x739073218fe0>, 'swagger.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x739072ae9580>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': ChatBotRequest(message='Hello', history=[])}
+               └ <function ai_chat at 0x738ff202efc0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function ai_chat at 0x738ff202ee80>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x73907412d940>
+
+  File "/app/app/auth/decorators.py", line 63, in decorated
+    return f(*args, **kwargs)
+           │  │       └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │  └ ()
+           └ <function ai_chat at 0x738ff202ede0>
+
+> File "/app/app/ai/routes.py", line 98, in ai_chat
+    result = chat_with_gemini(body.message, body.history)
+             │                │    │        │    └ []
+             │                │    │        └ ChatBotRequest(message='Hello', history=[])
+             │                │    └ 'Hello'
+             │                └ ChatBotRequest(message='Hello', history=[])
+             └ <function chat_with_gemini at 0x738ff2cc3420>
+
+  File "/app/app/ai/controllers.py", line 112, in chat_with_gemini
+    response = chat_session.send_message(message)
+               │            │            └ 'Hello'
+               │            └ <function Chat.send_message at 0x738ff1fc6660>
+               └ <google.genai.chats.Chat object at 0x738ff2095810>
+
+  File "/usr/local/lib/python3.13/site-packages/google/genai/chats.py", line 252, in send_message
+    response = self._modules.generate_content(
+               │    │        └ <function Models.generate_content at 0x738ff1fc4fe0>
+               │    └ <google.genai.models.Models object at 0x738ff207ef90>
+               └ <google.genai.chats.Chat object at 0x738ff2095810>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 6229, in generate_content
+    response = self._generate_content(
+               │    └ <function Models._generate_content at 0x738ff1fc45e0>
+               └ <google.genai.models.Models object at 0x738ff207ef90>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+               │    │           └ <function BaseApiClient.request at 0x738ff212ac00>
+               │    └ <google.genai._api_client.BaseApiClient object at 0x738ff207cec0>
+               └ <google.genai.models.Models object at 0x738ff207ef90>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1537, in request
+    response = self._request(http_request, http_options, stream=False)
+               │    │        │             └ None
+               │    │        └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+               │    └ <function BaseApiClient._request at 0x738ff212a980>
+               └ <google.genai._api_client.BaseApiClient object at 0x738ff207cec0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1332, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           │    │      │    │              │             └ False
+           │    │      │    │              └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+           │    │      │    └ <function BaseApiClient._request_once at 0x738ff212a8e0>
+           │    │      └ <google.genai._api_client.BaseApiClient object at 0x738ff207cec0>
+           │    └ <Retrying object at 0x738ff207de80 (stop=<tenacity.stop.stop_after_attempt object at 0x738ff207dd30>, wait=<tenacity.wait.wai...
+           └ <google.genai._api_client.BaseApiClient object at 0x738ff207cec0>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         │    │                └ <RetryCallState 127062078126608: attempt #1; slept for 0.0; last result: failed (ClientError 404 NOT_FOUND. {'error': {'code'...
+         │    └ <function BaseRetrying.iter at 0x738ff22b14e0>
+         └ <Retrying object at 0x738ff207de80 (stop=<tenacity.stop.stop_after_attempt object at 0x738ff207dd30>, wait=<tenacity.wait.wai...
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             │      └ <RetryCallState 127062078126608: attempt #1; slept for 0.0; last result: failed (ClientError 404 NOT_FOUND. {'error': {'code'...
+             └ <function BaseRetrying._post_stop_check_actions.<locals>.exc_check at 0x738ff20867a0>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          │         └ <function RetryError.reraise at 0x738ff22b0a40>
+          └ RetryError(<Future at 0x739044cf01a0 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          │    │            └ <function Future.result at 0x73907228e340>
+          │    └ <Future at 0x739044cf01a0 state=finished raised ClientError>
+          └ RetryError(<Future at 0x739044cf01a0 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           └ None
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+          └ None
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             │   │       └ {}
+             │   └ (HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-...
+             └ <bound method BaseApiClient._request_once of <google.genai._api_client.BaseApiClient object at 0x738ff207cec0>>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1309, in _request_once
+    errors.APIError.raise_for_response(response)
+    │      │        │                  └ <Response [404 Not Found]>
+    │      │        └ <classmethod(<function APIError.raise_for_response at 0x738ff22b3e20>)>
+    │      └ <class 'google.genai.errors.APIError'>
+    └ <module 'google.genai.errors' from '/usr/local/lib/python3.13/site-packages/google/genai/errors.py'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    │   │           │        │            │              └ <Response [404 Not Found]>
+    │   │           │        │            └ {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for gene...
+    │   │           │        └ 404
+    │   │           └ <Response [404 Not Found]>
+    │   └ <classmethod(<function APIError.raise_error at 0x738ff22b3f60>)>
+    └ <class 'google.genai.errors.APIError'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+          │           │            │              └ <Response [404 Not Found]>
+          │           │            └ {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for gene...
+          │           └ 404
+          └ <class 'google.genai.errors.ClientError'>
+
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-10 23:51:36 | INFO | [4d785a02-8de5-43a4-a4c0-1602ba73466c] POST /ai/chat → 500 (645.61ms)
+2026-04-10 23:51:58 | INFO | [898f4afe-9602-4596-982f-1fc4c4f94b7e] GET /health → 200 (0.19ms)
+2026-04-10 23:52:28 | INFO | [2d6ef544-98a4-4976-9daa-951750cb3baa] GET /health → 200 (0.11ms)
+2026-04-10 23:52:58 | INFO | [e08dc26c-b8b7-4408-af7d-39666246f294] GET /health → 200 (0.16ms)
+2026-04-10 23:53:50 | SUCCESS | Database tables initialized
+2026-04-10 23:53:50 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:53:50 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:53:50 | SUCCESS | Database tables initialized
+2026-04-10 23:53:50 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:53:50 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:53:54 | INFO | Starting Gemini Chat with 0 previous messages.
+2026-04-10 23:53:54 | ERROR | Error during Gemini chat: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x7df3736f45e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x7df372ff74d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x7df372f696c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x7df3725757f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x7df372f69800>
+    └ <gunicorn.arbiter.Arbiter object at 0x7df3725757f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x7df372f69760>
+    └ <gunicorn.arbiter.Arbiter object at 0x7df3725757f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x7df3723b0360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x7df3723b0ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x7df3723b09a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7df372440980>
+    │    └ <function SyncWorker.accept at 0x7df37240c860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 47538)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 47538)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7df372440980>
+    │    └ <function SyncWorker.handle at 0x7df3723b0b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 47538)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 47538)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x7df2f10d7770>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x7df372440980>
+    │    └ <function SyncWorker.handle_request at 0x7df3723b0c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x7df37240c220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x7df2f1000830>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7df2f1fc3640>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x7df371570cd0>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x7df2f1000830>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7df2f1fc3640>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x7df371c85c60>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x7df371c853a0>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x7df371c85300>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'ai.ai_chat'
+           │    │           │    │              └ <Rule '/ai/chat' (POST, OPTIONS) -> ai.ai_chat>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x7df3723b0fe0>, 'swagger.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x7df371c85580>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': ChatBotRequest(message='Hello', history=[])}
+               └ <function ai_chat at 0x7df2f11aafc0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function ai_chat at 0x7df2f11aae80>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x7df3732e5940>
+
+  File "/app/app/auth/decorators.py", line 63, in decorated
+    return f(*args, **kwargs)
+           │  │       └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │  └ ()
+           └ <function ai_chat at 0x7df2f11aade0>
+
+> File "/app/app/ai/routes.py", line 98, in ai_chat
+    result = chat_with_gemini(body.message, body.history)
+             │                │    │        │    └ []
+             │                │    │        └ ChatBotRequest(message='Hello', history=[])
+             │                │    └ 'Hello'
+             │                └ ChatBotRequest(message='Hello', history=[])
+             └ <function chat_with_gemini at 0x7df2f1e43420>
+
+  File "/app/app/ai/controllers.py", line 112, in chat_with_gemini
+    response = chat_session.send_message(message)
+               │            │            └ 'Hello'
+               │            └ <function Chat.send_message at 0x7df2f1146660>
+               └ <google.genai.chats.Chat object at 0x7df2f1014cd0>
+
+  File "/usr/local/lib/python3.13/site-packages/google/genai/chats.py", line 252, in send_message
+    response = self._modules.generate_content(
+               │    │        └ <function Models.generate_content at 0x7df2f1144fe0>
+               │    └ <google.genai.models.Models object at 0x7df2f1003e00>
+               └ <google.genai.chats.Chat object at 0x7df2f1014cd0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 6229, in generate_content
+    response = self._generate_content(
+               │    └ <function Models._generate_content at 0x7df2f11445e0>
+               └ <google.genai.models.Models object at 0x7df2f1003e00>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+               │    │           └ <function BaseApiClient.request at 0x7df2f12aac00>
+               │    └ <google.genai._api_client.BaseApiClient object at 0x7df2f1001d30>
+               └ <google.genai.models.Models object at 0x7df2f1003e00>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1537, in request
+    response = self._request(http_request, http_options, stream=False)
+               │    │        │             └ None
+               │    │        └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+               │    └ <function BaseApiClient._request at 0x7df2f12aa980>
+               └ <google.genai._api_client.BaseApiClient object at 0x7df2f1001d30>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1332, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           │    │      │    │              │             └ False
+           │    │      │    │              └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+           │    │      │    └ <function BaseApiClient._request_once at 0x7df2f12aa8e0>
+           │    │      └ <google.genai._api_client.BaseApiClient object at 0x7df2f1001d30>
+           │    └ <Retrying object at 0x7df2f1002cf0 (stop=<tenacity.stop.stop_after_attempt object at 0x7df2f1002ba0>, wait=<tenacity.wait.wai...
+           └ <google.genai._api_client.BaseApiClient object at 0x7df2f1001d30>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         │    │                └ <RetryCallState 138482379098496: attempt #1; slept for 0.0; last result: failed (ClientError 404 NOT_FOUND. {'error': {'code'...
+         │    └ <function BaseRetrying.iter at 0x7df2f12314e0>
+         └ <Retrying object at 0x7df2f1002cf0 (stop=<tenacity.stop.stop_after_attempt object at 0x7df2f1002ba0>, wait=<tenacity.wait.wai...
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             │      └ <RetryCallState 138482379098496: attempt #1; slept for 0.0; last result: failed (ClientError 404 NOT_FOUND. {'error': {'code'...
+             └ <function BaseRetrying._post_stop_check_actions.<locals>.exc_check at 0x7df2f100a520>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          │         └ <function RetryError.reraise at 0x7df2f1230a40>
+          └ RetryError(<Future at 0x7df2f1039010 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          │    │            └ <function Future.result at 0x7df37142a340>
+          │    └ <Future at 0x7df2f1039010 state=finished raised ClientError>
+          └ RetryError(<Future at 0x7df2f1039010 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           └ None
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+          └ None
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             │   │       └ {}
+             │   └ (HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-...
+             └ <bound method BaseApiClient._request_once of <google.genai._api_client.BaseApiClient object at 0x7df2f1001d30>>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1309, in _request_once
+    errors.APIError.raise_for_response(response)
+    │      │        │                  └ <Response [404 Not Found]>
+    │      │        └ <classmethod(<function APIError.raise_for_response at 0x7df2f1233e20>)>
+    │      └ <class 'google.genai.errors.APIError'>
+    └ <module 'google.genai.errors' from '/usr/local/lib/python3.13/site-packages/google/genai/errors.py'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    │   │           │        │            │              └ <Response [404 Not Found]>
+    │   │           │        │            └ {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for gene...
+    │   │           │        └ 404
+    │   │           └ <Response [404 Not Found]>
+    │   └ <classmethod(<function APIError.raise_error at 0x7df2f1233f60>)>
+    └ <class 'google.genai.errors.APIError'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+          │           │            │              └ <Response [404 Not Found]>
+          │           │            └ {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for gene...
+          │           └ 404
+          └ <class 'google.genai.errors.ClientError'>
+
+google.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-10 23:53:54 | INFO | [d69579ba-765d-4905-9af8-b99e9f9bdf23] POST /ai/chat → 500 (700.03ms)
+2026-04-10 23:53:55 | INFO | [b878dc5c-c0eb-48fb-ae4d-0d1d3d60bc18] GET /health → 200 (0.41ms)
+2026-04-10 23:54:25 | INFO | [d570922d-af67-4f4f-a353-9b98d4b96d26] GET /health → 200 (0.19ms)
+2026-04-10 23:54:55 | INFO | [ccbe8c60-d231-466c-a146-a13fb7c8c137] GET /health → 200 (0.64ms)
+2026-04-10 23:55:25 | INFO | [af043716-7872-40b7-8569-6bef7796ba52] GET /health → 200 (0.17ms)
+2026-04-10 23:55:55 | INFO | [36ce400d-43a0-4199-a16a-71f6f15e7916] GET /health → 200 (0.12ms)
+2026-04-10 23:56:25 | INFO | [46539044-602a-466c-803a-6e91e3c25fd1] GET /health → 200 (0.2ms)
+2026-04-10 23:57:10 | SUCCESS | Database tables initialized
+2026-04-10 23:57:10 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:57:10 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:57:11 | SUCCESS | Database tables initialized
+2026-04-10 23:57:11 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:57:11 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:57:13 | INFO | [7c077b55-d663-44b5-ae94-c468b4804a08] GET /health → 200 (0.93ms)
+2026-04-10 23:57:45 | SUCCESS | Database tables initialized
+2026-04-10 23:57:45 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:57:45 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:57:45 | SUCCESS | Database tables initialized
+2026-04-10 23:57:45 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:57:45 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:57:47 | INFO | [9bcb300f-790d-48a0-b502-e7e6048e2c45] GET /health → 200 (0.94ms)
+2026-04-10 23:58:50 | SUCCESS | Database tables initialized
+2026-04-10 23:58:50 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:58:50 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:58:50 | INFO | Starting Gemini Chat with 0 previous messages.
+2026-04-10 23:58:50 | SUCCESS | Database tables initialized
+2026-04-10 23:58:50 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-10 23:58:50 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-10 23:58:51 | ERROR | Error during Gemini chat: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.BadRequest', 'fieldViolations': [{'description': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.'}]}]}}
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x7e71ba6e05e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x7e71b9fe34d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x7e71b9f5d6c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x7e71b95657f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x7e71b9f5d800>
+    └ <gunicorn.arbiter.Arbiter object at 0x7e71b95657f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x7e71b9f5d760>
+    └ <gunicorn.arbiter.Arbiter object at 0x7e71b95657f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x7e71b93a8360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x7e71b93a8ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x7e71b93a89a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7e71b9430980>
+    │    └ <function SyncWorker.accept at 0x7e71b93f4860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 50106)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 50106)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7e71b9430980>
+    │    └ <function SyncWorker.handle at 0x7e71b93a8b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 50106)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 50106)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x7e71380c3770>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x7e71b9430980>
+    │    └ <function SyncWorker.handle_request at 0x7e71b93a8c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x7e71b93f4220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x7e7137fec830>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7e7138482530>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b3f7cc20>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x7e7137fec830>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7e7138482530>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x7e71b8c89c60>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x7e71b8c893a0>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x7e71b8c89300>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'ai.ai_chat'
+           │    │           │    │              └ <Rule '/ai/chat' (OPTIONS, POST) -> ai.ai_chat>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x7e71b93a8fe0>, 'swagger.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x7e71b8c89580>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': ChatBotRequest(message='Hello', history=[])}
+               └ <function ai_chat at 0x7e7138196fc0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function ai_chat at 0x7e7138196e80>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x7e71ba2d1940>
+
+  File "/app/app/auth/decorators.py", line 63, in decorated
+    return f(*args, **kwargs)
+           │  │       └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │  └ ()
+           └ <function ai_chat at 0x7e7138196de0>
+
+> File "/app/app/ai/routes.py", line 98, in ai_chat
+    result = chat_with_gemini(body.message, body.history)
+             │                │    │        │    └ []
+             │                │    │        └ ChatBotRequest(message='Hello', history=[])
+             │                │    └ 'Hello'
+             │                └ ChatBotRequest(message='Hello', history=[])
+             └ <function chat_with_gemini at 0x7e7138e2f420>
+
+  File "/app/app/ai/controllers.py", line 103, in chat_with_gemini
+    response = chat_session.send_message(message)
+               │            │            └ 'Hello'
+               │            └ <function Chat.send_message at 0x7e7138132660>
+               └ <google.genai.chats.Chat object at 0x7e7138028ad0>
+
+  File "/usr/local/lib/python3.13/site-packages/google/genai/chats.py", line 252, in send_message
+    response = self._modules.generate_content(
+               │    │        └ <function Models.generate_content at 0x7e7138130fe0>
+               │    └ <google.genai.models.Models object at 0x7e7137fefe00>
+               └ <google.genai.chats.Chat object at 0x7e7138028ad0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 6229, in generate_content
+    response = self._generate_content(
+               │    └ <function Models._generate_content at 0x7e71381305e0>
+               └ <google.genai.models.Models object at 0x7e7137fefe00>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+               │    │           └ <function BaseApiClient.request at 0x7e7138296c00>
+               │    └ <google.genai._api_client.BaseApiClient object at 0x7e7137fedd30>
+               └ <google.genai.models.Models object at 0x7e7137fefe00>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1537, in request
+    response = self._request(http_request, http_options, stream=False)
+               │    │        │             └ None
+               │    │        └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+               │    └ <function BaseApiClient._request at 0x7e7138296980>
+               └ <google.genai._api_client.BaseApiClient object at 0x7e7137fedd30>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1332, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           │    │      │    │              │             └ False
+           │    │      │    │              └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+           │    │      │    └ <function BaseApiClient._request_once at 0x7e71382968e0>
+           │    │      └ <google.genai._api_client.BaseApiClient object at 0x7e7137fedd30>
+           │    └ <Retrying object at 0x7e7137feecf0 (stop=<tenacity.stop.stop_after_attempt object at 0x7e7137feeba0>, wait=<tenacity.wait.wai...
+           └ <google.genai._api_client.BaseApiClient object at 0x7e7137fedd30>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         │    │                └ <RetryCallState 139024736095264: attempt #1; slept for 0.0; last result: failed (ClientError 400 INVALID_ARGUMENT. {'error': ...
+         │    └ <function BaseRetrying.iter at 0x7e713821d4e0>
+         └ <Retrying object at 0x7e7137feecf0 (stop=<tenacity.stop.stop_after_attempt object at 0x7e7137feeba0>, wait=<tenacity.wait.wai...
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             │      └ <RetryCallState 139024736095264: attempt #1; slept for 0.0; last result: failed (ClientError 400 INVALID_ARGUMENT. {'error': ...
+             └ <function BaseRetrying._post_stop_check_actions.<locals>.exc_check at 0x7e7137ff6480>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          │         └ <function RetryError.reraise at 0x7e713821ca40>
+          └ RetryError(<Future at 0x7e7138029160 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          │    │            └ <function Future.result at 0x7e71b8232340>
+          │    └ <Future at 0x7e7138029160 state=finished raised ClientError>
+          └ RetryError(<Future at 0x7e7138029160 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           └ None
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+          └ None
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             │   │       └ {}
+             │   └ (HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-...
+             └ <bound method BaseApiClient._request_once of <google.genai._api_client.BaseApiClient object at 0x7e7137fedd30>>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1309, in _request_once
+    errors.APIError.raise_for_response(response)
+    │      │        │                  └ <Response [400 Bad Request]>
+    │      │        └ <classmethod(<function APIError.raise_for_response at 0x7e713821fe20>)>
+    │      └ <class 'google.genai.errors.APIError'>
+    └ <module 'google.genai.errors' from '/usr/local/lib/python3.13/site-packages/google/genai/errors.py'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    │   │           │        │            │              └ <Response [400 Bad Request]>
+    │   │           │        │            └ {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'st...
+    │   │           │        └ 400
+    │   │           └ <Response [400 Bad Request]>
+    │   └ <classmethod(<function APIError.raise_error at 0x7e713821ff60>)>
+    └ <class 'google.genai.errors.APIError'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+          │           │            │              └ <Response [400 Bad Request]>
+          │           │            └ {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'st...
+          │           └ 400
+          └ <class 'google.genai.errors.ClientError'>
+
+google.genai.errors.ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.BadRequest', 'fieldViolations': [{'description': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.'}]}]}}
+2026-04-10 23:58:51 | INFO | [e7d5e9a0-bd6c-43f0-bb02-4b959cc7f324] POST /ai/chat → 500 (709.07ms)
+2026-04-10 23:58:52 | INFO | [668134eb-e888-414a-9088-57b1312bc75f] GET /health → 200 (0.64ms)
+2026-04-10 23:58:59 | INFO | Starting Gemini Chat with 0 previous messages.
+2026-04-10 23:58:59 | ERROR | Error during Gemini chat: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.BadRequest', 'fieldViolations': [{'description': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.'}]}]}}
+Traceback (most recent call last):
+
+  File "/usr/local/bin/gunicorn", line 6, in <module>
+    sys.exit(run())
+    │   │    └ <function run at 0x7e71ba6e05e0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    │                                                       └ None
+    └ <class 'gunicorn.app.wsgiapp.WSGIApplication'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    │       └ <gunicorn.app.wsgiapp.WSGIApplication object at 0x7e71b9fe34d0>
+    └ <class 'gunicorn.arbiter.Arbiter'>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 223, in run
+    self.manage_workers()
+    │    └ <function Arbiter.manage_workers at 0x7e71b9f5d6c0>
+    └ <gunicorn.arbiter.Arbiter object at 0x7e71b95657f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 661, in manage_workers
+    self.spawn_workers()
+    │    └ <function Arbiter.spawn_workers at 0x7e71b9f5d800>
+    └ <gunicorn.arbiter.Arbiter object at 0x7e71b95657f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 748, in spawn_workers
+    self.spawn_worker()
+    │    └ <function Arbiter.spawn_worker at 0x7e71b9f5d760>
+    └ <gunicorn.arbiter.Arbiter object at 0x7e71b95657f0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/arbiter.py", line 713, in spawn_worker
+    worker.init_process()
+    │      └ <function Worker.init_process at 0x7e71b93a8360>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/base.py", line 144, in init_process
+    self.run()
+    │    └ <function SyncWorker.run at 0x7e71b93a8ae0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 133, in run
+    self.run_for_one(timeout)
+    │    │           └ 60.0
+    │    └ <function SyncWorker.run_for_one at 0x7e71b93a89a0>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 69, in run_for_one
+    self.accept(listener)
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7e71b9430980>
+    │    └ <function SyncWorker.accept at 0x7e71b93f4860>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 31, in accept
+    self.handle(listener, client, addr)
+    │    │      │         │       └ ('172.22.0.1', 56914)
+    │    │      │         └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 56914)>
+    │    │      └ <gunicorn.sock.TCPSocket object at 0x7e71b9430980>
+    │    └ <function SyncWorker.handle at 0x7e71b93a8b80>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 142, in handle
+    self.handle_request(listener, req, client, addr)
+    │    │              │         │    │       └ ('172.22.0.1', 56914)
+    │    │              │         │    └ <socket.socket fd=9, family=2, type=1, proto=0, laddr=('172.22.0.4', 8000), raddr=('172.22.0.1', 56914)>
+    │    │              │         └ <gunicorn.http.message.Request object at 0x7e7138d63ed0>
+    │    │              └ <gunicorn.sock.TCPSocket object at 0x7e71b9430980>
+    │    └ <function SyncWorker.handle_request at 0x7e71b93a8c20>
+    └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/gunicorn/workers/sync.py", line 185, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               │    │    │        │    └ <function Response.start_response at 0x7e71b93f4220>
+               │    │    │        └ <gunicorn.http.wsgi.Response object at 0x7e71380c3770>
+               │    │    └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7e7138482530>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+               │    └ <OpenAPI 'app'>
+               └ <gunicorn.workers.sync.SyncWorker object at 0x7e71b837ccd0>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <bound method Response.start_response of <gunicorn.http.wsgi.Response object at 0x7e71380c3770>>
+           │    │        └ {'wsgi.errors': <gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7e7138482530>, 'wsgi.version': (1, 0), 'wsgi.multithread': ...
+           │    └ <function Flask.wsgi_app at 0x7e71b8c89c60>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x7e71b8c893a0>
+               └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x7e71b8c89300>
+         └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'ai.ai_chat'
+           │    │           │    │              └ <Rule '/ai/chat' (OPTIONS, POST) -> ai.ai_chat>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x7e71b93a8fe0>, 'swagger.static': <bound method Blueprint.send_stat...
+           │    │           └ <OpenAPI 'app'>
+           │    └ <function Flask.ensure_sync at 0x7e71b8c89580>
+           └ <OpenAPI 'app'>
+  File "/usr/local/lib/python3.13/site-packages/flask_openapi3/scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               │      └ {'body': ChatBotRequest(message='Hello', history=[])}
+               └ <function ai_chat at 0x7e7138196fc0>
+  File "/usr/local/lib/python3.13/site-packages/flask_limiter/_limits.py", line 326, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+           │    │  │     │                       │     │    └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │    │  │     │                       │     └ ()
+           │    │  │     │                       └ <function ai_chat at 0x7e7138196e80>
+           │    │  │     └ <OpenAPI 'app'>
+           │    │  └ <module 'flask' from '/usr/local/lib/python3.13/site-packages/flask/__init__.py'>
+           │    └ ~R
+           └ <function cast at 0x7e71ba2d1940>
+
+  File "/app/app/auth/decorators.py", line 63, in decorated
+    return f(*args, **kwargs)
+           │  │       └ {'body': ChatBotRequest(message='Hello', history=[])}
+           │  └ ()
+           └ <function ai_chat at 0x7e7138196de0>
+
+> File "/app/app/ai/routes.py", line 98, in ai_chat
+    result = chat_with_gemini(body.message, body.history)
+             │                │    │        │    └ []
+             │                │    │        └ ChatBotRequest(message='Hello', history=[])
+             │                │    └ 'Hello'
+             │                └ ChatBotRequest(message='Hello', history=[])
+             └ <function chat_with_gemini at 0x7e7138e2f420>
+
+  File "/app/app/ai/controllers.py", line 103, in chat_with_gemini
+    response = chat_session.send_message(message)
+               │            │            └ 'Hello'
+               │            └ <function Chat.send_message at 0x7e7138132660>
+               └ <google.genai.chats.Chat object at 0x7e71380286e0>
+
+  File "/usr/local/lib/python3.13/site-packages/google/genai/chats.py", line 252, in send_message
+    response = self._modules.generate_content(
+               │    │        └ <function Models.generate_content at 0x7e7138130fe0>
+               │    └ <google.genai.models.Models object at 0x7e7137fefa10>
+               └ <google.genai.chats.Chat object at 0x7e71380286e0>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 6229, in generate_content
+    response = self._generate_content(
+               │    └ <function Models._generate_content at 0x7e71381305e0>
+               └ <google.genai.models.Models object at 0x7e7137fefa10>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+               │    │           └ <function BaseApiClient.request at 0x7e7138296c00>
+               │    └ <google.genai._api_client.BaseApiClient object at 0x7e7137fed940>
+               └ <google.genai.models.Models object at 0x7e7137fefa10>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1537, in request
+    response = self._request(http_request, http_options, stream=False)
+               │    │        │             └ None
+               │    │        └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+               │    └ <function BaseApiClient._request at 0x7e7138296980>
+               └ <google.genai._api_client.BaseApiClient object at 0x7e7137fed940>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1332, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           │    │      │    │              │             └ False
+           │    │      │    │              └ HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-a...
+           │    │      │    └ <function BaseApiClient._request_once at 0x7e71382968e0>
+           │    │      └ <google.genai._api_client.BaseApiClient object at 0x7e7137fed940>
+           │    └ <Retrying object at 0x7e7137fee900 (stop=<tenacity.stop.stop_after_attempt object at 0x7e7137fee7b0>, wait=<tenacity.wait.wai...
+           └ <google.genai._api_client.BaseApiClient object at 0x7e7137fed940>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         │    │                └ <RetryCallState 139024736094256: attempt #1; slept for 0.0; last result: failed (ClientError 400 INVALID_ARGUMENT. {'error': ...
+         │    └ <function BaseRetrying.iter at 0x7e713821d4e0>
+         └ <Retrying object at 0x7e7137fee900 (stop=<tenacity.stop.stop_after_attempt object at 0x7e7137fee7b0>, wait=<tenacity.wait.wai...
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             │      └ <RetryCallState 139024736094256: attempt #1; slept for 0.0; last result: failed (ClientError 400 INVALID_ARGUMENT. {'error': ...
+             └ <function BaseRetrying._post_stop_check_actions.<locals>.exc_check at 0x7e7137ff6520>
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          │         └ <function RetryError.reraise at 0x7e713821ca40>
+          └ RetryError(<Future at 0x7e7138028d70 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          │    │            └ <function Future.result at 0x7e71b8232340>
+          │    └ <Future at 0x7e7138028d70 state=finished raised ClientError>
+          └ RetryError(<Future at 0x7e7138028d70 state=finished raised ClientError>)
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           └ None
+  File "/usr/local/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+          └ None
+  File "/usr/local/lib/python3.13/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             │   │       └ {}
+             │   └ (HttpRequest(headers={'Content-Type': 'application/json', 'x-goog-api-key': 'AIzaSyCWKxywUQSBNJxwVZ53aXegz5DmYFlddE4', 'user-...
+             └ <bound method BaseApiClient._request_once of <google.genai._api_client.BaseApiClient object at 0x7e7137fed940>>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/_api_client.py", line 1309, in _request_once
+    errors.APIError.raise_for_response(response)
+    │      │        │                  └ <Response [400 Bad Request]>
+    │      │        └ <classmethod(<function APIError.raise_for_response at 0x7e713821fe20>)>
+    │      └ <class 'google.genai.errors.APIError'>
+    └ <module 'google.genai.errors' from '/usr/local/lib/python3.13/site-packages/google/genai/errors.py'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    │   │           │        │            │              └ <Response [400 Bad Request]>
+    │   │           │        │            └ {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'st...
+    │   │           │        └ 400
+    │   │           └ <Response [400 Bad Request]>
+    │   └ <classmethod(<function APIError.raise_error at 0x7e713821ff60>)>
+    └ <class 'google.genai.errors.APIError'>
+  File "/usr/local/lib/python3.13/site-packages/google/genai/errors.py", line 184, in raise_error
+    raise ClientError(status_code, response_json, response)
+          │           │            │              └ <Response [400 Bad Request]>
+          │           │            └ {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'st...
+          │           └ 400
+          └ <class 'google.genai.errors.ClientError'>
+
+google.genai.errors.ClientError: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.', 'status': 'INVALID_ARGUMENT', 'details': [{'@type': 'type.googleapis.com/google.rpc.BadRequest', 'fieldViolations': [{'description': 'Invalid JSON payload received. Unknown name "systemInstruction": Cannot find field.'}]}]}}
+2026-04-10 23:58:59 | INFO | [581306a1-3a00-48de-9719-dcc7cb4815b5] POST /ai/chat → 500 (508.66ms)
+2026-04-10 23:59:22 | INFO | [834558d8-8175-437b-bfe1-14eca0bd8d32] GET /health → 200 (0.19ms)
+2026-04-10 23:59:53 | INFO | [86b3c737-5ef8-4037-a7ad-11e9a1bd8c25] GET /health → 200 (0.45ms)
+2026-04-11 00:00:23 | SUCCESS | Database tables initialized
+2026-04-11 00:00:23 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-11 00:00:23 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-11 00:00:23 | SUCCESS | Database tables initialized
+2026-04-11 00:00:23 | INFO | Registered routes: 
+ai.ai_chat: /ai/chat
+ai.detect_media: /ai/detect
+auth.login: /auth/login
+auth.me: /auth/me
+auth.refresh: /auth/refresh
+auth.register: /auth/register
+auth.resend_otp: /auth/resend-otp
+auth.reset_confirm: /auth/password-reset/confirm
+auth.reset_request: /auth/password-reset/request
+auth.reset_verify: /auth/password-reset/verify
+auth.update_profile: /auth/profile
+auth.upload_avatar: /auth/profile/avatar
+auth.verify_otp: /auth/verify-otp
+community.create_community_post: /community/posts
+community.delete_community_post: /community/posts/<post_id>
+community.get_community_post: /community/posts/<post_id>
+community.list_community_posts: /community/posts
+detection.detect_async: /detect/async/<media_type>
+detection.detect_async_batch: /detect/async/batch
+detection.detect_audio: /detect/audio
+detection.detect_auto: /detect
+detection.detect_batch: /detect/batch
+detection.detect_image: /detect/image
+detection.detect_video: /detect/video
+detection.get_task_status: /task/<task_id>
+health.health: /health
+history.delete_record: /history/<record_id>
+history.get_record: /history/<record_id>
+history.list_history: /history
+history.stats: /history/stats
+openapi.doc_url: /openapi/openapi.json
+openapi.openapi: /openapi/
+openapi.static: /openapi/static/<path:filename>
+provenance.analyze: /provenance/analyze
+root: /
+static: /static/<path:filename>
+swagger.oauth2-redirect: /openapi/oauth2-redirect.html
+swagger.static: /openapi/swagger/<path:filename>
+swagger.swagger: /openapi/swagger
+2026-04-11 00:00:23 | INFO | DeepTrace ML Engine v2.0.0 started
+2026-04-11 00:00:24 | INFO | [bff9599f-a548-469b-b0ef-66bc96d23728] GET /health → 200 (10.11ms)

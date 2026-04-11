@@ -103,6 +103,7 @@ def create_app(config_override=None):
     from app.provenance.routes import provenance_bp
     from app.history.routes import history_bp
     from app.community.routes import community_bp
+    from app.ai.routes import ai_bp
 
     app.register_api(health_bp)
     app.register_api(auth_bp)
@@ -110,6 +111,7 @@ def create_app(config_override=None):
     app.register_api(provenance_bp)
     app.register_api(history_bp)
     app.register_api(community_bp)
+    app.register_api(ai_bp)
 
     # ─── Root endpoint ───────────────────────────────────
     @app.route("/", methods=["GET"])
@@ -124,6 +126,7 @@ def create_app(config_override=None):
                 "detect": "POST /detect, /detect/image, /detect/video, /detect/audio, /detect/batch",
                 "provenance": "POST /provenance/analyze",
                 "history": "GET /history, /history/stats, /history/<id>",
+                "ai": "POST /ai/detect, POST /ai/chat",
             },
         })
 
