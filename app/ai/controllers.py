@@ -29,15 +29,24 @@ def analyze_media_with_gemini(filepath: str, mime_type: str) -> dict:
                 raise RuntimeError("Video processing failed on Gemini servers.")
         logger.info(f"File uploaded. State: {gemini_file.state.name}. Sending prompt...")
         prompt = (
-            "Analyze this media thoroughly to determine if it is AI-generated (deepfake/synthetic) or real. "
+            "You are an expert digital forensics analyst specializing in deepfake and AI-generated media detection. "
+            "Analyze the provided media with extreme scrutiny to determine if it is AI-generated (synthetic) or real. "
+            "Look closely for the following common AI artifacts:\n"
+            "- Unnatural textures, glowing/plastic skin, or overly smooth rendering\n"
+            "- Asymmetries in faces, mismatched eyes, ears, or glasses\n"
+            "- Anatomical errors (e.g., wrong number of fingers, weird joints, merging limbs, floating hair)\n"
+            "- Incoherent or physically impossible backgrounds\n"
+            "- Warped text, unreadable signs, or nonsensical background details\n"
+            "- Inconsistent lighting or shadows, lacking physical logic\n\n"
+            "If you spot ANY of these artifacts, strongly consider the media 'AI-generated' (is_fake: true). "
             "Respond strictly in JSON format matching the following structure:\n"
             "{\n"
-            '  "is_fake": boolean,\n'
-            '  "confidence": float between 0.0 and 1.0,\n'
+            '  "is_fake": boolean (true if synthetic/AI artifacts found, false if authentic),\n'
+            '  "confidence": float between 0.0 and 1.0 (how certain you are based on the artifacts),\n'
             '  "recommendation": string (one of "high_risk", "safe", "investigate"),\n'
-            '  "artifact_signatures": list of strings (artifacts or synthetic clues found),\n'
+            '  "artifact_signatures": list of strings (specific artifacts or synthetic clues found, e.g., "Messed up fingers in left hand"),\n'
             '  "internet_footprint": list of strings (URLs or platforms where found online),\n'
-            '  "summary": string (a comprehensive professional report of your findings)\n'
+            '  "summary": string (a comprehensive professional report of your findings detailing why it is fake or real)\n'
             "}"
         )
         response = client.models.generate_content(
@@ -45,6 +54,7 @@ def analyze_media_with_gemini(filepath: str, mime_type: str) -> dict:
             contents=[gemini_file, prompt],
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
+                temperature=0.2,
             )
         )
         
